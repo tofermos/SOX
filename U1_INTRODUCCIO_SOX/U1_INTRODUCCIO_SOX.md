@@ -1,5 +1,5 @@
 ---
-title: UD1. Introducció als sistemaes operatius en xarxa
+title: U1. Introducció als sistemes operatius en xarxa (I)
 author: "@tofermos 2024"
 lang: "ca-ES"
 papersize: A4

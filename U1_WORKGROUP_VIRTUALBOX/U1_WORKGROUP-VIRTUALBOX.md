@@ -1,23 +1,23 @@
 ---
 title:  |
-  | UD1. Introducció als SOX. La xarxa en VirtualBox i Windows
+  | UD1. Introducció als SOX (II). 
 subtitle: |
-  | bàsica per a crear una xarxa en Windows i VirtualBox i creació d'un WorkGroup
+  | Configuració bàsica de xarxa en Windows i VirtualBox
 author: "@tofermos 2024"
 lang: "ca-ES"
 papersize: A4
 linestretch: 1.5
 output:
+  pdf_document:
+    toc: true
+    keep_tex: true
+    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     toc_depth: 3
     df_print: paged
     number_sections: false
-  pdf_document:
-    toc: true
-    keep_tex: true
-    latex_engine: xelatex
 ---
 
 \newpage
@@ -57,7 +57,7 @@ Una vegada resolta a nivell físic i l'enllaç de dades la connexió de la xarxa
 
 Anem a observar (sense modifcar res encara) l'opció de **Configuración avanzada de uso compartido**
 
-  * Panel de **Control\Centro de redes y usos compartido\ Cambiar configuración de uso compartido**
+  * Panel de **Control\\Centro de redes y usos compartido\\Cambiar configuración de uso compartido**
   
   * Altres formes d'accedir:
     * Win + I     Red e internet
@@ -146,3 +146,58 @@ Fem els canvis commentats:
 
 
 ¹Atenent a l'estructura ISO/OSI diríem Nivell Físic i també d'Accés al Medi però en el nostre mòdul no cal entrar en aquests detalls. 
+
+# 4 WORKGROUP
+
+Ja hem resolt els punt 1, 2 i en falta el 3.:
+
+
+1.  Connexió física.
+2.  Restriccions de la xarxa.
+    * Xarxa privada.
+    * Compartir arxius i impressores.
+    * Detecció per al xarxa.
+    * Firewall.
+
+# 3. Crear el Workgroup (grup de treball). 
+
+## 3.1 Afegir els dos PCs al Workgroup
+
+Realment no hem de "crear" el Grup de Treball sinó que en afegir els PC a ell ja està creat.
+Hem danat a Panel de **Control\\Sistema\\Información\\Dominio o grupo de trabajo**
+
+![](png/informacionSistema1.png){width=75%}
+
+![](png/informacionSistema2.png){width=75%}
+
+![](png/workgroup1.png){width=75%}
+
+També des de "Mi equipo"\\propiedades.
+
+És l'opció que ens permet canviar el nom del PC i també de:
+
+  * Workgrup (grup de treball)
+  * Domini 
+
+En fer els canvis als PC i reiniciar-los haurem creat la xarxa més senzilla. Pot ser útil per a:
+
+  * xicotetes organitzacions amb pocs PC o impressores.
+  * xarxes amb poc treball col·laboratiu. 
+
+
+>Nota:
+>Tot i que en la literatura de SO sol identificar-se un Grup de Treball amb una LAN amb pocs PC i un Domini amb una LAN de més de 10, 15 ó 20 PC, no necessàriament ha de ser així.
+Podem tindre 20 PC que usen el núvol per a tot i molt esporàdicament comparteixen una carpeta entre ells. També tindre només 7 PC en la LAN que usen un ERP amb la seua BD i backup i es carpetes amb diferents permisos segons els usuaris.
+
+
+## 3.2 Compartir un recurs
+
+Comp ja vam vore el curs passat, podem compartir un recurs (carpeta) amb permís de lectura o escritura per qualsevol usuari (**Todos**) o anar afegint els usuaris i indicant quin tipus de permís.
+
+Si volem restringir l'accès a determinats usuaris de la xarxa, haurem de tindre els **usuaris "replicats" en cada PC** on compartim un recurs.
+
+![](png/compartir1.png){width=75%}
+
+![](png/compartir2.png){width=75%}
+
+![](png/compartir3.png){width=75%}
