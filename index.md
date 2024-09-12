@@ -33,9 +33,9 @@ linestretch: 1.5
 
 |||||
 |:------|:--|:--|
-|Introducció als SOX (I)|[![](recursos/iconohtml.png)](U1_INTRODUCCIO_SOX/U1_INTRODUCCIO_SOX.md)|[![](recursos/iconopdf.png)](U1_INTRODUCCIO_SOX/U1_INTRODUCCIO_SOX.pdf)|
-|Introducció als SOX (I). Xarxa en VirtualBox i Workgroup de Windows 11|[![](recursos/iconohtml.png)](U1_WORKGROUP_VIRTUALBOX/U1_WORKGROUP_VIRTUALBOX.md)|[![](recursos/iconopdf.png)](U1_WORKGROUP_VIRTUALBOX/U1_WORKGROUP_VIRTUALBOX.pdf)|
-|Activitat 1|[![](recursos/iconohtml.png)](U1_Activitat1/U1_Activitat1.md)|[![](recursos/iconopdf.png)](U1_Activitat1/U1_Activitat1.pdf)
+|Introducció als SOX (I)|[![](recursos/iconohtml.png)](U1_INTRODUCCIO_SOX/U1_INTRODUCCIO_SOX.html)|[![](recursos/iconopdf.png)](U1_INTRODUCCIO_SOX/U1_INTRODUCCIO_SOX.pdf)|
+|Introducció als SOX (I). Xarxa en VirtualBox i Workgroup de Windows 11|[![](recursos/iconohtml.png)](U1_WORKGROUP_VIRTUALBOX/U1_WORKGROUP_VIRTUALBOX.html)|[![](recursos/iconopdf.png)](U1_WORKGROUP_VIRTUALBOX/U1_WORKGROUP_VIRTUALBOX.pdf)|
+|Activitat 1|[![](recursos/iconohtml.png)](U1_Activitat1/U1_Activitat1.html)|[![](recursos/iconopdf.png)](U1_Activitat1/U1_Activitat1.pdf)
 
 ### [2 WINDOWS SERVER. INSTAL·LACIÓ I ÚS](#U2)
 
