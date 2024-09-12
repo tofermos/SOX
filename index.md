@@ -28,7 +28,6 @@ linestretch: 1.5
 
 ## ÍNDEX
 
-
 ### [1 Introducció SOX](#U1)
 
 |||||
