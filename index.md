@@ -4,7 +4,6 @@ title: |
 subtitle: |
   | IES MARIA ENRÍQUEZ
 author: "Tomàs Ferrandis Moscardó"
-
 output:
   html_document:
     toc: true
@@ -37,4 +36,10 @@ linestretch: 1.5
 |Activitat 1|[![](recursos/iconohtml.png)](U1_Activitat1/U1_Activitat1.html)|[![](recursos/iconopdf.png)](U1_Activitat1/U1_Activitat1.pdf)
 
 ### [2 WINDOWS SERVER. INSTAL·LACIÓ I ÚS](#U2)
+|||||
+|:------|:--|:--|
+|Windows Server. Instal·lació i ús (I)|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.pdf)|
+|Windows Server. Instal·lació i ús (Ii)|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.pdf)|
+
+
 

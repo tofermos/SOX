@@ -1,0 +1,216 @@
+// Qüestionari de 30 preguntes sobre arquitectura client-servidor
+
+::P1:: Què és una arquitectura client-servidor?
+{
+=Un model en què múltiples clients fan peticions a un servidor centralitzat.
+~Un sistema distribuït en què cada dispositiu actua com client i servidor alhora.
+~Un únic ordinador executant totes les tasques.
+}
+
+::P2:: Quin dels següents components és habitual en una arquitectura client-servidor?
+{
+~Una impressora
+=Un servidor
+~Un disc dur extern
+}
+
+::P3:: Quin protocol s'utilitza sovint per a la comunicació en una arquitectura client-servidor?
+{
+=HTTP
+~USB
+~Wi-Fi
+}
+
+::P4:: En una arquitectura client-servidor, qui fa les peticions?
+{
+=El client
+~El servidor
+~La base de dades
+}
+
+::P5:: Quin avantatge té la distribució del treball en un sistema client-servidor?
+{
+=Permet repartir la càrrega de treball entre diferents clients i servidors.
+~Totes les dades es guarden en una sola ubicació segura.
+~El servidor no necessita estar connectat a la xarxa.
+}
+
+::P6:: Quin paper juga un servidor d'aplicacions en una arquitectura client-servidor? (Selecció múltiple)
+{
+~Actuar com a servidor web.
+=Executar lògica empresarial per als clients.
+=Processar peticions entre el client i la base de dades.
+~Fer còpies de seguretat de les dades dels clients.
+}
+
+::P7:: Quin rol principal té el servidor en una arquitectura client-servidor?
+{
+=Processar les peticions dels clients i enviar respostes.
+~Executar els programes dels clients de forma remota.
+~Actuar com un client independent.
+}
+
+::P8:: Quin dels següents és un exemple típic d'aplicació client-servidor?
+{
+=Un navegador web que accedeix a una pàgina web.
+~Un programa que controla directament una impressora.
+~Una connexió entre dos dispositius Bluetooth.
+}
+
+::P9:: Quina és una de les funcions principals d'un client en aquesta arquitectura?
+{
+=Enviar peticions de servei al servidor.
+~Controlar el servidor directament.
+~Actuar com a servidor en alguns casos.
+}
+
+::P10:: Com s'anomena la part del sistema que gestiona les bases de dades en una arquitectura client-servidor?
+{
+=Servidor de bases de dades
+~Servidor d'arxius
+~Client de bases de dades
+}
+
+::P11:: Quin dels següents és un avantatge d'utilitzar una arquitectura client-servidor? (Selecció múltiple)
+{
+=Escalabilitat
+=Centralització de dades
+~Menys càrrega en la xarxa
+~Menor seguretat
+}
+
+::P12:: Quin és un desavantatge d'una arquitectura client-servidor en comparació amb un sistema distribuït?
+{
+~Té una estructura més complexa.
+=Pot ser un punt únic de fallada.
+~Necessita més dispositius clients.
+}
+
+::P13:: Què passa quan un servidor en una arquitectura client-servidor falla?
+{
+=Els clients poden perdre l'accés als serveis o dades.
+~Els clients continuen funcionant sense cap problema.
+~Els clients es converteixen automàticament en servidors.
+}
+
+::P14:: Quin tipus de servidor s'utilitza per emmagatzemar i proporcionar continguts web en una arquitectura client-servidor?
+{
+=Servidor web
+~Servidor d'aplicacions
+~Servidor de fitxers
+}
+
+::P15:: Què significa "escalabilitat" en el context d'una arquitectura client-servidor?
+{
+=La capacitat d'afegir més clients o servidors sense afectar significativament el rendiment.
+~La capacitat de reduir el nombre de servidors.
+~La capacitat de reduir la grandària dels clients.
+}
+
+::P16:: Quin paper juga un tallafoc en una arquitectura client-servidor?
+{
+=Protegir el servidor de connexions no autoritzades.
+~Fer còpies de seguretat de les dades del servidor.
+~Augmentar la velocitat de connexió entre el client i el servidor.
+}
+
+::P17:: Quin és l'objectiu principal del balanç de càrrega en un sistema client-servidor? (Selecció múltiple)
+{
+=Distribuir les peticions de clients entre diversos servidors per evitar sobrecàrrega.
+=Millorar el rendiment i la disponibilitat del sistema.
+~Minimitzar la quantitat de dades transmeses entre client i servidor.
+~Incrementar la seguretat de la xarxa.
+}
+
+::P18:: Quin dels següents NO és un tipus de servidor en una arquitectura client-servidor?
+{
+~Servidor d'aplicacions
+~Servidor de bases de dades
+=Servidor de pantalla
+}
+
+::P19:: Com es diu el programari que fa de pont entre el client i la base de dades en una arquitectura client-servidor?
+{
+=Middleware
+~Servidor de fitxers
+~Client lleuger
+}
+
+::P20:: Quin dels següents dispositius pot funcionar com a client en una arquitectura client-servidor?
+{
+=Un ordinador personal
+~Només servidors físics
+~Únicament servidors virtuals
+}
+
+::P21:: Quins dels següents protocols són utilitzats habitualment en sistemes client-servidor? (Selecció múltiple)
+{
+=HTTP
+=FTP
+~Bluetooth
+~NFC
+}
+
+::P22:: En què es diferencien principalment el client i el servidor en aquesta arquitectura?
+{
+=El client sol·licita serveis i el servidor els proporciona.
+~El client processa totes les peticions i respostes.
+~El servidor sempre actua com client també.
+}
+
+::P23:: Quin rol juga la capa de presentació en un sistema client-servidor?
+{
+=Gestionar la interfície d'usuari.
+~Controlar l'accés a la base de dades.
+~Gestionar la lògica empresarial.
+}
+
+::P24:: Quin dels següents és un exemple d'un client en una arquitectura client-servidor?
+{
+=Un navegador web
+~Un servidor de correu
+~Un servidor de fitxers
+}
+
+::P25:: Quin tipus de servidor permet l'enviament i recepció de correus electrònics?
+{
+=Servidor de correu
+~Servidor web
+~Servidor de bases de dades
+}
+
+::P26:: En un sistema client-servidor, quin component s'encarrega de l'emmagatzematge de dades?
+{
+=Servidor de bases de dades
+~Client
+~Tallafoc
+}
+
+::P27:: Què és la latència en el context de la comunicació client-servidor?
+{
+=El retard entre l'enviament d'una petició i la recepció de la resposta.
+~La quantitat de dades transmeses en una comunicació.
+~La velocitat màxima de connexió entre el client i el servidor.
+}
+
+::P28:: Quin és el principal avantatge d'utilitzar servidors dedicats en una arquitectura client-servidor?
+{
+=Millora el rendiment i la gestió del sistema.
+~Redueix la necessitat de comunicació entre dispositius.
+~Elimina la necessitat de clients en la xarxa.
+}
+
+::P29:: Com s'anomena el procés de protegir la comunicació entre un client i un servidor amb dades xifrades?
+{
+=Protocol SSL/TLS
+~Protocol HTTP
+~Balanç de càrrega
+}
+
+::P30:: Quin dels següents és un desavantatge de centralitzar la gestió en un servidor?
+{
+=Si el servidor falla, tots els clients perden accés als serveis.
+~Els clients no necessiten actualitzar-se.
+~Redueix la necessitat de seguretat.
+}
+

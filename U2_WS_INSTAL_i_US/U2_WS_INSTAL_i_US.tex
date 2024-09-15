@@ -1,0 +1,417 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{catalan}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={U2. Windows Server. Instal·lació i ús},
+  pdfauthor={@tofermos 2024},
+  pdflang={ca-ES},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{U2. Windows Server. Instal·lació i ús}
+\author{@tofermos 2024}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\setstretch{1.5}
+\newpage
+\renewcommand\tablename{Tabla}
+
+\section{1. Introducció a Windows
+Server}\label{introducciuxf3-a-windows-server}
+
+Windows Server és un sistema operatiu desenvolupat per Microsoft,
+dissenyat per a administrar xarxes, emmagatzematge i aplicacions a
+nivell empresarial. A diferència de les versions de Windows orientades a
+usuaris individuals, Windows Server està optimitzat per a la gestió de
+serveis en xarxa, com ara allotjament de llocs web, gestió de bases de
+dades i centralització de recursos compartits.
+
+Algunes de les principals característiques de Windows Server inclouen:
+
+\begin{itemize}
+\item
+  \textbf{Active Directory}: Un \emph{servei de directori} que permet la
+  gestió d'usuaris, equips i polítiques de seguretat en la xarxa de
+  forma centralitzada.
+\item
+  \textbf{Hyper-V}: Tecnologia de virtualització integrada que permet
+  crear i administrar màquines virtuals.
+\item
+  \textbf{IIS (Internet Information Services)}: Plataforma per a
+  allotjar aplicacions web. Pemet que el servidor siga un servidor web.
+\item
+  \textbf{Administració de servidors}: A través d'eines com
+  l'Administrador de Servidors, es poden gestionar múltiples rols i
+  funcions del servidor.
+\end{itemize}
+
+\section{2. Instal·lació en un equip
+informàtic}\label{installaciuxf3-en-un-equip-informuxe0tic}
+
+Abans d'utilitzar Windows Server, és essencial entendre el procés
+d'instal·lació, que consta de diversos passos tècnics importants.
+Aquests asseguren que el sistema operatiu funcione correctament i que
+estiga ben integrat amb el maquinari i els recursos de la xarxa.
+
+No obstant, no són molt diferents al ja vistos en un Windows 1x.
+
+\subsection{2.1 Particions i sistemes
+d'arxius}\label{particions-i-sistemes-darxius}
+
+Les particions són divisions lògiques del disc dur on s'emmagatzemarà el
+sistema operatiu i les dades. Durant la instal·lació de Windows Server,
+cal triar com particionar el disc.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Partició primària}: És on s'instal·la el sistema operatiu. Ha
+  de ser activa per a poder arrancar des d'ella.
+\item
+  \textbf{Sistema d'arxius}: Windows Server utilitza principalment el
+  sistema \textbf{NTFS (New Technology File System)}, que ofereix
+  característiques avançades com permisos d'arxiu, xifratge i major
+  eficiència en la gestió de l'espai en disc. A banda de superar les
+  limitacions com ja sabeu del curs passat de FAT32 i facilita d'accès
+  per a Linux.
+\end{itemize}
+
+\subsubsection{Recomanacions generals}\label{recomanacions-generals}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Separar en discos durs distints la instal·lació del SO de la resta de
+  dades.
+\item
+  Si només tenim un disc (o conjunt que implementes una unitat tipus
+  RAID), crearem particions distintes.
+\item
+  Si potser les crearem en el procés d'intal·lació o, almenys, abans de
+  començar a operar. En cas contrari, hem de fer còpia de seguretat de
+  les dades abans de reparticionar discos.
+\item
+  Si tenim discos de distint rendiment (SSD i HDD), és preferible que el
+  SO i les aplicacions més utilitzades o de més demanda de capacitat de
+  processament estiguen instal·lades al disc més ràpid.
+\item
+  Tant el backup com els sitems de redundància són fonamentals. (Els
+  veiem més avant)
+\end{enumerate}
+
+\subsection{2.2 Gestors d'arrancada}\label{gestors-darrancada}
+
+El gestor d'arrancada és un programari que s'encarrega d'iniciar el
+sistema operatiu durant el procés d'arrancada de l'equip.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Windows Boot Manager} és el gestor d'arrancada predeterminat
+  de Windows Server. Aquest programari s'encarrega de gestionar el
+  procés d'arrancada del sistema i, en cas d'haver-hi diversos sistemes
+  operatius instal·lats en l'equip, permet seleccionar quin iniciar.
+\end{itemize}
+
+\subsection{2.3 Procés d'instal·lació}\label{procuxe9s-dinstallaciuxf3}
+
+El procés d'instal·lació de Windows Server és similar al de les versions
+d'escriptori de Windows, però amb alguns passos addicionals per a la
+configuració de rols i característiques del servidor. Els passos
+generals inclouen:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Preparar l'equip}: Comprovar els requisits de maquinari, com
+  CPU, RAM i espai en disc.
+\item
+  \textbf{Arrancada des del mitjà d'instal·lació}: Açò pot ser des d'un
+  DVD o una unitat USB bootable. Al VirtualBox usarem la unitat òptica.
+\item
+  \textbf{Selecció de la partició}: Triar la unitat o partició on
+  s'instal·larà Windows Server.
+\item
+  \textbf{Configuració inicial}: Assignar un nom al servidor, configurar
+  la xarxa i el compte d'administrador. Serà administrador de tota la
+  xarxa com vorem.
+\item
+  \textbf{Configuració de rols}: Durant o després de la instal·lació, es
+  poden afegir rols al servidor. El més important és el de controlador
+  de domini però hi ha altres.
+\end{enumerate}
+
+Aquests darres aspectes el veiem de forma pràctica en al document
+següent.
+
+\section{3. Utilització de Windows
+Server}\label{utilitzaciuxf3-de-windows-server}
+
+Una vegada instal·lat, és essencial familiaritzar-se amb la interfície i
+les funcionalitats bàsiques de Windows Server per a poder administrar-lo
+correctament.
+
+\subsection{3.1 Conceptes generals. Rols i
+característiques.}\label{conceptes-generals.-rols-i-caracteruxedstiques.}
+
+\subsubsection{Rols}\label{rols}
+
+Els rols són funcionalitats principals que pot exercir el servidor. En
+\textbf{Windows Server} hi ha diversos \textbf{rols de servidor} que
+poden ser instal·lats per oferir serveis específics a una xarxa o
+organització.
+
+Rols principals de \textbf{Windows Server}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Active Directory Domain Services (AD DS)}: Permet crear i
+  gestionar dominis, i és el component clau de l'Active Directory per a
+  la gestió d'usuaris i dispositius en una xarxa.
+\item
+  \textbf{DHCP Server}: Assigna automàticament adreces IP als
+  dispositius de la xarxa.
+\item
+  \textbf{DNS Server}: Traduïx noms de domini a adreces IP, facilitant
+  l'accés als serveis dins d'una xarxa o a internet.
+\item
+  \textbf{File and Storage Services}: Gestiona el sistema
+  d'emmagatzematge de fitxers i carpetes compartides, i permet utilitzar
+  funcions com el servidor de fitxers, les quotes d'emmagatzematge i la
+  deduplicació de dades.
+\item
+  \textbf{Remote Desktop Services (RDS)}: Proporciona eines per permetre
+  que els usuaris es connecten de forma remota a escriptoris virtuals o
+  aplicacions publicades.
+\item
+  \textbf{Print and Document Services}: Permet gestionar impressores i
+  compartir-les en la xarxa.
+\item
+  \textbf{Hyper-V}: Proporciona funcions de virtualització per crear i
+  gestionar màquines virtuals.
+\item
+  \textbf{Web Server (IIS)}: Hosteja aplicacions web i llocs web
+  utilitzant \textbf{Internet Information Services (IIS)}.
+\item
+  \textbf{Network Policy and Access Services (NPAS)}: Permet la gestió
+  de polítiques de xarxa i l'accés remot mitjançant serveis com el
+  Servidor RADIUS.
+\item
+  \textbf{Windows Deployment Services (WDS)}: Serveix per desplegar de
+  forma remota sistemes operatius als ordinadors clients a través de la
+  xarxa.
+\item
+  \textbf{Active Directory Certificate Services (AD CS)}: Gestiona
+  certificats digitals per a l'autenticació, la xifratge i la seguretat
+  a la xarxa.
+\item
+  \textbf{Active Directory Federation Services (AD FS)}: Proporciona
+  serveis d'inici de sessió únic (SSO) per a aplicacions.
+\item
+  \textbf{Active Directory Rights Management Services (AD RMS)}:
+  Protegeix informació mitjançant polítiques de drets d'accés.
+\item
+  \textbf{Failover Clustering}: Proporciona alta disponibilitat a
+  serveis i aplicacions mitjançant la creació de clústers de servidors.
+\item
+  \textbf{Windows Server Update Services (WSUS)}: Gestió de les
+  actualitzacions de seguretat i programari per als clients de la xarxa.
+\item
+  \textbf{Host Guardian Service}: Ofereix protecció avançada per a
+  entorns Hyper-V amb màquines virtuals protegides.
+\item
+  \textbf{Network Load Balancing (NLB)}: Permet distribuir el trànsit de
+  xarxa entre múltiples servidors per assegurar alta disponibilitat i
+  escalabilitat.
+\end{enumerate}
+
+\emph{En aquest curs ens centrerem en els 5 primers que són els
+fonamentals en qualsevol LAN}
+
+\subsubsection{Característiques}\label{caracteruxedstiques}
+
+A més dels rols, \textbf{Windows Server} ofereix
+\textbf{característiques} que són complements als rols i que
+proporcionen funcionalitats addicionals:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Windows PowerShell}. Llenguatge d'scripts basat em ordre
+  (cmdLets) molt potent i avançat.
+\item
+  \textbf{Servici de backup de Seguretat de Windows Server}. El vorem.
+\item
+  \textbf{.NET Framework} (no el vorem)
+\item
+  \textbf{Windows Defender}
+\item
+  \textbf{Remote assistence}
+\end{enumerate}
+
+Com veiem hi ha una clara relació entre el roll i la classificació dels
+servidors segons la funció que vam estudiar a la unitat anterior.
+
+Per altra banda, la característica ve a complementar el roll o facilitar
+la tasca de l'administrador.
+
+\subsection{3.2 Llicències}\label{llicuxe8ncies}
+
+Windows Server requereix llicències tant per al sistema operatiu com per
+als usuaris o dispositius que accedeixen al servidor (CALs - Client
+Access Licenses).
+
+\subsection{3.2 Interfície gràfica}\label{interfuxedcie-gruxe0fica}
+
+La interfície gràfica de Windows Server és similar a la de les versions
+d'escriptori de Windows, però està optimitzada per a l'administració de
+servidors. Algunes característiques clau inclouen:
+
+Al \textbf{curs de Windows 11} d'aquest mateix repositori podreu trobar
+informació sobre l'entorn gràfic comú de tots els Windows per a la
+gestió. Estudieu-ho.
+
+\begin{figure}
+\centering
+\includegraphics{https://tofermos.github.io/Windows11/interfaces/interfaces.html}
+\caption{Introducció a l'entorn gràfic de Windows}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{https://tofermos.github.io/Windows11/gestiodelequip/gestiodelequip.html}
+\caption{Gestió des de l'entorn gràfic Windows}
+\end{figure}
+
+\subsubsection{Sobre consoles i altres utilitats de
+gestió.}\label{sobre-consoles-i-altres-utilitats-de-gestiuxf3.}
+
+A bande de les vistes en l'apartat anterior i que són comunes, la
+pràctica totalitat, a tots els Windows tenim que,específicament de
+Windows Server les consoles i utilitats següents:
+
+\textbf{servermanager.exe} - Administrador de Servidors. Aquesta és la
+utilitat (no es consola estrictament parlant) central per a gestionar el
+servidor. Permet configurar rols i característiques, gestionar discos,
+supervisar el rendiment, entre altres funcions.
+
+\textbf{dcpromo.msc} - Promoció de controlador de domini: Utilitzada per
+configurar un controlador de domini (AD DS), una funció exclusiva de
+Windows Server.
+
+\textbf{dnsmgmt.msc} - Gestió de DNS: Disponible en Windows Server per
+gestionar zones i registres DNS.
+
+\textbf{dhcpmgmt.msc} - Gestió de DHCP: Permet administrar el rol de
+servidor DHCP per assignar adreces IP automàticament a dispositius de la
+xarxa.
+
+\textbf{fsmgmt.msc} - Carpetes compartides: Una consola específica per
+gestionar carpetes i recursos compartits al servidor, encara que també
+es pot trobar en versions professionals de Windows 10/11.
+
+\textbf{tsadmin.msc} o Remote Desktop Services Manager: Utilitzada per
+gestionar sessions d'escriptori remot, més comuna en Windows Server per
+administrar entorns d'escriptori remot (RDS).
+
+\textbf{cluadmin.msc} - Gestió de Clúster de Failover: Disponible en
+Windows Server per administrar clústers de tolerància a fallades i alta
+disponibilitat, especialment útil per entorns crítics empresarials.
+
+\subsection{\texorpdfstring{3.3 \textbf{Tancament de sessió i apagat del
+servidor}}{3.3 Tancament de sessió i apagat del servidor}}\label{tancament-de-sessiuxf3-i-apagat-del-servidor}
+
+El tancament de sessió i l'apagat d'un servidor requereix més
+precaucions que en una estació de treball (Windows 1x).
+
+Respecte a l'\textbf{apagat del servidor}, aquets, solen estar executant
+serveis crítics i aplicacions de xarxa. Apagar incorrectament un
+servidor pot causar pèrdua de dades o interrupció del servei. El procés
+d'apagat ha de ser planificat i queda registrada la causa que indiquem.
+
+Respecte al \textbf{tancament de sessió}, l'estat normal deu ser amb la
+sessió tancada excepte quan un administrador ha de fer alguna tasca. La
+sessió deu estar el temps estrictament necessari i el login no deu estar
+visible per raons de seguretat.
+
+\end{document}

@@ -377,4 +377,4 @@ Convé revisar que la versió del Hipervisor siga la mateixa.
 
 ![Figura 6. Afegir MV a VirtualBox](png/afegeixMV.png)
 
-![Figura 7. Seleccionar la máquina que tenim al disc extrïble](png/afegeixMV2.png)
+![Figura 7. Seleccionar la máquina que tenim al disc extraïble](png/afegeixMV2.png)
