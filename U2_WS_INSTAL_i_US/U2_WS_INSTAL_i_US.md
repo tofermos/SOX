@@ -5,16 +5,16 @@ lang: "ca-ES"
 papersize: A4
 linestretch: 1.5
 output:
-  pdf_document:
-    toc: true
-    keep_tex: true
-    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     toc_depth: 3
     df_print: paged
     number_sections: false
+  pdf_document:
+    toc: true
+    keep_tex: true
+    latex_engine: xelatex
 ---
 
 \newpage
@@ -42,19 +42,68 @@ No obstant, no són molt diferents al ja vistos en un Windows 1x.
 
 ## 2.1 Particions i sistemes d’arxius
 
-Les particions són divisions lògiques del disc dur on s’emmagatzemarà el sistema operatiu i les dades. Durant la instal·lació de Windows Server, cal triar com particionar el disc.
+### Particions
 
-- **Partició primària**: És on s’instal·la el sistema operatiu. Ha de ser activa per a poder arrancar des d’ella.
-- **Sistema d’arxius**: Windows Server utilitza principalment el sistema **NTFS (New Technology File System)**, que ofereix característiques avançades com permisos d’arxiu, xifratge i major eficiència en la gestió de l’espai en disc. 
-A banda de superar les limitacions com ja sabeu del curs passat de FAT32 i facilita d'accès per a Linux.
+Són divisions del disc dur on s’emmagatzemarà el sistema operatiu o les dades. Durant la instal·lació de Windows Server  (com la de qualsevol SO), cal triar com particionar el disc. 
 
-### Recomanacions generals
+### Taula de particions
 
-1. Separar en discos durs distints la instal·lació del SO de la resta de dades.
-2. Si només tenim un disc (o conjunt que implementes una unitat tipus RAID), crearem particions distintes.
-3. Si potser les crearem en el procés d'intal·lació o, almenys, abans de començar a operar. En cas contrari, hem de fer còpia de seguretat de les dades abans de reparticionar discos.
-4. Si tenim discos de distint rendiment (SSD i HDD), és preferible que el SO i les aplicacions més utilitzades o de més demanda de capacitat de processament estiguen instal·lades al disc més ràpid.
-5. Tant el backup com els sitems de redundància són fonamentals. (Els veiem més avant)
+Tenim dos possibilitats la més antiga **MBR (Master Boot Record)** i la més modern i hui en ia ja generalitzada **GPT**.
+
+**MBR (Master Boot Record)**
+
+- **Nombre màxim de particions:** 4 particions primàries.
+
+Si es necessita més de 4 particions, es poden tenir 3 particions primàries i 1 partició estesa, dins la qual es poden crear múltiples particions lògiques.
+
+- **Tipus de particions:**
+
+  - **Primàries:** Particions directament accessibles pel sistema operatiu (màxim 4).
+
+  - **Estesa:** Una partició que pot contenir particions lògiques.
+
+  - **Lògiques:** Particions dins de la partició estesa.
+
+- **Tamany màxim del disc**: 2 TB (terabytes), el MBR utilitza 32 bits per adreçar sectors de 512 Bytes.
+
+
+### **GPT (GUID Partition Table)**
+- **Nombre màxim de particions:** Teòricament il·limitat, però pràcticament uns 128 en la majoria de sistemes operatius.
+- **Tipus de particions:**
+  - Totes les particions són **primàries**, no hi ha limitació d'estesa o lògiques com en MBR.
+- **Nombre màxim de particions:** Teòricament il·limitat, però pràcticament uns 128 en la majoria de sistemes operatius.
+- **Tipus de particions:**
+  - Totes les particions són **primàries**
+- **Tamany màxim del disc** 9.4 ZB (zettabytes) teòrics.GPT utilitza un esquema d'adreces de 64 bits
+
+### Sistema d’arxius.
+
+Windows Server utilitza principalment el sistema **NTFS (New Technology File System)**, que ofereix millores respecte a FAT32. Les dos primeres superen les limitacions vistes al curs anterior de particions de 32GBytes i fitxers de 4GBytes de FAT32:
+
+1. **Suport per a fitxers grans:** NTFS admet fitxers de fins a 16 TB, mentre que FAT32 està limitat a 4 GB per fitxer.
+   
+2. **Tamany màxim de partició:** NTFS suporta particions de fins a 256 TB, mentre que FAT32 es limita a 32 GB (en Windows).
+
+3. **Seguretat i permisos:** NTFS permet assignar permisos d'accés més detallats que el simple Lectura/Escriptura/Control Total a fitxers i carpetes. 
+
+4. **Encriptació (EFS - Encrypting File System):**. Permet xifrar fitxers i carpetes individualment, mantenint-lo protegit davant accés no autoritzat. ÉS una encriptació transparent per a l'usuari autoritzat que pot accedir-hi sense desxifrar manualment els fitxers, mentre que altres usuaris o sistemes no.
+  
+5. **Compressió (NTFS Compression):** Compressió nativa i transparent: el sfitxers i carpetes es poden utilitzar normalment sense necessitat de descomprimir-los manualment. Penalització molt poc el rendiment: molt útil si tenim fitxers que usem poc i més si tenen prou tamany.
+
+6. **Recuperació d'errors:** NTFS registra les transaccions (journaling) i pot recuperar-se automàticament d'alguns errors del sistema, cosa que FAT32 no fa.
+
+7 **Quotes de discs** Suposa poder limitar l'espai de disc per als usuaris. Ho practicarem en properes unitats.
+
+8 **Fragmentació:** NTFS gestiona millor la fragmentació de dades en disc en comparació amb FAT32.
+
+## Recomanacions generals
+
+1. Usar GPT preferentment.
+2. Separar en discos durs distints la instal·lació del SO de la resta de dades.
+3. Si només tenim un disc (o conjunt que implementes una unitat tipus RAID), crearem particions distintes.
+4. Si potser les crearem en el procés d'intal·lació o, almenys, abans de començar a operar. En cas contrari, hem de fer còpia de seguretat de les dades abans de reparticionar discos.
+5. Si tenim discos de distint rendiment (SSD i HDD), és preferible que el SO i les aplicacions més utilitzades o de més demanda de capacitat de processament estiguen instal·lades al disc més ràpid.
+6. Tant el backup com els sitems de redundància són fonamentals. (Els veiem més avant)
 
 ## 2.2 Gestors d’arrancada
 
@@ -150,9 +199,9 @@ La interfície gràfica de Windows Server és similar a la de les versions d’e
 
 Al **curs de Windows 11** d'aquest mateix repositori podreu trobar informació sobre l'entorn gràfic comú de tots els Windows per a la gestió. Estudieu-ho.
 
-![Introducció a l'entorn gràfic de Windows](https://tofermos.github.io/Windows11/interfaces/interfaces.html)
+[Introducció a l'entorn gràfic de Windows](https://tofermos.github.io/Windows11/interfaces/interfaces.html)
 
-![Gestió des de l'entorn gràfic Windows](https://tofermos.github.io/Windows11/gestiodelequip/gestiodelequip.html)
+[Gestió des de l'entorn gràfic Windows](https://tofermos.github.io/Windows11/gestiodelequip/gestiodelequip.html)
 
 ### Sobre consoles i altres utilitats de gestió.
 

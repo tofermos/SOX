@@ -140,7 +140,6 @@ sistema operatiu i les dades. Durant la instal·lació de Windows Server,
 cal triar com particionar el disc.
 
 \begin{itemize}
-\tightlist
 \item
   \textbf{Partició primària}: És on s'instal·la el sistema operatiu. Ha
   de ser activa per a poder arrancar des d'ella.
@@ -148,9 +147,60 @@ cal triar com particionar el disc.
   \textbf{Sistema d'arxius}: Windows Server utilitza principalment el
   sistema \textbf{NTFS (New Technology File System)}, que ofereix
   característiques avançades com permisos d'arxiu, xifratge i major
-  eficiència en la gestió de l'espai en disc. A banda de superar les
-  limitacions com ja sabeu del curs passat de FAT32 i facilita d'accès
-  per a Linux.
+  eficiència en la gestió de l'espai en disc. Els permisos són un
+  aspecte més important que tractarem al curs.
+\end{itemize}
+
+A banda de superar les limitacions com ja sabeu del curs passat de FAT32
+i facilita d'accès per a Linux.
+
+\subsubsection{Taula de particions}\label{taula-de-particions}
+
+El nombre de particions possibles i el tamany màxim varien segons si el
+disc utilitza el \textbf{GPT} (GUID Partition Table) o el \textbf{MBR}
+(Master Boot Record):
+
+\textbf{MBR (Master Boot Record)} - \textbf{Nombre màxim de particions:}
+4 particions primàries. Si es necessita més de 4 particions, es poden
+tenir 3 particions primàries i 1 partició estesa, dins la qual es poden
+crear múltiples particions lògiques. - \textbf{Tipus de particions:} -
+\textbf{Primàries:} Particions directament accessibles pel sistema
+operatiu (màxim 4). - \textbf{Estesa:} Una partició que pot contenir
+particions lògiques. - \textbf{Lògiques:} Particions dins de la partició
+estesa. - \textbf{Tamany màxim del disc}: 2 TB (terabytes), el MBR
+utilitza 32 bits per adreçar sectors de 512 Bytes.
+
+\subsubsection{\texorpdfstring{\textbf{GPT (GUID Partition
+Table)}}{GPT (GUID Partition Table)}}\label{gpt-guid-partition-table}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Nombre màxim de particions:} Teòricament il·limitat, però
+  pràcticament uns 128 en la majoria de sistemes operatius.
+\item
+  \textbf{Tipus de particions:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Totes les particions són \textbf{primàries}, no hi ha limitació
+    d'estesa o lògiques com en MBR.
+  \end{itemize}
+\item
+  \textbf{Nombre màxim de particions:} Teòricament il·limitat, però
+  pràcticament uns 128 en la majoria de sistemes operatius.
+\item
+  \textbf{Tipus de particions:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Totes les particions són \textbf{primàries}
+  \end{itemize}
+\item
+  \textbf{Tamany màxim del disc} 9.4 ZB (zettabytes) teòrics. GPT
+  utilitza un esquema d'adreces de 64 bits
 \end{itemize}
 
 \subsubsection{Recomanacions generals}\label{recomanacions-generals}
@@ -158,6 +208,8 @@ cal triar com particionar el disc.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
+\item
+  Usar GPT preferentment.
 \item
   Separar en discos durs distints la instal·lació del SO de la resta de
   dades.
@@ -351,17 +403,11 @@ Al \textbf{curs de Windows 11} d'aquest mateix repositori podreu trobar
 informació sobre l'entorn gràfic comú de tots els Windows per a la
 gestió. Estudieu-ho.
 
-\begin{figure}
-\centering
-\includegraphics{https://tofermos.github.io/Windows11/interfaces/interfaces.html}
-\caption{Introducció a l'entorn gràfic de Windows}
-\end{figure}
+\href{https://tofermos.github.io/Windows11/interfaces/interfaces.html}{Introducció
+a l'entorn gràfic de Windows}
 
-\begin{figure}
-\centering
-\includegraphics{https://tofermos.github.io/Windows11/gestiodelequip/gestiodelequip.html}
-\caption{Gestió des de l'entorn gràfic Windows}
-\end{figure}
+\href{https://tofermos.github.io/Windows11/gestiodelequip/gestiodelequip.html}{Gestió
+des de l'entorn gràfic Windows}
 
 \subsubsection{Sobre consoles i altres utilitats de
 gestió.}\label{sobre-consoles-i-altres-utilitats-de-gestiuxf3.}
