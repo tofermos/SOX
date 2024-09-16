@@ -222,7 +222,7 @@ A bande de les vistes en l'apartat anterior i que són comunes, la pràctica tot
 
 **cluadmin.msc** - Gestió de Clúster de Failover: Disponible en Windows Server per administrar clústers de tolerància a fallades i alta disponibilitat, especialment útil per entorns crítics empresarials.
 
-## 3.3 **Tancament de sessió i apagat del servidor**
+## 3.3 Tancament de sessió i apagat del servidor
 
 El tancament de sessió i l’apagat d’un servidor requereix més precaucions que en una estació de treball (Windows 1x).
 
