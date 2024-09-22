@@ -41,5 +41,8 @@ linestretch: 1.5
 |Windows Server. Instal·lació i ús (I)|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.pdf)|
 |Windows Server. Instal·lació i ús (II)|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.pdf)|
 
-
+### [3 WINDOWS SERVER. ADMINISTRACIÓ i CONFIGURACIÓ](#U3)
+|||||
+|:------|:--|:--|
+|Windows Server. Administració i configuració|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO.pdf)|
 

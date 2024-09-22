@@ -5,16 +5,16 @@ lang: "ca-ES"
 papersize: A4
 linestretch: 1.5
 output:
+  pdf_document:
+    toc: true
+    keep_tex: true
+    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     toc_depth: 3
     df_print: paged
     number_sections: false
-  pdf_document:
-    toc: true
-    keep_tex: true
-    latex_engine: xelatex
 ---
 
 \newpage
@@ -43,7 +43,38 @@ No tots els Rols i Característiques, menys encara, són funcions principals.
 
 # 2 Administració i configuració bàsica
 
+## Consoles i altres utilitats comuns a tots el sistemes Windows
+
+Al curs de Windows 11 d'aquest repositori podreu trobar una guia més que suficient sobre les utitlitas gràfiques del sistema Windows per configurar i administrar una màquina.
+
 [Consoles i altres utilitats](https://tofermos.github.io/Windows11/gestiodelequip/gestiodelequip.html)
+
+## Consoles i altres utilitats específiques de Windows
+
+A banda de les vistes en l'apartat anterior i que són comunes, la pràctica totalitat, a tots els Windows tenim que,específicament de Windows Server les consoles i utilitats següents:
+
+**servermanager.exe** - Administrador de Servidors. Aquesta és la utilitat (no es consola estrictament parlant) central per a gestionar el servidor. Permet configurar rols i característiques, gestionar discos, supervisar el rendiment, entre altres funcions.
+
+**dcpromo.msc** - Promoció de controlador de domini: Utilitzada per configurar un controlador de domini (AD DS), una funció exclusiva de Windows Server.
+
+**dnsmgmt.msc** - Gestió de DNS: Disponible en Windows Server per gestionar zones i registres DNS.
+
+**dhcpmgmt.msc** - Gestió de DHCP: Permet administrar el rol de servidor DHCP per assignar adreces IP automàticament a dispositius de la xarxa.
+
+**fsmgmt.msc** - Carpetes compartides: Una consola específica per gestionar carpetes i recursos compartits al servidor, encara que també es pot trobar en versions professionals de Windows 10/11.
+
+**tsadmin.msc** o Remote Desktop Services Manager: Utilitzada per gestionar sessions d'escriptori remot, més comuna en Windows Server per administrar entorns d’escriptori remot (RDS).
+
+**cluadmin.msc** - Gestió de Clúster de Failover: Disponible en Windows Server per administrar clústers de tolerància a fallades i alta disponibilitat, especialment útil per entorns crítics empresarials.
+
+## PowerShell (El vorem més avant)
+
+Més avant, si farem una ullada interessant al lleguatge d'scripts basat en cmdLets (comandaments de Windows) molt avaçat i potent. 
+
+Si voleu consultar, teniu un curs en aquest repositori:
+
+[Curs PowerShell](https://github.com/tofermos/PowerShell)
+
 
 
 # 3 Instal·lació del Active Directory 

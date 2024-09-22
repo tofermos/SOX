@@ -5,16 +5,16 @@ lang: "ca-ES"
 papersize: A4
 linestretch: 1.5
 output:
-  pdf_document:
-    toc: true
-    keep_tex: true
-    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     toc_depth: 3
     df_print: paged
     number_sections: false
+  pdf_document:
+    toc: true
+    keep_tex: true
+    latex_engine: xelatex
 ---
 
 \newpage
@@ -201,25 +201,6 @@ La interfície gràfica de Windows Server és similar a la de les versions d’e
 Al **curs de Windows 11** d'aquest mateix repositori podreu trobar informació sobre l'entorn gràfic **comú de tots els sistemes Windows** per a la gestió. Estudieu-ho.
 
 [Introducció a l'entorn gràfic de Windows](https://tofermos.github.io/Windows11/interfaces/interfaces.html)
-
-### Sobre consoles i altres utilitats de gestió.
-
-A bande de les vistes en l'apartat anterior i que són comunes, la pràctica totalitat, a tots els Windows tenim que,específicament de Windows Server les consoles i utilitats següents:
-
-
-**servermanager.exe** - Administrador de Servidors. Aquesta és la utilitat (no es consola estrictament parlant) central per a gestionar el servidor. Permet configurar rols i característiques, gestionar discos, supervisar el rendiment, entre altres funcions.
-
-**dcpromo.msc** - Promoció de controlador de domini: Utilitzada per configurar un controlador de domini (AD DS), una funció exclusiva de Windows Server.
-
-**dnsmgmt.msc** - Gestió de DNS: Disponible en Windows Server per gestionar zones i registres DNS.
-
-**dhcpmgmt.msc** - Gestió de DHCP: Permet administrar el rol de servidor DHCP per assignar adreces IP automàticament a dispositius de la xarxa.
-
-**fsmgmt.msc** - Carpetes compartides: Una consola específica per gestionar carpetes i recursos compartits al servidor, encara que també es pot trobar en versions professionals de Windows 10/11.
-
-**tsadmin.msc** o Remote Desktop Services Manager: Utilitzada per gestionar sessions d'escriptori remot, més comuna en Windows Server per administrar entorns d’escriptori remot (RDS).
-
-**cluadmin.msc** - Gestió de Clúster de Failover: Disponible en Windows Server per administrar clústers de tolerància a fallades i alta disponibilitat, especialment útil per entorns crítics empresarials.
 
 ## 3.3 Tancament de sessió i apagat del servidor
 
