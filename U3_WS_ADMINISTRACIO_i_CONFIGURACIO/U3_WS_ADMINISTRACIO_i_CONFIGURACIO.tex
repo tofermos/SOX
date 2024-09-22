@@ -39,6 +39,16 @@
 \makeatother
 \usepackage{xcolor}
 \usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -195,6 +205,74 @@ en cmdLets (comandaments de Windows) molt avaçat i potent.
 Si voleu consultar, teniu un curs en aquest repositori:
 
 \href{https://github.com/tofermos/PowerShell}{Curs PowerShell}
+
+\section{3 Servei de directori}\label{servei-de-directori}
+
+\subsection{Conceptes de Directori i
+Domini}\label{conceptes-de-directori-i-domini}
+
+En el sentit més ampli, un directori no és més que una llista detallada
+d'objectes. Per exemple, una guia de telèfons és un tipus de directori
+que guarda informació sobre persones, empreses i altres entitats. De
+cada un dels elements representats, s'emmagatzema el seu nom, adreça i
+número de telèfon. En molts sentits Active Directory Domain Services (AD
+DS) és molt semblant a una guia telefònica, encara que resulta més
+flexible. Es basa en el concepte de domini que va introduir Windows NT
+per tal de facilitar l'administració. No obstant això, ara l'objectiu és
+crear una estructura dinàmica i fàcilment accessible, a través de la
+qual es pot emmagatzemar la informació de tota l'organització, tant
+relativa a l'estructura de l'propi directori com de la seva
+administració, i accedir-hi de forma centralitzada . AD DS pot
+emmagatzemar informació sobre l'organització, llocs, ordinadors,
+usuaris, objectes compartits i qualsevol altra cosa que pugui formar
+part de la infraestructura de xarxa. A diferència dels elements d'una
+guia telefònica, els elements emmagatzemats en un directori actiu poden
+ser diferents els uns dels altres (usuaris, grups, polítiques d'accés,
+permisos, assignació de recursos, etc.), de manera que la informació
+emmagatzemada variarà segons la naturalesa de l'objecte. Tota aquesta
+informació s'emmagatzema en una base de dades jeràrquica.
+
+El motor d'aquesta base de dades és el mateix que incorpora Microsoft
+Exchange Server i permet la replicació de controladors de domini. És a
+dir, es pot enviar la informació continguda a la base de dades a
+diferents controladors de domini a través de la xarxa. D'aquesta manera,
+un usuari creat en un determinat controlador de domini podria iniciar
+sessió en qualsevol client unit a un altre controlador de domini
+diferent sense cap complicació. A més d'administrar polítiques que seran
+vàlides a tota l'organització, Active Directory permet realitzar
+operacions com la instal·lació de programes, de manera simultània i
+centralitzada, en multitud de clients o aplicar actualitzacions
+crítiques en tota l'organització. Quan utilitzem Active Directory, tenim
+a la nostra disposició eines d'administració per establir polítiques de
+grup, per incloure uns grups dins d'altres en diferents nivells, un
+accés senzill a l'arbre d'usuaris, ordinadors, impressores i contactes,
+etc. Òbviament, podem utilitzar Windows Server 2019 sense usar Active
+Directory, però estarem prescindint d'un ampli conjunt de capacitats.
+Pel que fa a l'estructura de l'servei de directori, el primer que hem de
+saber és que hi ha dos tipus de components en Active Directory: els
+components físics i els components lògics.
+
+\emph{Taula 1: Components de l'AD-DS}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Components físics & Components lògics \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Controladors de dominis & Dominis \\
+Llocs & Boscos \\
+Xarxes & Arbres \\
+& Unitats organitzatives \\
+\end{longtable}
+
+\begin{quote}
+Nota:
+
+Al mòdul de SOX ens centrem en desenvolupar un model senzill
+d'organització: un Domini amb Unitats Organitzatives.
+\end{quote}
 
 \section{3 Instal·lació del Active
 Directory}\label{installaciuxf3-del-active-directory}

@@ -2841,6 +2841,87 @@ basat en cmdLets (comandaments de Windows) molt avaçat i potent.</p>
 PowerShell</a></p>
 </div>
 </div>
+<div id="servei-de-directori" class="section level1">
+<h1>3 Servei de directori</h1>
+<div id="conceptes-de-directori-i-domini" class="section level2">
+<h2>Conceptes de Directori i Domini</h2>
+<p>Bàsicament podem entendre un directori com una llista detallada
+d’objectes. Per exemple, l’agenda de tlf del mòbil és un tipus de
+directori que guarda informació de contactes de persones o entitats.
+Objectes per igual (contactes) que poden tindre nom, adreça, tlf,
+e-mail, malnom…</p>
+<div id="dos-classes-dinformació" class="section level3">
+<h3>Dos classes d’informació</h3>
+<p>L’Active Directory Domain Services (AD DS) és molt semblant però més
+flexible i dinàmic. Permet emmagatzemar la informació de tota
+l’organització. Una informació sobre l’estructura de l’propi directori i
+també sobre com s’ha d’administrar. AD DS pot emmagatzemar informació
+sobre l’organització, llocs, ordinadors, usuaris, objectes compartits i
+qualsevol altra cosa que pugui formar part de la infraestructura de
+xarxa. A diferència de la llista de contactes de whatsapp, ací els
+elements emmagatzemats son de diferent naturales (usuaris, grups, UO,
+polítiques d’accés, permisos, assignació de recursos, etc.) Cal recordar
+que tota aquesta informació s’emmagatzema en una base de dades
+jeràrquica.</p>
+</div>
+<div id="replicable" class="section level3">
+<h3>Replicable</h3>
+<p>El motor d’aquesta base de dades és el mateix que incorpora Microsoft
+Exchange Server i permet la replicació de controladors de domini. És a
+dir, es pot enviar la informació continguda a la base de dades a
+diferents controladors de domini a través de la xarxa.</p>
+<p>A més d’administrar polítiques que seran vàlides a tota
+l’organització, Active Directory permet realitzar operacions com la
+instal·lació de programes, de manera simultània i centralitzada, en
+multitud de clients o aplicar actualitzacions crítiques en tota
+l’organització.</p>
+<p>Quan utilitzem Active Directory, tenim a la nostra disposició eines
+d’administració per establir polítiques de grup, per incloure uns grups
+dins d’altres en diferents nivells, un accés senzill a l’arbre
+d’usuaris, ordinadors, impressores i contactes, etc. Òbviament, podem
+utilitzar Windows Server 2019 sense usar Active Directory, però estarem
+prescindint d’un ampli conjunt de capacitats.</p>
+</div>
+<div id="dos-tipus-de-components" class="section level3">
+<h3>Dos tipus de components</h3>
+<p>Pel que fa a l’estructura de l’servei de directori, el primer que hem
+de saber és que hi ha dos tipus de components en Active Directory: els
+components físics i els components lògics.</p>
+<p><em>Taula 1: Components de l’AD-DS</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Components físics</th>
+<th align="left">Components lògics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Controladors de dominis</td>
+<td align="left">Dominis</td>
+</tr>
+<tr class="even">
+<td align="left">Llocs</td>
+<td align="left">Boscos</td>
+</tr>
+<tr class="odd">
+<td align="left">Xarxes</td>
+<td align="left">Arbres</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Unitats organitzatives</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Nota:</p>
+<p>Al mòdul de SOX ens centrem en desenvolupar un model senzill
+d’organització: un Domini amb Unitats Organitzatives.</p>
+</blockquote>
+</div>
+</div>
+</div>
 <div id="installació-del-active-directory" class="section level1">
 <h1>3 Instal·lació del Active Directory</h1>
 <p>Teniu una guia molt resumida en el curs de Windows Server d’aquest
