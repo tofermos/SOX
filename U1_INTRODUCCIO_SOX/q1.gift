@@ -1,0 +1,180 @@
+::Pregunta 1::
+Quins són els tres elements principals d'un sistema informàtic?
+{
+= Hardware, Software i Usuaris
+~ Hardware, Internet i Usuaris
+~ Software, Dades i Perifèrics
+~ Xarxes, Memòria i Usuaris
+}
+
+::Pregunta 2::
+Quin és un exemple d'un sistema informàtic personal?
+{
+= PC (Personal Computer)
+~ Servidor
+~ Mainframe
+~ Sistema de computació en núvol
+}
+
+::Pregunta 3::
+Quina tecnologia es va utilitzar en la primera generació de computadors?
+{
+= Vàlvules de buit
+~ Transistors
+~ Circuits integrats
+~ Microprocessadors
+}
+
+::Pregunta 4::
+Quina característica defineix els computadors de la quarta generació?
+{
+= Microprocessadors
+~ Transistors
+~ Ordinadors de vàlvules de buit
+~ Ordinadors amb circuits integrats
+}
+
+::Pregunta 5::
+Què és un exemple de programari de sistema?
+{
+= Sistema Operatiu Linux
+~ Microsoft Word
+~ Adobe Photoshop
+~ LibreOffice
+}
+
+::Pregunta 6::
+Quin tipus de dispositiu és una impressora?
+{
+= Dispositiu d’eixida
+~ Dispositiu d’entrada
+~ Dispositiu de comunicació
+~ Dispositiu de magatzematge
+}
+
+::Pregunta 7::
+Quin tipus de dispositiu és una pantalla tàctil?
+{
+= Dispositiu d’entrada i eixida
+~ Dispositiu d’entrada
+~ Dispositiu d’eixida
+~ Dispositiu de comunicació
+}
+
+::Pregunta 8::
+Quina és la funció d’un processador (CPU) en un sistema informàtic?
+{
+= Executar les instruccions dels programes
+~ Emmagatzemar dades de forma permanent
+~ Connectar el sistema a altres dispositius
+~ Gestionar els dispositius d’entrada i eixida
+}
+
+::Pregunta 9::
+Quina és la funció dels dispositius de magatzematge?
+{
+= Emmagatzemar dades de manera permanent
+~ Capturar dades del món extern
+~ Transformar informació en binari
+~ Mostrar informació processada
+}
+
+::Pregunta 10::
+Què són els busos en un sistema informàtic?
+{
+= Línies per transportar dades, adreces i senyals de control
+~ Dispositius de magatzematge
+~ Línies per a la refrigeració del sistema
+~ Dispositius de comunicació amb la xarxa
+}
+
+::Pregunta 11::
+Quina de les següents afirmacions és certa sobre els dispositius de comunicació?
+{
+= Permeten la transmissió de dades entre ordinadors o altres dispositius
+~ Serveixen per emmagatzemar informació
+~ S'utilitzen només per mostrar informació
+~ Són dispositius d’entrada exclusivament
+}
+
+::Pregunta 12::
+Què és un exemple d'un programari d'aplicació?
+{
+= Processador de textos
+~ Sistema operatiu
+~ Eines de desenvolupament
+~ Memòria RAM
+}
+
+::Pregunta 13::
+Quina és la diferència entre els dispositius d’entrada i els de magatzematge?
+{
+= Els dispositius d’entrada transformen informació en binari, mentre que els de magatzematge només emmagatzemen informació en binari
+~ Els dispositius de magatzematge transformen informació en binari, mentre que els d’entrada no
+~ Els dispositius d’entrada només capturen dades, mentre que els de magatzematge les processen
+~ No hi ha cap diferència
+}
+
+::Pregunta 14::
+Quin exemple representa un dispositiu de comunicació?
+{
+= Router
+~ Teclat
+~ Memòria USB
+~ Monitor
+}
+
+::Pregunta 15::
+Quina és la característica d'una llicència GPL (GNU General Public License)?
+{
+= Permet utilitzar, copiar, modificar i distribuir el programari lliurement
+~ Permet utilitzar el programari durant un temps limitat
+~ Requereix el pagament per utilitzar el programari
+~ No permet la modificació del programari
+}
+
+::Pregunta 16::
+Quin tipus de programari inclou eines com IDE (Entorn de Desenvolupament Integrat)?
+{
+= Programari de desenvolupament
+~ Programari d’aplicació
+~ Programari de sistema
+~ Programari de magatzematge
+}
+
+::Pregunta 17::
+Quina llicència permet l'ús del programari durant un període de prova limitat?
+{
+= Llicència Shareware
+~ Llicència GPL
+~ Llicència Freeware
+~ Llicència Propietari
+}
+
+::Pregunta 18::
+Quina afirmació és certa sobre les llicències Creative Commons?
+{
+= Permeten als autors definir quins usos es permeten i quins no
+~ Requereixen sempre un pagament per utilitzar l'obra
+~ No permeten compartir ni modificar l'obra
+~ Només es poden utilitzar per programari
+}
+
+::Pregunta 19::
+Quin grup està més familiaritzat amb el programari de desenvolupament?
+{
+= Els responsables de crear programari (programadors, dissenyadors)
+~ Els responsables de manteniment de sistemes
+~ Els usuaris finals
+~ Els administradors de xarxa
+}
+
+::Pregunta 20::
+Què diferencia un smartphone actual d’un mainframe dels anys 50 en termes de mida i cost?
+{
+= Els smartphones són més petits i assequibles
+~ Els smartphones són més cars i grans
+~ Els mainframes són més petits però cars
+~ Els mainframes són més assequibles que els smartphones
+}
+

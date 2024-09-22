@@ -1,0 +1,180 @@
+::Pregunta 1::
+Quina de les següents opcions és una característica clau de Windows Server?
+{
+    ~%-100% Microsoft Office
+    ~%-100% Windows Media Player
+    ~%-100% Windows Defender
+    ~%100% Active Directory
+}
+
+::Pregunta 2::
+Quin sistema de particions utilitza 32 bits per adreçar sectors i té un límit de 2 TB?
+{
+    ~%-100% GPT
+    ~%-100% FAT32
+    ~%-100% NTFS
+    ~%100% MBR
+}
+
+::Pregunta 3::
+Què permet la tecnologia **Hyper-V** en Windows Server?
+{
+    ~%-100% Crear comptes d'usuari
+    ~%-100% Assignar adreces IP
+    ~%100% Crear i administrar màquines virtuals
+    ~%-100% Configurar rols de servidor
+}
+
+::Pregunta 4::
+Quina és la principal limitació del sistema d'arxius **FAT32** en comparació amb **NTFS**?
+{
+    ~%-100% Suport per a fitxers de fins a 16 TB
+    ~%-100% Tamany màxim de partició de 256 TB
+    ~%100% Tamany màxim de fitxer de 4 GB
+    ~%-100% Encriptació i compressió de fitxers
+}
+
+::Pregunta 5::
+Quins tipus de particions permet **GPT**?
+{
+    ~%-100% Primàries i esteses
+    ~%-100% Primàries i lògiques
+    ~%-100% Només esteses
+    ~%100% Totes les particions són primàries
+}
+
+::Pregunta 6::
+Quin és el sistema d'arxius que ofereix encriptació transparent per a fitxers i carpetes?
+{
+    ~%-100% FAT32
+    ~%-100% MBR
+    ~%-100% EXFAT
+    ~%100% NTFS
+}
+
+::Pregunta 7::
+Quina és la màxima capacitat de partició suportada per NTFS?
+{
+    ~%-100% 2 TB
+    ~%-100% 4 GB
+    ~%100% 256 TB
+    ~%-100% 32 GB
+}
+
+::Pregunta 8::
+Quin gestor d'arrencada és el predeterminat en Windows Server?
+{
+    ~%100% Windows Boot Manager
+    ~%-100% GRUB
+    ~%-100% Syslinux
+    ~%-100% rEFInd
+}
+
+::Pregunta 9::
+Quin rol de Windows Server s'encarrega de gestionar dominis i usuaris?
+{
+    ~%-100% DHCP Server
+    ~%-100% DNS Server
+    ~%-100% Remote Desktop Services
+    ~%100% Active Directory Domain Services (AD DS)
+}
+
+::Pregunta 10::
+Quina característica de **NTFS** ajuda a gestionar la fragmentació de dades?
+{
+    ~%-100% Compressió
+    ~%-100% Encriptació
+    ~%-100% Control d'accés
+    ~%100% Gestió de fragmentació
+}
+
+::Pregunta 11::
+Quina és la principal utilitat de **servermanager.exe** en Windows Server?
+{
+    ~%-100% Gestió de sessions d'escriptori remot
+    ~%-100% Configuració del controlador de domini
+    ~%-100% Gestió de DNS
+    ~%100% Administració de rols i característiques del servidor
+}
+
+::Pregunta 12::
+Quina és la màxima capacitat teòrica d'un disc amb partició GPT?
+{
+    ~%-100% 256 TB
+    ~%-100% 2 TB
+    ~%-100% 32 GB
+    ~%100% 9.4 ZB
+}
+
+::Pregunta 13::
+Quina característica de **NTFS** permet limitar l'espai de disc per als usuaris?
+{
+    ~%-100% Encriptació
+    ~%-100% Compressió
+    ~%-100% Recuperació d'errors
+    ~%100% Quotes de discs
+}
+
+::Pregunta 14::
+Quin sistema d'arxius és limitat a particions de 32 GB en Windows?
+{
+    ~%-100% NTFS
+    ~%-100% MBR
+    ~%100% FAT32
+    ~%-100% GPT
+}
+
+::Pregunta 15::
+Quin rol de Windows Server permet la gestió de certificats digitals?
+{
+    ~%-100% DHCP Server
+    ~%-100% DNS Server
+    ~%-100% Print and Document Services
+    ~%100% Active Directory Certificate Services (AD CS)
+}
+
+::Pregunta 16::
+Quina funció proporciona **Remote Desktop Services (RDS)** en Windows Server?
+{
+    ~%-100% Gestió de dominis
+    ~%-100% Assignació d'adreces IP
+    ~%-100% Traducció de noms de domini
+    ~%100% Accés remot a escriptoris i aplicacions
+}
+
+::Pregunta 17::
+Quin gestor d'arrencada permet seleccionar quin sistema operatiu iniciar si hi ha diversos instal·lats?
+{
+    ~%-100% GRUB
+    ~%-100% Clover
+    ~%-100% Syslinux
+    ~%100% Windows Boot Manager
+}
+
+::Pregunta 18::
+Quin tipus de partició permet contenir múltiples particions lògiques en MBR?
+{
+    ~%-100% Primària
+    ~%-100% Estesa
+    ~%-100% Lògica
+    ~%100% Estesa
+}
+
+::Pregunta 19::
+Quin rol de Windows Server és utilitzat per desplegar sistemes operatius de manera remota?
+{
+    ~%-100% Failover Clustering
+    ~%-100% Network Load Balancing
+    ~%-100% Print and Document Services
+    ~%100% Windows Deployment Services (WDS)
+}
+
+::Pregunta 20::
+Quin és el procés correcte per apagar un servidor Windows Server?
+{
+    ~%-100% Apagar-lo sense registrar la causa
+    ~%-100% Tancar la sessió i deixar el servidor encès
+    ~%100% Planificar l'apagat i registrar la causa
+    ~%-100% Reiniciar el servidor sense cap advertència
+}
+

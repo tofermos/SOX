@@ -48,7 +48,7 @@ Són divisions del disc dur on s’emmagatzemarà el sistema operatiu o les dade
 
 ### Taula de particions
 
-Tenim dos possibilitats la més antiga **MBR (Master Boot Record)** i la més modern i hui en ia ja generalitzada **GPT**.
+Tenim dos possibilitats la més antiga **MBR (Master Boot Record)** i la més moderna hui en dia ja generalitzada **GPT** que é sla que usarem.
 
 **MBR (Master Boot Record)**
 
@@ -67,7 +67,8 @@ Si es necessita més de 4 particions, es poden tenir 3 particions primàries i 1
 - **Tamany màxim del disc**: 2 TB (terabytes), el MBR utilitza 32 bits per adreçar sectors de 512 Bytes.
 
 
-### **GPT (GUID Partition Table)**
+### GPT (GUID Partition Table)
+
 - **Nombre màxim de particions:** Teòricament il·limitat, però pràcticament uns 128 en la majoria de sistemes operatius.
 - **Tipus de particions:**
   - Totes les particions són **primàries**, no hi ha limitació d'estesa o lògiques com en MBR.
@@ -147,7 +148,7 @@ Rols principals de **Windows Server**:
 
 6. **Print and Document Services**: Permet gestionar impressores i compartir-les en la xarxa.
 
-7. **Hyper-V**: Proporciona funcions de virtualització per crear i gestionar màquines virtuals.
+7. **Hyper-V**: Proporciona funcions de virtualització per crear i gestionar màquines virtuals. 
 
 8. **Web Server (IIS)**: Hosteja aplicacions web i llocs web utilitzant **Internet Information Services (IIS)**.
 
@@ -197,11 +198,9 @@ Windows Server requereix llicències tant per al sistema operatiu com per als us
 
 La interfície gràfica de Windows Server és similar a la de les versions d’escriptori de Windows, però està optimitzada per a l’administració de servidors. Algunes característiques clau inclouen:
 
-Al **curs de Windows 11** d'aquest mateix repositori podreu trobar informació sobre l'entorn gràfic comú de tots els Windows per a la gestió. Estudieu-ho.
+Al **curs de Windows 11** d'aquest mateix repositori podreu trobar informació sobre l'entorn gràfic **comú de tots els sistemes Windows** per a la gestió. Estudieu-ho.
 
 [Introducció a l'entorn gràfic de Windows](https://tofermos.github.io/Windows11/interfaces/interfaces.html)
-
-[Gestió des de l'entorn gràfic Windows](https://tofermos.github.io/Windows11/gestiodelequip/gestiodelequip.html)
 
 ### Sobre consoles i altres utilitats de gestió.
 
