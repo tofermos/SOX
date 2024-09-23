@@ -71,7 +71,7 @@ A banda de les vistes en l'apartat anterior i que són comunes, la pràctica tot
 
 Més avant, si farem una ullada interessant al lleguatge d'scripts basat en cmdLets (comandaments de Windows) molt avaçat i potent. 
 
-Si voleu consultar, teniu un curs en aquest repositori:
+Si voleu consultar, teniu un curs de PowerShell en aquest repositori:
 
 [Curs PowerShell](https://github.com/tofermos/PowerShell)
 
@@ -228,13 +228,11 @@ Operadors de còpies de seguretat: grup local que permet als seus membres fer c�
 
 **Usuaris:** grup local que limita les possibilitats que un usuari faci un canvi accidental al sistema però sí permet executar la majoria de les aplicacions.
 
-
 ## 4.3 Creació de grups.
 
 ![](png/usuaris11.png)
 
 ![](png/usuaris12.png)
-
 
 ## 4.4  Com afegir usuaris al grup.
 
@@ -247,3 +245,108 @@ Opció 2: Des de les Propietats de l’usuari...
 ![](png/usuaris14.png)
 
 ![](png/usuaris15.png)
+
+## 4.3 Unitats organitzatives
+
+Teniu una guia resumida en el curs de Windows Server d’aquest repositori. Entreu al següent enllaç…
+
+[Curs Windows Server. Unitats Organitzatives](https://github.com/tofermos/Windows-Server/blob/main/md/UnitºatsOrganitzatives.md)
+
+# 5 Servei DNS
+
+L'objecte del mòdul no és l'estudi dels serveis sinó dels Sistemes Operatius. En aquest cas la integració del servei DNS amb el Windows Server.
+
+Aquests punt s'aboradarà des de 3 punts de vista:
+
+* Un enfoc teòric en aquest apartat
+* Vorem, més avant, alguns cmdLets per instal·lar/desinstal·lar, consultar i fer algun canvi.
+
+## 5.1 La integració del DNS al servei AD DS
+
+El servei de servidor DNS està integrat en el disseny i implementació dels serveis de domini d'Active Directory (AD DS), proporcionant una eina empresarial per organitzar, gestionar i localitzar recursos en una xarxa.
+
+Quan implementeu servidors DNS amb AD DS, tingueu en compte que:
+
+- El DNS és necessari per localitzar els controladors de domini.
+- El servei d'inici de sessió a la xarxa utilitza el servidor DNS per registrar els controladors de domini al vostre espai de noms DNS.
+- Els servidors DNS amb Windows Server poden utilitzar AD DS per emmagatzemar i replicar les zones DNS.
+- La integració de zones DNS amb AD DS permet funcions com la rèplica d'AD DS, actualitzacions dinàmiques segures, i l'envelliment i eliminació de registres.
+
+### Com s'integra DNS amb AD DS
+
+Quan instal·leu AD DS en un servidor i el promocioneu a controlador de domini, se us demana que especifiqueu un nom de domini DNS per al domini AD DS. A més, se us ofereix l'opció d'instal·lar el servidor DNS, ja que és necessari per localitzar controladors de domini dins del domini AD DS.
+
+### Beneficis de la integració d'AD DS
+
+Per a xarxes que utilitzen DNS per a AD DS, es recomana utilitzar zones primàries integrades al directori, ja que aporten diversos beneficis:
+
+- **Replicació multimaster**: Amb AD DS, qualsevol servidor DNS pot acceptar actualitzacions dinàmiques i replicar-les entre tots els servidors DNS.
+- **Seguretat millorada**: Mitjançant ACLs, es poden restringir les actualitzacions dinàmiques per a equips o grups específics, cosa que no és possible amb zones primàries estàndard.
+- **Automatització i sincronització**: Quan es crea un nou controlador de domini, les zones es repliquen automàticament.
+- **Millor rendiment**: La sincronització de les zones integrades al directori és més eficient que les actualitzacions estàndard, evitant la transferència de tota la zona.
+
+Si integreu les zones DNS amb AD DS, també simplifiqueu la gestió de la rèplica de bases de dades, evitant la necessitat de mantenir topologies de rèplica separades per a DNS i AD DS. Aquesta integració permet visualitzar la gestió com una única entitat administrativa.
+
+Finalment, només les zones primàries es poden emmagatzemar al directori. Les zones secundàries han d'emmagatzemar-se en fitxers de text estàndard, però amb el model de replicació multimaster d'AD DS, no són necessàries si totes les zones estan en AD DS.
+
+# 6 Servei de DHCP
+
+El servei **DHCP (Dynamic Host Configuration Protocol)** en **Windows Server** és una funció que permet als administradors de xarxa automatitzar l'assignació d'adreces IP i altres paràmetres de configuració de xarxa als dispositius que es connecten a la xarxa.
+
+### 6.1 Funcionament del servei DHCP
+
+Es tracta d'un típic servici que respon a la filosofia del model client servidor. Quan un dispositiu (com un ordinador, càmera IP, mòbil, impressora...) es connecta a la xarxa, envia una sol·licitud per obtenir una adreça IP. El servidor DHCP respon a aquesta petició assignant-li una adreça IP de manera automàtica i dinàmica, així com altres paràmetres de configuració de xarxa com:
+
+- **Adreça IP**: Una adreça única dins del rang establit pel servidor.
+- **Màscara de subxarxa**: Indica la porció de la xarxa a la qual pertany l'adreça IP.
+- **Passarel·la predeterminada**: Normalment, és l'adreça del router o un altre dispositiu de xarxa que connecta la xarxa local amb Internet.
+- **Servidors DNS**: Les adreces dels servidors que resolen els noms de domini a adreces IP.
+
+### Avantatges del servei DHCP en Windows Server
+
+- **Gestió centralitzada**: DHCP facilita la gestió de les adreces IP des d'un servidor central, evitant la configuració manual de cada dispositiu.
+- **Eficàcia**: Assegura que no es produeixin conflictes d'adreces IP duplicades a la xarxa.
+- **Escalabilitat**: És especialment útil en xarxes grans, on assignar IPs manualment seria lent i poc pràctic. 
+- **Flexibilitat**: Si volem un canvi de totes les IP o gran part, només hem de configurar-lo al servici i reiniciar el dispositius. Imaginem, per exmeple, passar de IPv4 de classe C a B per a tota una xarxa.
+- **Actualitzacions automàtiques**: El servidor DHCP pot canviar les adreces IP dels dispositius a mesura que es connecten i desconnecten de la xarxa.
+- **Concessió temporal d'adreces IP**: Les IPs es poden assignar amb una duració específica, de manera que quan un dispositiu deixa de ser necessari a la xarxa, l'IP es pot reutilitzar.
+
+### Components principals del DHCP
+
+- **Rangs o àmbits**: Un conjunt de configuracions que defineixen un rang d'adreces IP que es poden assignar als dispositius clients.
+
+- **Exclusions**: Quan volem que dins del rang alguna IP o grup d'IPs ("subrangs") no s'assignen. Pot ser útil per si volem assignar-les de forma fixa a determinats dipositius.
+
+- **Reserves**: Permeten assignar una IP fixa a un dispositiu en particular basat en la seva adreça MAC, assegurant que sempre obtinga la mateixa IP.
+
+- **Opcions DHCP**: Paràmetres addicionals, com ara passarel·les (router o gateway) predeterminades o DNS, que el servidor DHCP pot proporcionar als dispositius clients.
+
+### Funcionament del procés DHCP
+
+1. **Discover**: El client envia una petició en difusió per trobar un servidor DHCP a la xarxa.
+2. **Offer**: El servidor DHCP respon oferint una adreça IP.
+3. **Request**: El client accepta l'oferta enviant una sol·licitud per a l'adreça IP.
+4. **Acknowledge**: El servidor DHCP confirma l'assignació de l'adreça IP al client.
+
+![Esquema C/S](png/DHCPesquema.jpg)
+
+En resum, el servei DHCP en Windows Server facilita la gestió i assignació automàtica d'adreces IP en una xarxa, millorant l'eficiència i reduint la complexitat de la configuració manual de xarxes.
+
+## 5.3 Enfoc pràctic
+
+Aquests punt s'aboradarà des de 3 punts de vista:
+
+* Un enfoc teòric.
+* Vorem, més avant, alguns cmdLets per instal·lar/desinstal·lar, consultar i fer algun canvi.
+* Un enfoc pràctic en usar-los en les activitats desenvolupades des del GUI que abordem al següent apartat mitjançant el curs de Windows Server d'aquest repositori.
+
+# 5.4 DHCP
+
+
+Teniu una guia molt resumida en el curs de Windows Server d'aquest repositori. Entreu al següent enllaç...
+
+[](https://github.com/tofermos/Windows-Server/blob/main/md/DHCP.md)
+
+
+
+
