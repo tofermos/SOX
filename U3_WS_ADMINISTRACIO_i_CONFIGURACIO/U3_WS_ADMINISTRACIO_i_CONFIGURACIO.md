@@ -77,10 +77,15 @@ Si voleu consultar, teniu un curs de PowerShell en aquest repositori:
 
 [Curs PowerShell](https://github.com/tofermos/PowerShell)
 
+# 3 Administració i configuració de comptes locals
 
-# 3 Servei de directori
+Els comptes locals perden importància en un Domini. No obstant podeu consultar el curs de Windows 1x d'aquest repositori, ja que és un tema comú a tots els Windows Server.
 
-## Conceptes de Directori i Domini
+[Comptes locals](https://tofermos.github.io/Windows11/gestions/comptesLocals.html)
+
+# 4 Servei de directori
+
+## 4.1 Conceptes de Directori i Domini
 
 Bàsicament podem entendre un directori com una llista detallada d'objectes. Per
 exemple, l'agenda de tlf del mòbil és un tipus de directori que guarda informació de contactes de persones o entitats. Objectes per igual (contactes) que poden tindre nom, adreça, tlf, e-mail, malnom...
@@ -126,20 +131,20 @@ components en Active Directory: els components físics i els components lògics.
 >
 >Al mòdul de SOX ens centrem en desenvolupar un model senzill d'organització: un Domini amb Unitats Organitzatives.
 
-# 3 Instal·lació del Active Directory 
+## 4.2 Instal·lació del Active Directory 
 
 Teniu una guia molt resumida en el curs de Windows Server d'aquest repositori. Entreu al següent enllaç...
 
 [Instal·lació del AD](https://github.com/tofermos/Windows-Server/blob/main/md/ADDSenWindowsServerGUI.md)
 
-# 4 Usuaris i grups del Domini
+## 4.3 Usuaris del Domini
 
 A la present unitat i en avant, anem a centrar-nos en els usuaris del domini. Sobre usuaris locals (els que usem en monoestació o WorkGroup) teniu tota la informació al curs de Windows 1x d'aquest repositori.
 
 Recordem que els grups són un tipus de contenidor que permeten definir conjunts d'usuaris i definir permisos basant-nos en aquesta pertinença al grup, en lloc de fer-ho de manera individual, usuari per usuari.
 Com a pauta general, l'agrupació d’objectes sol facilitar les tasques d’administració reduint les possibilitats d’error.
 
-## 4.1 Creació d'usuaris
+### Creació d'usuaris
 
 Tot i que després vorem com poden ser els usuaris, és a dir a quin o quins grups poden pertànyer, fem una mirada prèvia al manteniment dels usuaris per donar un enfoc pràctic i més dinàmic.
 
@@ -167,7 +172,7 @@ Tot i que després vorem com poden ser els usuaris, és a dir a quin o quins gru
 
 ![](png/usuaris9.png)
 
-## 4.2 Grups d'usuaris en l'AD
+## 4.4 Grups d'usuaris en l'AD
 
 ### Tipus i àmbits
 
@@ -230,13 +235,13 @@ Operadors de còpies de seguretat: grup local que permet als seus membres fer c�
 
 **Usuaris:** grup local que limita les possibilitats que un usuari faci un canvi accidental al sistema però sí permet executar la majoria de les aplicacions.
 
-## 4.3 Creació de grups.
+### Creació de grups.
 
 ![](png/usuaris11.png)
 
 ![](png/usuaris12.png)
 
-## 4.4  Com afegir usuaris al grup.
+### Com afegir usuaris al grup.
 
 Opció 1: Propietats del grup...
 
@@ -248,7 +253,7 @@ Opció 2: Des de les Propietats de l’usuari...
 
 ![](png/usuaris15.png)
 
-## 4.3 Unitats organitzatives
+## 4.5 Unitats organitzatives
 
 Teniu una guia resumida en el curs de Windows Server d’aquest repositori. Entreu al següent enllaç…
 
@@ -274,11 +279,11 @@ Quan implementeu servidors DNS amb AD DS, tingueu en compte que:
 - Els servidors DNS amb Windows Server poden utilitzar AD DS per emmagatzemar i replicar les zones DNS.
 - La integració de zones DNS amb AD DS permet funcions com la rèplica d'AD DS, actualitzacions dinàmiques segures, i l'envelliment i eliminació de registres.
 
-### Com s'integra DNS amb AD DS
+**Com s'integra DNS amb AD DS**
 
 Quan instal·leu AD DS en un servidor i el promocioneu a controlador de domini, se us demana que especifiqueu un nom de domini DNS per al domini AD DS. A més, se us ofereix l'opció d'instal·lar el servidor DNS, ja que és necessari per localitzar controladors de domini dins del domini AD DS.
 
-### Beneficis de la integració d'AD DS
+## 5.2 Beneficis de la integració d'AD DS
 
 Per a xarxes que utilitzen DNS per a AD DS, es recomana utilitzar zones primàries integrades al directori, ja que aporten diversos beneficis:
 
@@ -295,7 +300,7 @@ Finalment, només les zones primàries es poden emmagatzemar al directori. Les z
 
 El servei **DHCP (Dynamic Host Configuration Protocol)** en **Windows Server** és una funció que permet als administradors de xarxa automatitzar l'assignació d'adreces IP i altres paràmetres de configuració de xarxa als dispositius que es connecten a la xarxa.
 
-### 6.1 Funcionament del servei DHCP
+## 6.1 Funcionament del servei DHCP
 
 Es tracta d'un típic servici que respon a la filosofia del model client servidor. Quan un dispositiu (com un ordinador, càmera IP, mòbil, impressora...) es connecta a la xarxa, envia una sol·licitud per obtenir una adreça IP. El servidor DHCP respon a aquesta petició assignant-li una adreça IP de manera automàtica i dinàmica, així com altres paràmetres de configuració de xarxa com:
 
@@ -304,7 +309,7 @@ Es tracta d'un típic servici que respon a la filosofia del model client servido
 - **Passarel·la predeterminada**: Normalment, és l'adreça del router o un altre dispositiu de xarxa que connecta la xarxa local amb Internet.
 - **Servidors DNS**: Les adreces dels servidors que resolen els noms de domini a adreces IP.
 
-### Avantatges del servei DHCP en Windows Server
+## 6.2 Avantatges del servei DHCP en Windows Server
 
 - **Gestió centralitzada**: DHCP facilita la gestió de les adreces IP des d'un servidor central, evitant la configuració manual de cada dispositiu.
 - **Eficàcia**: Assegura que no es produeixin conflictes d'adreces IP duplicades a la xarxa.
@@ -330,11 +335,11 @@ Es tracta d'un típic servici que respon a la filosofia del model client servido
 3. **Request**: El client accepta l'oferta enviant una sol·licitud per a l'adreça IP.
 4. **Acknowledge**: El servidor DHCP confirma l'assignació de l'adreça IP al client.
 
-![Esquema C/S](png/DHCPesquema.jpg)
+![*Figura1: Esquema C/S*](png/DHCPesquema.jpg)
 
 En resum, el servei DHCP en Windows Server facilita la gestió i assignació automàtica d'adreces IP en una xarxa, millorant l'eficiència i reduint la complexitat de la configuració manual de xarxes.
 
-## 5.3 Enfoc pràctic
+## 6.3 Enfoc pràctic
 
 Aquests punt s'aboradarà des de 3 punts de vista:
 
@@ -342,7 +347,7 @@ Aquests punt s'aboradarà des de 3 punts de vista:
 * Vorem, més avant, alguns cmdLets per instal·lar/desinstal·lar, consultar i fer algun canvi.
 * Un enfoc pràctic en usar-los en les activitats desenvolupades des del GUI que abordem al següent apartat mitjançant el curs de Windows Server d'aquest repositori.
 
-# 5.4 DHCP
+# 6.4 DHCP. Implementación
 
 
 Teniu una guia molt resumida en el curs de Windows Server d'aquest repositori. Entreu al següent enllaç...

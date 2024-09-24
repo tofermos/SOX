@@ -342,7 +342,8 @@ Els rols són funcionalitats principals que pot exercir el servidor. En
 poden ser instal·lats per oferir serveis específics a una xarxa o
 organització.
 
-Rols principals de \textbf{Windows Server}:
+Els rols principals que estudiarem al curs de SOX relacionats amb
+funcions pròpies són:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -355,66 +356,19 @@ Rols principals de \textbf{Windows Server}:
   dispositius de la xarxa.
 \item
   \textbf{DNS Server}: Traduïx noms de domini a adreces IP, facilitant
-  l'accés als serveis dins d'una xarxa o a internet.
-\item
-  \textbf{File and Storage Services}: Gestiona el sistema
-  d'emmagatzematge de fitxers i carpetes compartides, i permet utilitzar
-  funcions com el servidor de fitxers, les quotes d'emmagatzematge i la
-  deduplicació de dades.
-\item
-  \textbf{Remote Desktop Services (RDS)}: Proporciona eines per permetre
-  que els usuaris es connecten de forma remota a escriptoris virtuals o
-  aplicacions publicades.
-\item
-  \textbf{Print and Document Services}: Permet gestionar impressores i
-  compartir-les en la xarxa.
-\item
-  \textbf{Hyper-V}: Proporciona funcions de virtualització per crear i
-  gestionar màquines virtuals.
-\item
-  \textbf{Web Server (IIS)}: Hosteja aplicacions web i llocs web
-  utilitzant \textbf{Internet Information Services (IIS)}.
-\item
-  \textbf{Network Policy and Access Services (NPAS)}: Permet la gestió
-  de polítiques de xarxa i l'accés remot mitjançant serveis com el
-  Servidor RADIUS.
-\item
-  \textbf{Windows Deployment Services (WDS)}: Serveix per desplegar de
-  forma remota sistemes operatius als ordinadors clients a través de la
-  xarxa.
-\item
-  \textbf{Active Directory Certificate Services (AD CS)}: Gestiona
-  certificats digitals per a l'autenticació, la xifratge i la seguretat
-  a la xarxa.
-\item
-  \textbf{Active Directory Federation Services (AD FS)}: Proporciona
-  serveis d'inici de sessió únic (SSO) per a aplicacions.
-\item
-  \textbf{Active Directory Rights Management Services (AD RMS)}:
-  Protegeix informació mitjançant polítiques de drets d'accés.
-\item
-  \textbf{Failover Clustering}: Proporciona alta disponibilitat a
-  serveis i aplicacions mitjançant la creació de clústers de servidors.
-\item
-  \textbf{Windows Server Update Services (WSUS)}: Gestió de les
-  actualitzacions de seguretat i programari per als clients de la xarxa.
-\item
-  \textbf{Host Guardian Service}: Ofereix protecció avançada per a
-  entorns Hyper-V amb màquines virtuals protegides.
-\item
-  \textbf{Network Load Balancing (NLB)}: Permet distribuir el trànsit de
-  xarxa entre múltiples servidors per assegurar alta disponibilitat i
-  escalabilitat.
+  l'accés als serveis dins d'una xarxa o a internet. IIS)\textbf{:
+  Hosteja aplicacions web i llocs web utilitzant }Internet Information
+  Services (IIS)**.
 \end{enumerate}
-
-\emph{En aquest curs ens centrerem en els 5 primers que són els
-fonamentals en qualsevol LAN}
 
 \subsubsection{Característiques}\label{caracteruxedstiques}
 
 A més dels rols, \textbf{Windows Server} ofereix
 \textbf{característiques} que són complements als rols i que
-proporcionen funcionalitats addicionals:
+proporcionen funcionalitats addicionals.
+
+I de totes les característiques que enumerem i comentem a la propera
+unitat, les més destacables són:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -443,6 +397,19 @@ Windows Server requereix llicències tant per al sistema operatiu com per
 als usuaris o dispositius que accedeixen al servidor (CALs - Client
 Access Licenses).
 
+Per tant en un Domini Windows Server haurem de pagar llicències no sols
+per cada Windows 1x de PC sinó també la llicència per servidor Windows
+Server i una per cada PC o usuari que s'hi connecte al Domini.
+
+El Domini s'encareix en quant a llicències respecte al Workgroup.
+
+\begin{quote}
+Sobre llicèncias CAL's
+
+Has de saber què interessa en cada cas concreta. Pagar llicències per PC
+o per usuaris.
+\end{quote}
+
 \subsection{3.2 Interfície gràfica}\label{interfuxedcie-gruxe0fica}
 
 La interfície gràfica de Windows Server és similar a la de les versions
@@ -455,41 +422,6 @@ Windows} per a la gestió. Estudieu-ho.
 
 \href{https://tofermos.github.io/Windows11/interfaces/interfaces.html}{Introducció
 a l'entorn gràfic de Windows}
-
-\subsubsection{Sobre consoles i altres utilitats de
-gestió.}\label{sobre-consoles-i-altres-utilitats-de-gestiuxf3.}
-
-A bandes de les vistes en l'apartat anterior i que són comunes, la
-pràctica totalitat, a tots els Windows tenim que,específicament de
-Windows Server les consoles i utilitats següents:
-
-\textbf{servermanager.exe} - Administrador de Servidors. Aquesta és la
-utilitat (no es consola estrictament parlant) central per a gestionar el
-servidor. Permet configurar rols i característiques, gestionar discos,
-supervisar el rendiment, entre altres funcions.
-
-\textbf{dcpromo.msc} - Promoció de controlador de domini: Utilitzada per
-configurar un controlador de domini (AD DS), una funció exclusiva de
-Windows Server.
-
-\textbf{dnsmgmt.msc} - Gestió de DNS: Disponible en Windows Server per
-gestionar zones i registres DNS.
-
-\textbf{dhcpmgmt.msc} - Gestió de DHCP: Permet administrar el rol de
-servidor DHCP per assignar adreces IP automàticament a dispositius de la
-xarxa.
-
-\textbf{fsmgmt.msc} - Carpetes compartides: Una consola específica per
-gestionar carpetes i recursos compartits al servidor, encara que també
-es pot trobar en versions professionals de Windows 10/11.
-
-\textbf{tsadmin.msc} o Remote Desktop Services Manager: Utilitzada per
-gestionar sessions d'escriptori remot, més comuna en Windows Server per
-administrar entorns d'escriptori remot (RDS).
-
-\textbf{cluadmin.msc} - Gestió de Clúster de Failover: Disponible en
-Windows Server per administrar clústers de tolerància a fallades i alta
-disponibilitat, especialment útil per entorns crítics empresarials.
 
 \subsection{3.3 Tancament de sessió i apagat del
 servidor}\label{tancament-de-sessiuxf3-i-apagat-del-servidor}
@@ -506,5 +438,9 @@ Respecte al \textbf{tancament de sessió}, l'estat normal deu ser amb la
 sessió tancada excepte quan un administrador ha de fer alguna tasca. La
 sessió deu estar el temps estrictament necessari i el login no deu estar
 visible per raons de seguretat.
+
+Per raons de seguretat, a banda d'evitar l'accès físic al servidor, cal
+que només tinguem iniciada una sessió el temps justet per fer la tasca
+de manteniment.
 
 \end{document}

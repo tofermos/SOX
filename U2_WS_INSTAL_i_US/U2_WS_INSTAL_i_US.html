@@ -2945,7 +2945,8 @@ administrar-lo correctament.</p>
 En <strong>Windows Server</strong> hi ha diversos <strong>rols de
 servidor</strong> que poden ser instal·lats per oferir serveis
 específics a una xarxa o organització.</p>
-<p>Rols principals de <strong>Windows Server</strong>:</p>
+<p>Els rols principals que estudiarem al curs de SOX relacionats amb
+funcions pròpies són:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Active Directory Domain Services (AD DS)</strong>: Permet
 crear i gestionar dominis, i és el component clau de l’Active Directory
@@ -2953,57 +2954,18 @@ per a la gestió d’usuaris i dispositius en una xarxa.</p></li>
 <li><p><strong>DHCP Server</strong>: Assigna automàticament adreces IP
 als dispositius de la xarxa.</p></li>
 <li><p><strong>DNS Server</strong>: Traduïx noms de domini a adreces IP,
-facilitant l’accés als serveis dins d’una xarxa o a internet.</p></li>
-<li><p><strong>File and Storage Services</strong>: Gestiona el sistema
-d’emmagatzematge de fitxers i carpetes compartides, i permet utilitzar
-funcions com el servidor de fitxers, les quotes d’emmagatzematge i la
-deduplicació de dades.</p></li>
-<li><p><strong>Remote Desktop Services (RDS)</strong>: Proporciona eines
-per permetre que els usuaris es connecten de forma remota a escriptoris
-virtuals o aplicacions publicades.</p></li>
-<li><p><strong>Print and Document Services</strong>: Permet gestionar
-impressores i compartir-les en la xarxa.</p></li>
-<li><p><strong>Hyper-V</strong>: Proporciona funcions de virtualització
-per crear i gestionar màquines virtuals.</p></li>
-<li><p><strong>Web Server (IIS)</strong>: Hosteja aplicacions web i
-llocs web utilitzant <strong>Internet Information Services
-(IIS)</strong>.</p></li>
-<li><p><strong>Network Policy and Access Services (NPAS)</strong>:
-Permet la gestió de polítiques de xarxa i l’accés remot mitjançant
-serveis com el Servidor RADIUS.</p></li>
-<li><p><strong>Windows Deployment Services (WDS)</strong>: Serveix per
-desplegar de forma remota sistemes operatius als ordinadors clients a
-través de la xarxa.</p></li>
-<li><p><strong>Active Directory Certificate Services (AD CS)</strong>:
-Gestiona certificats digitals per a l’autenticació, la xifratge i la
-seguretat a la xarxa.</p></li>
-<li><p><strong>Active Directory Federation Services (AD FS)</strong>:
-Proporciona serveis d’inici de sessió únic (SSO) per a
-aplicacions.</p></li>
-<li><p><strong>Active Directory Rights Management Services (AD
-RMS)</strong>: Protegeix informació mitjançant polítiques de drets
-d’accés.</p></li>
-<li><p><strong>Failover Clustering</strong>: Proporciona alta
-disponibilitat a serveis i aplicacions mitjançant la creació de clústers
-de servidors.</p></li>
-<li><p><strong>Windows Server Update Services (WSUS)</strong>: Gestió de
-les actualitzacions de seguretat i programari per als clients de la
-xarxa.</p></li>
-<li><p><strong>Host Guardian Service</strong>: Ofereix protecció
-avançada per a entorns Hyper-V amb màquines virtuals
-protegides.</p></li>
-<li><p><strong>Network Load Balancing (NLB)</strong>: Permet distribuir
-el trànsit de xarxa entre múltiples servidors per assegurar alta
-disponibilitat i escalabilitat.</p></li>
+facilitant l’accés als serveis dins d’una xarxa o a internet.
+IIS)<strong>: Hosteja aplicacions web i llocs web utilitzant
+</strong>Internet Information Services (IIS)**.</p></li>
 </ol>
-<p><em>En aquest curs ens centrerem en els 5 primers que són els
-fonamentals en qualsevol LAN</em></p>
 </div>
 <div id="característiques" class="section level3">
 <h3>Característiques</h3>
 <p>A més dels rols, <strong>Windows Server</strong> ofereix
 <strong>característiques</strong> que són complements als rols i que
-proporcionen funcionalitats addicionals:</p>
+proporcionen funcionalitats addicionals.</p>
+<p>I de totes les característiques que enumerem i comentem a la propera
+unitat, les més destacables són:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Windows PowerShell</strong>. Llenguatge d’scripts basat
 em ordre (cmdLets) molt potent i avançat.</p></li>
@@ -3025,6 +2987,16 @@ facilitar la tasca de l’administrador.</p>
 <p>Windows Server requereix llicències tant per al sistema operatiu com
 per als usuaris o dispositius que accedeixen al servidor (CALs - Client
 Access Licenses).</p>
+<p>Per tant en un Domini Windows Server haurem de pagar llicències no
+sols per cada Windows 1x de PC sinó també la llicència per servidor
+Windows Server i una per cada PC o usuari que s’hi connecte al
+Domini.</p>
+<p>El Domini s’encareix en quant a llicències respecte al Workgroup.</p>
+<blockquote>
+<p>Sobre llicèncias CAL’s</p>
+<p>Has de saber què interessa en cada cas concreta. Pagar llicències per
+PC o per usuaris.</p>
+</blockquote>
 </div>
 <div id="interfície-gràfica" class="section level2">
 <h2>3.2 Interfície gràfica</h2>
@@ -3037,35 +3009,6 @@ podreu trobar informació sobre l’entorn gràfic <strong>comú de tots els
 sistemes Windows</strong> per a la gestió. Estudieu-ho.</p>
 <p><a href="https://tofermos.github.io/Windows11/interfaces/interfaces.html">Introducció
 a l’entorn gràfic de Windows</a></p>
-<div id="sobre-consoles-i-altres-utilitats-de-gestió." class="section level3">
-<h3>Sobre consoles i altres utilitats de gestió.</h3>
-<p>A bandes de les vistes en l’apartat anterior i que són comunes, la
-pràctica totalitat, a tots els Windows tenim que,específicament de
-Windows Server les consoles i utilitats següents:</p>
-<p><strong>servermanager.exe</strong> - Administrador de Servidors.
-Aquesta és la utilitat (no es consola estrictament parlant) central per
-a gestionar el servidor. Permet configurar rols i característiques,
-gestionar discos, supervisar el rendiment, entre altres funcions.</p>
-<p><strong>dcpromo.msc</strong> - Promoció de controlador de domini:
-Utilitzada per configurar un controlador de domini (AD DS), una funció
-exclusiva de Windows Server.</p>
-<p><strong>dnsmgmt.msc</strong> - Gestió de DNS: Disponible en Windows
-Server per gestionar zones i registres DNS.</p>
-<p><strong>dhcpmgmt.msc</strong> - Gestió de DHCP: Permet administrar el
-rol de servidor DHCP per assignar adreces IP automàticament a
-dispositius de la xarxa.</p>
-<p><strong>fsmgmt.msc</strong> - Carpetes compartides: Una consola
-específica per gestionar carpetes i recursos compartits al servidor,
-encara que també es pot trobar en versions professionals de Windows
-10/11.</p>
-<p><strong>tsadmin.msc</strong> o Remote Desktop Services Manager:
-Utilitzada per gestionar sessions d’escriptori remot, més comuna en
-Windows Server per administrar entorns d’escriptori remot (RDS).</p>
-<p><strong>cluadmin.msc</strong> - Gestió de Clúster de Failover:
-Disponible en Windows Server per administrar clústers de tolerància a
-fallades i alta disponibilitat, especialment útil per entorns crítics
-empresarials.</p>
-</div>
 </div>
 <div id="tancament-de-sessió-i-apagat-del-servidor" class="section level2">
 <h2>3.3 Tancament de sessió i apagat del servidor</h2>
@@ -3080,6 +3023,9 @@ causa que indiquem.</p>
 ser amb la sessió tancada excepte quan un administrador ha de fer alguna
 tasca. La sessió deu estar el temps estrictament necessari i el login no
 deu estar visible per raons de seguretat.</p>
+<p>Per raons de seguretat, a banda d’evitar l’accès físic al servidor,
+cal que només tinguem iniciada una sessió el temps justet per fer la
+tasca de manteniment.</p>
 </div>
 </div>
 

@@ -5,16 +5,16 @@ lang: "ca-ES"
 papersize: A4
 linestretch: 1.5
 output:
+  pdf_document:
+    toc: true
+    keep_tex: true
+    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     toc_depth: 3
     df_print: paged
     number_sections: false
-  pdf_document:
-    toc: true
-    keep_tex: true
-    latex_engine: xelatex
 ---
 
 \newpage
@@ -134,47 +134,21 @@ Una vegada instal·lat, és essencial familiaritzar-se amb la interfície i les 
 
 Els rols són funcionalitats principals que pot exercir el servidor. En **Windows Server** hi ha diversos **rols de servidor** que poden ser instal·lats per oferir serveis específics a una xarxa o organització.
 
-Rols principals de **Windows Server**:
+Els rols principals que estudiarem al curs de SOX relacionats amb funcions pròpies són:
 
 1. **Active Directory Domain Services (AD DS)**: Permet crear i gestionar dominis, i és el component clau de l’Active Directory per a la gestió d'usuaris i dispositius en una xarxa.
 
 2. **DHCP Server**: Assigna automàticament adreces IP als dispositius de la xarxa.
 
 3. **DNS Server**: Traduïx noms de domini a adreces IP, facilitant l'accés als serveis dins d'una xarxa o a internet.
+IIS)**: Hosteja aplicacions web i llocs web utilitzant **Internet Information Services (IIS)**.
 
-4. **File and Storage Services**: Gestiona el sistema d'emmagatzematge de fitxers i carpetes compartides, i permet utilitzar funcions com el servidor de fitxers, les quotes d'emmagatzematge i la deduplicació de dades.
-
-5. **Remote Desktop Services (RDS)**: Proporciona eines per permetre que els usuaris es connecten de forma remota a escriptoris virtuals o aplicacions publicades.
-
-6. **Print and Document Services**: Permet gestionar impressores i compartir-les en la xarxa.
-
-7. **Hyper-V**: Proporciona funcions de virtualització per crear i gestionar màquines virtuals. 
-
-8. **Web Server (IIS)**: Hosteja aplicacions web i llocs web utilitzant **Internet Information Services (IIS)**.
-
-9. **Network Policy and Access Services (NPAS)**: Permet la gestió de polítiques de xarxa i l'accés remot mitjançant serveis com el Servidor RADIUS.
-
-10. **Windows Deployment Services (WDS)**: Serveix per desplegar de forma remota sistemes operatius als ordinadors clients a través de la xarxa.
-
-11. **Active Directory Certificate Services (AD CS)**: Gestiona certificats digitals per a l'autenticació, la xifratge i la seguretat a la xarxa.
-
-12. **Active Directory Federation Services (AD FS)**: Proporciona serveis d'inici de sessió únic (SSO) per a aplicacions.
-
-13. **Active Directory Rights Management Services (AD RMS)**: Protegeix informació mitjançant polítiques de drets d'accés.
-
-14. **Failover Clustering**: Proporciona alta disponibilitat a serveis i aplicacions mitjançant la creació de clústers de servidors.
-
-15. **Windows Server Update Services (WSUS)**: Gestió de les actualitzacions de seguretat i programari per als clients de la xarxa.
-
-16. **Host Guardian Service**: Ofereix protecció avançada per a entorns Hyper-V amb màquines virtuals protegides.
-
-17. **Network Load Balancing (NLB)**: Permet distribuir el trànsit de xarxa entre múltiples servidors per assegurar alta disponibilitat i escalabilitat.
-
-*En aquest curs ens centrerem en els 5 primers que són els fonamentals en qualsevol LAN*
 
 ### Característiques
 
-A més dels rols, **Windows Server** ofereix **característiques** que són complements als rols i que proporcionen funcionalitats addicionals:
+A més dels rols, **Windows Server** ofereix **característiques** que són complements als rols i que proporcionen funcionalitats addicionals.
+
+I de totes les característiques que enumerem i comentem a la propera unitat, les més destacables són:
 
 1.  **Windows PowerShell**. Llenguatge d'scripts basat em ordre (cmdLets) molt potent i avançat.
 
@@ -194,6 +168,14 @@ Per altra banda, la característica ve a complementar el roll o facilitar la tas
 
 Windows Server requereix llicències tant per al sistema operatiu com per als usuaris o dispositius que accedeixen al servidor (CALs - Client Access Licenses).
 
+Per tant en un Domini Windows Server haurem de pagar llicències no sols per cada Windows 1x de PC sinó també la llicència per servidor Windows Server i una per cada PC o usuari que s'hi connecte al Domini.
+
+El Domini s'encareix en quant a llicències respecte al Workgroup.
+
+>Sobre llicèncias CAL's
+>
+> Has de saber què interessa en cada cas concreta. Pagar llicències per PC o per usuaris.
+
 ## 3.2 Interfície gràfica
 
 La interfície gràfica de Windows Server és similar a la de les versions d’escriptori de Windows, però està optimitzada per a l’administració de servidors. Algunes característiques clau inclouen:
@@ -210,4 +192,7 @@ Respecte a l'**apagat del servidor**, aquets, solen estar executant serveis crí
 El procés d’apagat ha de ser planificat i queda registrada la causa que indiquem.
 
 Respecte al **tancament de sessió**,  l'estat normal deu ser amb la sessió tancada excepte quan un administrador ha de fer alguna tasca. La sessió deu estar el temps estrictament necessari i el login no deu estar visible per raons de seguretat.
+
+Per raons de seguretat, a banda d'evitar l'accès físic al servidor, cal que només tinguem iniciada una sessió el temps justet per fer la tasca de manteniment.
+
 
