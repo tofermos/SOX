@@ -94,6 +94,8 @@ Ho hem de revisar en **LES DOS MÀQUINES**
 ### Revisar aspectes bàsics de la configuració
 Un exemple podria ser desactivar/activar el Servei d'actualitzacions.
 
+*Win + R: msconfig.exe*
+
 <img width=60% src="png/ADDS/configurarsistema.png"></img>
 
 Altre exemple podria ser assegurar la Zona horària.

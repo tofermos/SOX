@@ -161,11 +161,11 @@ configurar i administrar una màquina.
 \href{https://tofermos.github.io/Windows11/gestiodelequip/gestiodelequip.html}{Consoles
 i altres utilitats}
 
-\subsection{Consoles i altres utilitats específiques de
-Windows}\label{consoles-i-altres-utilitats-especuxedfiques-de-windows}
+\subsection{Consoles i altres utilitats específiques de Windows
+Server}\label{consoles-i-altres-utilitats-especuxedfiques-de-windows-server}
 
 A banda de les vistes en l'apartat anterior i que són comunes, la
-pràctica totalitat, a tots els Windows tenim que,específicament de
+pràctica totalitat, a tots els Windows tenim que, específicament de
 Windows Server les consoles i utilitats següents:
 
 \textbf{servermanager.exe} - Administrador de Servidors. Aquesta és la
@@ -188,6 +188,8 @@ xarxa.
 gestionar carpetes i recursos compartits al servidor, encara que també
 es pot trobar en versions professionals de Windows 10/11.
 
+\emph{(els 2 següents no anem a mirar-los en SOX)}
+
 \textbf{tsadmin.msc} o Remote Desktop Services Manager: Utilitzada per
 gestionar sessions d'escriptori remot, més comuna en Windows Server per
 administrar entorns d'escriptori remot (RDS).
@@ -202,7 +204,7 @@ avant)}\label{powershell-el-vorem-muxe9s-avant}
 Més avant, si farem una ullada interessant al lleguatge d'scripts basat
 en cmdLets (comandaments de Windows) molt avaçat i potent.
 
-Si voleu consultar, teniu un curs en aquest repositori:
+Si voleu consultar, teniu un curs de PowerShell en aquest repositori:
 
 \href{https://github.com/tofermos/PowerShell}{Curs PowerShell}
 
@@ -211,43 +213,48 @@ Si voleu consultar, teniu un curs en aquest repositori:
 \subsection{Conceptes de Directori i
 Domini}\label{conceptes-de-directori-i-domini}
 
-En el sentit més ampli, un directori no és més que una llista detallada
-d'objectes. Per exemple, una guia de telèfons és un tipus de directori
-que guarda informació sobre persones, empreses i altres entitats. De
-cada un dels elements representats, s'emmagatzema el seu nom, adreça i
-número de telèfon. En molts sentits Active Directory Domain Services (AD
-DS) és molt semblant a una guia telefònica, encara que resulta més
-flexible. Es basa en el concepte de domini que va introduir Windows NT
-per tal de facilitar l'administració. No obstant això, ara l'objectiu és
-crear una estructura dinàmica i fàcilment accessible, a través de la
-qual es pot emmagatzemar la informació de tota l'organització, tant
-relativa a l'estructura de l'propi directori com de la seva
-administració, i accedir-hi de forma centralitzada . AD DS pot
-emmagatzemar informació sobre l'organització, llocs, ordinadors,
-usuaris, objectes compartits i qualsevol altra cosa que pugui formar
-part de la infraestructura de xarxa. A diferència dels elements d'una
-guia telefònica, els elements emmagatzemats en un directori actiu poden
-ser diferents els uns dels altres (usuaris, grups, polítiques d'accés,
-permisos, assignació de recursos, etc.), de manera que la informació
-emmagatzemada variarà segons la naturalesa de l'objecte. Tota aquesta
-informació s'emmagatzema en una base de dades jeràrquica.
+Bàsicament podem entendre un directori com una llista detallada
+d'objectes. Per exemple, l'agenda de tlf del mòbil és un tipus de
+directori que guarda informació de contactes de persones o entitats.
+Objectes per igual (contactes) que poden tindre nom, adreça, tlf,
+e-mail, malnom\ldots{}
+
+\subsubsection{Dos classes
+d'informació}\label{dos-classes-dinformaciuxf3}
+
+L'Active Directory Domain Services (AD DS) és molt semblant però més
+flexible i dinàmic. Permet emmagatzemar la informació de tota
+l'organització. Una informació sobre l'estructura de l'propi directori i
+també sobre com s'ha d'administrar. AD DS pot emmagatzemar informació
+sobre l'organització, llocs, ordinadors, usuaris, objectes compartits i
+qualsevol altra cosa que pugui formar part de la infraestructura de
+xarxa. A diferència de la llista de contactes de whatsapp, ací els
+elements emmagatzemats son de diferent naturales (usuaris, grups, UO,
+polítiques d'accés, permisos, assignació de recursos, etc.) Cal recordar
+que tota aquesta informació s'emmagatzema en una base de dades
+jeràrquica.
+
+\subsubsection{Replicable}\label{replicable}
 
 El motor d'aquesta base de dades és el mateix que incorpora Microsoft
 Exchange Server i permet la replicació de controladors de domini. És a
 dir, es pot enviar la informació continguda a la base de dades a
-diferents controladors de domini a través de la xarxa. D'aquesta manera,
-un usuari creat en un determinat controlador de domini podria iniciar
-sessió en qualsevol client unit a un altre controlador de domini
-diferent sense cap complicació. A més d'administrar polítiques que seran
-vàlides a tota l'organització, Active Directory permet realitzar
-operacions com la instal·lació de programes, de manera simultània i
-centralitzada, en multitud de clients o aplicar actualitzacions
-crítiques en tota l'organització. Quan utilitzem Active Directory, tenim
-a la nostra disposició eines d'administració per establir polítiques de
-grup, per incloure uns grups dins d'altres en diferents nivells, un
-accés senzill a l'arbre d'usuaris, ordinadors, impressores i contactes,
-etc. Òbviament, podem utilitzar Windows Server 2019 sense usar Active
-Directory, però estarem prescindint d'un ampli conjunt de capacitats.
+diferents controladors de domini a través de la xarxa.
+
+A més d'administrar polítiques que seran vàlides a tota l'organització,
+Active Directory permet realitzar operacions com la instal·lació de
+programes, de manera simultània i centralitzada, en multitud de clients
+o aplicar actualitzacions crítiques en tota l'organització.
+
+Quan utilitzem Active Directory, tenim a la nostra disposició eines
+d'administració per establir polítiques de grup, per incloure uns grups
+dins d'altres en diferents nivells, un accés senzill a l'arbre
+d'usuaris, ordinadors, impressores i contactes, etc. Òbviament, podem
+utilitzar Windows Server 2019 sense usar Active Directory, però estarem
+prescindint d'un ampli conjunt de capacitats.
+
+\subsubsection{Dos tipus de components}\label{dos-tipus-de-components}
+
 Pel que fa a l'estructura de l'servei de directori, el primer que hem de
 saber és que hi ha dos tipus de components en Active Directory: els
 components físics i els components lògics.
@@ -449,5 +456,238 @@ Opció 2: Des de les Propietats de l'usuari\ldots{}
 \includegraphics{png/usuaris14.png}
 
 \includegraphics{png/usuaris15.png}
+
+\subsection{4.3 Unitats organitzatives}\label{unitats-organitzatives}
+
+Teniu una guia resumida en el curs de Windows Server d'aquest
+repositori. Entreu al següent enllaç\ldots{}
+
+\href{https://github.com/tofermos/Windows-Server/blob/main/md/UnitºatsOrganitzatives.md}{Curs
+Windows Server. Unitats Organitzatives}
+
+\section{5 Servei DNS}\label{servei-dns}
+
+L'objecte del mòdul no és l'estudi dels serveis sinó dels Sistemes
+Operatius. En aquest cas la integració del servei DNS amb el Windows
+Server.
+
+Aquests punt s'aboradarà des de 3 punts de vista:
+
+\begin{itemize}
+\tightlist
+\item
+  Un enfoc teòric en aquest apartat
+\item
+  Vorem, més avant, alguns cmdLets per instal·lar/desinstal·lar,
+  consultar i fer algun canvi.
+\end{itemize}
+
+\subsection{5.1 La integració del DNS al servei AD
+DS}\label{la-integraciuxf3-del-dns-al-servei-ad-ds}
+
+El servei de servidor DNS està integrat en el disseny i implementació
+dels serveis de domini d'Active Directory (AD DS), proporcionant una
+eina empresarial per organitzar, gestionar i localitzar recursos en una
+xarxa.
+
+Quan implementeu servidors DNS amb AD DS, tingueu en compte que:
+
+\begin{itemize}
+\tightlist
+\item
+  El DNS és necessari per localitzar els controladors de domini.
+\item
+  El servei d'inici de sessió a la xarxa utilitza el servidor DNS per
+  registrar els controladors de domini al vostre espai de noms DNS.
+\item
+  Els servidors DNS amb Windows Server poden utilitzar AD DS per
+  emmagatzemar i replicar les zones DNS.
+\item
+  La integració de zones DNS amb AD DS permet funcions com la rèplica
+  d'AD DS, actualitzacions dinàmiques segures, i l'envelliment i
+  eliminació de registres.
+\end{itemize}
+
+\subsubsection{Com s'integra DNS amb AD
+DS}\label{com-sintegra-dns-amb-ad-ds}
+
+Quan instal·leu AD DS en un servidor i el promocioneu a controlador de
+domini, se us demana que especifiqueu un nom de domini DNS per al domini
+AD DS. A més, se us ofereix l'opció d'instal·lar el servidor DNS, ja que
+és necessari per localitzar controladors de domini dins del domini AD
+DS.
+
+\subsubsection{Beneficis de la integració d'AD
+DS}\label{beneficis-de-la-integraciuxf3-dad-ds}
+
+Per a xarxes que utilitzen DNS per a AD DS, es recomana utilitzar zones
+primàries integrades al directori, ja que aporten diversos beneficis:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Replicació multimaster}: Amb AD DS, qualsevol servidor DNS pot
+  acceptar actualitzacions dinàmiques i replicar-les entre tots els
+  servidors DNS.
+\item
+  \textbf{Seguretat millorada}: Mitjançant ACLs, es poden restringir les
+  actualitzacions dinàmiques per a equips o grups específics, cosa que
+  no és possible amb zones primàries estàndard.
+\item
+  \textbf{Automatització i sincronització}: Quan es crea un nou
+  controlador de domini, les zones es repliquen automàticament.
+\item
+  \textbf{Millor rendiment}: La sincronització de les zones integrades
+  al directori és més eficient que les actualitzacions estàndard,
+  evitant la transferència de tota la zona.
+\end{itemize}
+
+Si integreu les zones DNS amb AD DS, també simplifiqueu la gestió de la
+rèplica de bases de dades, evitant la necessitat de mantenir topologies
+de rèplica separades per a DNS i AD DS. Aquesta integració permet
+visualitzar la gestió com una única entitat administrativa.
+
+Finalment, només les zones primàries es poden emmagatzemar al directori.
+Les zones secundàries han d'emmagatzemar-se en fitxers de text
+estàndard, però amb el model de replicació multimaster d'AD DS, no són
+necessàries si totes les zones estan en AD DS.
+
+\section{6 Servei de DHCP}\label{servei-de-dhcp}
+
+El servei \textbf{DHCP (Dynamic Host Configuration Protocol)} en
+\textbf{Windows Server} és una funció que permet als administradors de
+xarxa automatitzar l'assignació d'adreces IP i altres paràmetres de
+configuració de xarxa als dispositius que es connecten a la xarxa.
+
+\subsubsection{6.1 Funcionament del servei
+DHCP}\label{funcionament-del-servei-dhcp}
+
+Es tracta d'un típic servici que respon a la filosofia del model client
+servidor. Quan un dispositiu (com un ordinador, càmera IP, mòbil,
+impressora\ldots) es connecta a la xarxa, envia una sol·licitud per
+obtenir una adreça IP. El servidor DHCP respon a aquesta petició
+assignant-li una adreça IP de manera automàtica i dinàmica, així com
+altres paràmetres de configuració de xarxa com:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Adreça IP}: Una adreça única dins del rang establit pel
+  servidor.
+\item
+  \textbf{Màscara de subxarxa}: Indica la porció de la xarxa a la qual
+  pertany l'adreça IP.
+\item
+  \textbf{Passarel·la predeterminada}: Normalment, és l'adreça del
+  router o un altre dispositiu de xarxa que connecta la xarxa local amb
+  Internet.
+\item
+  \textbf{Servidors DNS}: Les adreces dels servidors que resolen els
+  noms de domini a adreces IP.
+\end{itemize}
+
+\subsubsection{Avantatges del servei DHCP en Windows
+Server}\label{avantatges-del-servei-dhcp-en-windows-server}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Gestió centralitzada}: DHCP facilita la gestió de les adreces
+  IP des d'un servidor central, evitant la configuració manual de cada
+  dispositiu.
+\item
+  \textbf{Eficàcia}: Assegura que no es produeixin conflictes d'adreces
+  IP duplicades a la xarxa.
+\item
+  \textbf{Escalabilitat}: És especialment útil en xarxes grans, on
+  assignar IPs manualment seria lent i poc pràctic.
+\item
+  \textbf{Flexibilitat}: Si volem un canvi de totes les IP o gran part,
+  només hem de configurar-lo al servici i reiniciar el dispositius.
+  Imaginem, per exmeple, passar de IPv4 de classe C a B per a tota una
+  xarxa.
+\item
+  \textbf{Actualitzacions automàtiques}: El servidor DHCP pot canviar
+  les adreces IP dels dispositius a mesura que es connecten i
+  desconnecten de la xarxa.
+\item
+  \textbf{Concessió temporal d'adreces IP}: Les IPs es poden assignar
+  amb una duració específica, de manera que quan un dispositiu deixa de
+  ser necessari a la xarxa, l'IP es pot reutilitzar.
+\end{itemize}
+
+\subsubsection{Components principals del
+DHCP}\label{components-principals-del-dhcp}
+
+\begin{itemize}
+\item
+  \textbf{Rangs o àmbits}: Un conjunt de configuracions que defineixen
+  un rang d'adreces IP que es poden assignar als dispositius clients.
+\item
+  \textbf{Exclusions}: Quan volem que dins del rang alguna IP o grup
+  d'IPs (``subrangs'') no s'assignen. Pot ser útil per si volem
+  assignar-les de forma fixa a determinats dipositius.
+\item
+  \textbf{Reserves}: Permeten assignar una IP fixa a un dispositiu en
+  particular basat en la seva adreça MAC, assegurant que sempre obtinga
+  la mateixa IP.
+\item
+  \textbf{Opcions DHCP}: Paràmetres addicionals, com ara passarel·les
+  (router o gateway) predeterminades o DNS, que el servidor DHCP pot
+  proporcionar als dispositius clients.
+\end{itemize}
+
+\subsubsection{Funcionament del procés
+DHCP}\label{funcionament-del-procuxe9s-dhcp}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Discover}: El client envia una petició en difusió per trobar
+  un servidor DHCP a la xarxa.
+\item
+  \textbf{Offer}: El servidor DHCP respon oferint una adreça IP.
+\item
+  \textbf{Request}: El client accepta l'oferta enviant una sol·licitud
+  per a l'adreça IP.
+\item
+  \textbf{Acknowledge}: El servidor DHCP confirma l'assignació de
+  l'adreça IP al client.
+\end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics{png/DHCPesquema.jpg}
+\caption{Esquema C/S}
+\end{figure}
+
+En resum, el servei DHCP en Windows Server facilita la gestió i
+assignació automàtica d'adreces IP en una xarxa, millorant l'eficiència
+i reduint la complexitat de la configuració manual de xarxes.
+
+\subsection{5.3 Enfoc pràctic}\label{enfoc-pruxe0ctic}
+
+Aquests punt s'aboradarà des de 3 punts de vista:
+
+\begin{itemize}
+\tightlist
+\item
+  Un enfoc teòric.
+\item
+  Vorem, més avant, alguns cmdLets per instal·lar/desinstal·lar,
+  consultar i fer algun canvi.
+\item
+  Un enfoc pràctic en usar-los en les activitats desenvolupades des del
+  GUI que abordem al següent apartat mitjançant el curs de Windows
+  Server d'aquest repositori.
+\end{itemize}
+
+\section{5.4 DHCP}\label{dhcp}
+
+Teniu una guia molt resumida en el curs de Windows Server d'aquest
+repositori. Entreu al següent enllaç\ldots{}
+
+\href{https://github.com/tofermos/Windows-Server/blob/main/md/DHCP.md}{}
 
 \end{document}

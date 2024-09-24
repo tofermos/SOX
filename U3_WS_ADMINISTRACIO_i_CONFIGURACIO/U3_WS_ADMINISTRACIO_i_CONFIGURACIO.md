@@ -49,9 +49,9 @@ Al curs de Windows 11 d'aquest repositori podreu trobar una guia més que sufici
 
 [Consoles i altres utilitats](https://tofermos.github.io/Windows11/gestiodelequip/gestiodelequip.html)
 
-## Consoles i altres utilitats específiques de Windows
+## Consoles i altres utilitats específiques de Windows Server
 
-A banda de les vistes en l'apartat anterior i que són comunes, la pràctica totalitat, a tots els Windows tenim que,específicament de Windows Server les consoles i utilitats següents:
+A banda de les vistes en l'apartat anterior i que són comunes, la pràctica totalitat, a tots els Windows tenim que, específicament de Windows Server les consoles i utilitats següents:
 
 **servermanager.exe** - Administrador de Servidors. Aquesta és la utilitat (no es consola estrictament parlant) central per a gestionar el servidor. Permet configurar rols i característiques, gestionar discos, supervisar el rendiment, entre altres funcions.
 
@@ -62,6 +62,8 @@ A banda de les vistes en l'apartat anterior i que són comunes, la pràctica tot
 **dhcpmgmt.msc** - Gestió de DHCP: Permet administrar el rol de servidor DHCP per assignar adreces IP automàticament a dispositius de la xarxa.
 
 **fsmgmt.msc** - Carpetes compartides: Una consola específica per gestionar carpetes i recursos compartits al servidor, encara que també es pot trobar en versions professionals de Windows 10/11.
+
+*(els 2 següents no anem a mirar-los en SOX)*
 
 **tsadmin.msc** o Remote Desktop Services Manager: Utilitzada per gestionar sessions d'escriptori remot, més comuna en Windows Server per administrar entorns d’escriptori remot (RDS).
 
