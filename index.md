@@ -3,7 +3,7 @@ title: |
   | SOX 2024-2025
 subtitle: |
   | IES MARIA ENRÍQUEZ
-author: "Tomàs Ferrandis Moscardó"
+author: "tofermos2024"
 output:
   html_document:
     toc: true
@@ -38,11 +38,14 @@ linestretch: 1.5
 ### [2 WINDOWS SERVER. INSTAL·LACIÓ I ÚS](#U2)
 |||||
 |:------|:--|:--|
-|Windows Server. Instal·lació i ús (I)|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.pdf)|
-|Windows Server. Instal·lació i ús (II)|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.pdf)|
+|Introducció al Windows Server|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.pdf)|
+|Instal·lació en Virtualbox|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.pdf)|
 
 ### [3 WINDOWS SERVER. ADMINISTRACIÓ i CONFIGURACIÓ](#U3)
 |||||
 |:------|:--|:--|
-|Windows Server. Administració i configuració|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO.pdf)|
+|Introducció al Servidor|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO--I-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO--I-.pdf)|
+|Crear un domini|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-II-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-II-.pdf)|
+|Afegir un client al domini|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-III-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-III-.pdf)|
+|El servei DHCP|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-IV-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-IV-.pdf)|
 

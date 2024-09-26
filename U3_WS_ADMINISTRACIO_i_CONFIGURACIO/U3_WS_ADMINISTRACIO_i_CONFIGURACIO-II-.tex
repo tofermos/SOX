@@ -1,0 +1,582 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{catalan}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={U3. WINDOWS SERVER. ADMINISTRACIÓ I CONFIGURACIÓ (II)},
+  pdfauthor={@tofermos 2024},
+  pdflang={ca-ES},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{U3. WINDOWS SERVER. ADMINISTRACIÓ I CONFIGURACIÓ (II)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{CREAR UN DOMINI ( Instal·lar AD-DS)}
+\author{@tofermos 2024}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\setstretch{1.5}
+\newpage
+\renewcommand\tablename{Tabla}
+
+\section{1 Servei de directori}\label{servei-de-directori}
+
+\subsection{1.1 Conceptes de Directori i
+Domini}\label{conceptes-de-directori-i-domini}
+
+Bàsicament podem entendre un directori com una llista detallada
+d'objectes. Per exemple, l'agenda de tlf del mòbil és un tipus de
+directori que guarda informació de contactes de persones o entitats.
+Objectes per igual (contactes) que poden tindre nom, adreça, tlf,
+e-mail, malnom\ldots{}
+
+\subsubsection{Dos classes
+d'informació}\label{dos-classes-dinformaciuxf3}
+
+L'Active Directory Domain Services (AD DS) és molt semblant però més
+flexible i dinàmic. Permet emmagatzemar la informació de tota
+l'organització. Una informació sobre l'estructura de l'propi directori i
+també sobre com s'ha d'administrar. AD DS pot emmagatzemar informació
+sobre l'organització, llocs, ordinadors, usuaris, objectes compartits i
+qualsevol altra cosa que pugui formar part de la infraestructura de
+xarxa. A diferència de la llista de contactes de whatsapp, ací els
+elements emmagatzemats son de diferent naturales (usuaris, grups, UO,
+polítiques d'accés, permisos, assignació de recursos, etc.) Cal recordar
+que tota aquesta informació s'emmagatzema en una base de dades
+jeràrquica.
+
+\subsubsection{Replicable}\label{replicable}
+
+El motor d'aquesta base de dades és el mateix que incorpora Microsoft
+Exchange Server i permet la replicació de controladors de domini. És a
+dir, es pot enviar la informació continguda a la base de dades a
+diferents controladors de domini a través de la xarxa.
+
+A més d'administrar polítiques que seran vàlides a tota l'organització,
+Active Directory permet realitzar operacions com la instal·lació de
+programes, de manera simultània i centralitzada, en multitud de clients
+o aplicar actualitzacions crítiques en tota l'organització.
+
+Quan utilitzem Active Directory, tenim a la nostra disposició eines
+d'administració per establir polítiques de grup, per incloure uns grups
+dins d'altres en diferents nivells, un accés senzill a l'arbre
+d'usuaris, ordinadors, impressores i contactes, etc. Òbviament, podem
+utilitzar Windows Server 2019 sense usar Active Directory, però estarem
+prescindint d'un ampli conjunt de capacitats.
+
+\subsubsection{Dos tipus de components}\label{dos-tipus-de-components}
+
+Pel que fa a l'estructura de l'servei de directori, el primer que hem de
+saber és que hi ha dos tipus de components en Active Directory: els
+components físics i els components lògics.
+
+\emph{Taula 1: Components de l'AD-DS}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Components físics & Components lògics \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Controladors de dominis & Dominis \\
+Llocs & Boscos \\
+Xarxes & Arbres \\
+& Unitats organitzatives \\
+\end{longtable}
+
+\begin{quote}
+Nota:
+
+Al mòdul de SOX ens centrem en desenvolupar un model senzill
+d'organització: un Domini amb Unitats Organitzatives.
+\end{quote}
+
+\section{2 Creació del domini}\label{creaciuxf3-del-domini}
+
+De moment el que tenim és una LAN del tipus WorkGroup (grup de treball).
+Usuaris locals de cada màquina i cap administració centralitzada. Per
+passar de WORKGROUP -\textgreater{} DOMAIN caldrà que:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Instal·leu el Active Directory ( AD-DS )
+\item
+  Promocioneu el servidor a Controlador del Domini (DC)
+\end{enumerate}
+
+\subsection{2.1 Instal·lació de l'Active
+Directory}\label{installaciuxf3-de-lactive-directory}
+
+\includegraphics{png/instalAD1.png}
+
+\includegraphics{png/instalAD2.png}
+
+\includegraphics{png/instalAD3.png}
+
+\includegraphics{png/instalAD4.png}
+
+\includegraphics{png/instalAD5.png}
+
+\subsection{2.2 La Promoció de Windows Server a Domain Controller
+(DC)}\label{la-promociuxf3-de-windows-server-a-domain-controller-dc}
+
+\includegraphics{png/instalADFi.png}
+
+\subsection{2.3 Crear un nou bosc}\label{crear-un-nou-bosc}
+
+\includegraphics{png/noubosc.png}
+
+\includegraphics{png/noubosc2.png}
+
+La ressolució de noms, de moment, no la configurem.
+
+\includegraphics{png/nodns.png}
+
+\textbf{Nom NetBios del Domini}
+
+\includegraphics{png/nomnetbiosdomini.png}
+
+\textbf{Carpetes importants}
+
+\includegraphics{png/carpetesimportants.png}
+
+\textbf{Resum de les accions fetes i Script}
+
+\includegraphics{png/afegirboscfi.png}
+
+\begin{quote}
+NOTA
+
+L'script que podem descarregar-nos ens serà útil en la implementació del
+AD-DS en un Windows Server Core. Per executar-lo cmdLet a cmdLet o com a
+script desant-lo amb l'extensión *.ps1
+\end{quote}
+
+\section{3 Objectes del AD}\label{objectes-del-ad}
+
+Tot seguit estudiareu els objectes:
+
+\begin{itemize}
+\tightlist
+\item
+  Usuaris
+\item
+  Grups d'usuaris
+\item
+  Unitats organtizatives
+\end{itemize}
+
+\subsection{3.1 Usuaris del Domini}\label{usuaris-del-domini}
+
+A la present unitat i en avant, anem a centrar-nos en els usuaris del
+domini. Sobre usuaris locals (els que usem en monoestació o WorkGroup)
+teniu tota la informació al curs de Windows 1x d'aquest repositori.
+
+Recordem que els grups són un tipus de contenidor que permeten definir
+conjunts d'usuaris i definir permisos basant-nos en aquesta pertinença
+al grup, en lloc de fer-ho de manera individual, usuari per usuari. Com
+a pauta general, l'agrupació d'objectes sol facilitar les tasques
+d'administració reduint les possibilitats d'error.
+
+\subsubsection{Creació d'usuaris}\label{creaciuxf3-dusuaris}
+
+Tot i que després vorem com poden ser els usuaris, és a dir a quin o
+quins grups poden pertànyer, fem una mirada prèvia al manteniment dels
+usuaris per donar un enfoc pràctic i més dinàmic.
+
+\subsubsection{Des de l'Adminsitrador de l'Active
+Directory}\label{des-de-ladminsitrador-de-lactive-directory}
+
+\includegraphics{png/usuaris1.png}
+
+\subsubsection{Creem un usuari}\label{creem-un-usuari}
+
+\includegraphics{png/usuaris2.png}
+
+\includegraphics{png/usuaris3.png}
+
+\includegraphics{png/usuaris4.png}
+
+\subsubsection{Configurem el compte d'usuari
+creat}\label{configurem-el-compte-dusuari-creat}
+
+\includegraphics{png/usuaris5.png}
+
+\includegraphics{png/usuaris6.png}
+
+\includegraphics{png/usuaris7.png}
+
+\includegraphics{png/usuaris8.png}
+
+\includegraphics{png/usuaris9.png}
+
+\subsection{3.2 Grups d'usuaris en l'AD}\label{grups-dusuaris-en-lad}
+
+\subsubsection{Tipus i àmbits}\label{tipus-i-uxe0mbits}
+
+Hi ha dos grans tipus de grups al Directori Actiu del Windows:
+
+\textbf{Grups de seguretat:} aquest tipus de grups permet definir
+permisos per a recursos del domini. Són els utilitzats a les llistes de
+control d'accessos (ACLs) que s'estudiaran més endavant. Aquest tipus de
+grups són els que s'utilitzaran a la administració de la xarxa.
+
+\textbf{Grups de distribució:} no tenen característiques de seguretat,
+únicament són un llistat d'usuaris per a missatgeria.
+
+Dins dels grups de seguretat hi ha tres àmbits:
+
+\textbf{Grup Universal:} és un grup els permisos del qual s'estenen a
+diversos dominis. A més, aquest tipus de grups pot estar format per
+usuaris o grups d'usuaris de diferents dominis.
+
+\textbf{Grup Global:} és molt similar als grups universals, és a dir
+poden permetre l'accés a recursos de qualsevol dels dominis de l'arbre
+del Directori Actiu, però llevat que tots els membres del grup deuen
+pertànyer al mateix domini.
+
+\textbf{Grup local del domini:} és un grup creat en un domini amb
+membres que poden provenir d'altres dominis i que només pot tenir accés
+a recursos dins del domini.
+
+\textbf{En quins casos utilitzarem cada àmbit?}
+
+Els grups universals solen tenir la seva utilitat en grans empreses on
+s'ha definit un bosc de dominis assignant dominis a cadascun dels seus
+departaments o divisions. En aquest tipus d'estructures, quan se'n
+realitza una modificació en el grup, aquesta ha de replicar-se en tots
+els controladors de domini que estiguin configurats com a catàleg
+global. En xarxes de domini únic es poden aplicar grups globals que
+tindran més sentit quan es defineixi un segon domini, el que pot passar
+en el moment en què hi hagi una ampliació de l'organització.
+
+Com a pautes generals per a l'administració de xarxes tindrem en compte
+les consideracions següents
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  No cal assignar un àmbit més ampli del necessari.
+\item
+  Els grups locals de domini no es poden processar a altres dominis.
+\item
+  Un grup global no es replica fora del domini, ja que no forma part del
+  pla de replicació del catàleg global.
+\item
+  Els grups universals es repliquen per tota la xarxa generant trànsit
+  que tenia certa incidència en el rendiment abans dels Windows Server
+  2008. hui en dia en té poca.
+\item
+  Si un grup universal està compost per grups globals i es produeixen
+  canvis dins dels grups globals, no es produeix un canvi al catàleg
+  global, i per tant aquesta modificació no comporta una replicació en
+  tots els controladors de domini del bosc.
+\end{enumerate}
+
+\subsubsection{Grups predefinits}\label{grups-predefinits}
+
+En instal·lar el Directori Actiu podem comprovar que s'han generat
+automàticament una sèrie de grups predefinits amb uns permisos d'acord
+amb les funcions assignades:
+
+\includegraphics{png/usuaris10.png}
+
+Examinem les funcions d'alguns dels grups més utilitzats:
+
+\textbf{Usuaris del domini:} grup global que conté tots els comptes
+d'usuaris del domini.
+
+\textbf{Administradors del domini:} grup global que permet als membres
+realitzar tasques d'administració del domini.
+
+\textbf{Administradors d'empresa:} grup universal que permet als membres
+realitzar tasques d'administració a tots els dominis de la xarxa.
+
+\textbf{Administradors d'esquema:} grup universal que permet als membres
+modificar l'estructura dels objectes del Directori actiu.
+
+\textbf{Administradors:} grup local que permet als seus membres
+realitzar tasques d'administració al controlador de domini. Operadors de
+còpies de seguretat: grup local que permet als seus membres fer còpies
+de seguretat o restaurar fitxers dins del domini.
+
+\textbf{Operadors de compte:} grup local que permet als membres crear,
+editar i eliminar comptes d'usuari i grups.
+
+\textbf{Operadors d'impressió:} grup local que permet als membres
+configurar i administrar l'ús d'impressores de xarxa.
+
+\textbf{Operadors de servidor:} grup local que permet als seus membres
+crear carpetes compartides al servidor i realitzar còpies de seguretat o
+restaurar fitxers al controlador de domini.
+
+\textbf{Usuaris:} grup local que limita les possibilitats que un usuari
+faci un canvi accidental al sistema però sí permet executar la majoria
+de les aplicacions.
+
+\subsubsection{Creació de grups.}\label{creaciuxf3-de-grups.}
+
+\includegraphics{png/usuaris11.png}
+
+\includegraphics{png/usuaris12.png}
+
+\subsubsection{Com afegir usuaris al
+grup.}\label{com-afegir-usuaris-al-grup.}
+
+Opció 1: Propietats del grup\ldots{}
+
+\includegraphics{png/usuaris13.png}
+
+Opció 2: Des de les Propietats de l'usuari\ldots{}
+
+\includegraphics{png/usuaris14.png}
+
+\includegraphics{png/usuaris15.png}
+
+\subsection{3.3 Unitats organitzatives
+(GUI)}\label{unitats-organitzatives-gui}
+
+Les UO son agrupacions o subdivisions del domini per tal de facilitar
+l'administració. Contenen recursos i objectes.
+
+Estes subdivisions poden fer-s'hi en base a 3 criteris:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Geogràfic o territorial (Les típiques delegacions de les empreses).
+\item
+  Organització interna (agrupant departaments de l'empreses que poden
+  equivaldre a grups d'usuaris\ldots)
+\item
+  Dinàmiques, de projectes on van incorporant-se o abandonant usuaris
+  per exemple.
+\end{enumerate}
+
+\begin{quote}
+Note
+
+Per a la gestió de UO des del PowerShell podeu accedir al curs d'aquest
+repositori de PS:
+\url{https://github.com/tofermos/PowerShell/blob/main/ADunitatsOrganitzatives.md}
+\end{quote}
+
+\subsubsection{Creació}\label{creaciuxf3}
+
+\includegraphics{png/UO1.png}
+
+Podem aniuar-les (unes dins d'altres) i fer que hereten les
+``propietats''
+
+\subsubsection{Protecció contra eliminació i canvi
+accidental}\label{protecciuxf3-contra-eliminaciuxf3-i-canvi-accidental}
+
+Quan intentem moure o eliminar una UO tenim un missatge avisant que el
+canvi pot fer que deixen d'alicar-se directives o afectar als usuaris
+que la controlen (per exemple).
+
+\includegraphics{png/uoMoverAviso.png}
+
+Si acceptem veiem que és habitual que no ens deixe.
+
+\includegraphics{png/uoMoverNOPermiso.png}
+
+Per defecte es creen protegides per evitar eliminacions o canvis
+d'ubicació accidentals. Ho hem de desprotegir prèviament.
+
+\includegraphics{png/uoVerCaracteristicasAvanzadas.png}
+
+\includegraphics{png/uoProtegerContraEliminacion.png}
+
+\subsubsection{Delegació}\label{delegaciuxf3}
+
+És interessant que assignem el control dels objectes i recursos de la
+delegació territorial/secció de l'empresa/projecte a un usuari.
+
+!{[}{]}{]}(png/uo1.png)
+
+\begin{quote}
+Note El més habitual serà que l'usuari siga Administrador i puga iniciar
+sessió de forma remota. Consulteu la fitxa de Escriptori Remot
+\end{quote}
+
+\section{4 Servei DNS}\label{servei-dns}
+
+L'objecte del mòdul no és l'estudi dels serveis sinó dels Sistemes
+Operatius. En aquest cas la integració del servei DNS amb el Windows
+Server.
+
+Aquests punt s'aboradarà des de 3 punts de vista:
+
+\begin{itemize}
+\tightlist
+\item
+  Un enfoc teòric en aquest apartat
+\item
+  Vorem, més avant, alguns cmdLets per instal·lar/desinstal·lar,
+  consultar i fer algun canvi.
+\end{itemize}
+
+\subsection{4.1 La integració del DNS al servei AD
+DS}\label{la-integraciuxf3-del-dns-al-servei-ad-ds}
+
+El servei de servidor DNS està integrat en el disseny i implementació
+dels serveis de domini d'Active Directory (AD DS), proporcionant una
+eina empresarial per organitzar, gestionar i localitzar recursos en una
+xarxa.
+
+Quan implementeu servidors DNS amb AD DS, tingueu en compte que:
+
+\begin{itemize}
+\tightlist
+\item
+  El DNS és necessari per localitzar els controladors de domini.
+\item
+  El servei d'inici de sessió a la xarxa utilitza el servidor DNS per
+  registrar els controladors de domini al vostre espai de noms DNS.
+\item
+  Els servidors DNS amb Windows Server poden utilitzar AD DS per
+  emmagatzemar i replicar les zones DNS.
+\item
+  La integració de zones DNS amb AD DS permet funcions com la rèplica
+  d'AD DS, actualitzacions dinàmiques segures, i l'envelliment i
+  eliminació de registres.
+\end{itemize}
+
+\textbf{Com s'integra DNS amb AD DS}
+
+Quan instal·leu AD DS en un servidor i el promocioneu a controlador de
+domini, se us demana que especifiqueu un nom de domini DNS per al domini
+AD DS. A més, se us ofereix l'opció d'instal·lar el servidor DNS, ja que
+és necessari per localitzar controladors de domini dins del domini AD
+DS.
+
+\subsection{4.2 Beneficis de la integració d'AD
+DS}\label{beneficis-de-la-integraciuxf3-dad-ds}
+
+Per a xarxes que utilitzen DNS per a AD DS, es recomana utilitzar zones
+primàries integrades al directori, ja que aporten diversos beneficis:
+
+\begin{itemize}
+\item
+  \textbf{Replicació multimaster}: Amb AD DS, qualsevol servidor DNS pot
+  acceptar actualitzacions dinàmiques i replicar-les entre tots els
+  servidors DNS.
+\item
+  \textbf{Seguretat millorada}: Mitjançant ACLs, es poden restringir les
+  actualitzacions dinàmiques per a equips o grups específics, cosa que
+  no és possible amb zones primàries estàndard.
+\item
+  \textbf{Automatització i sincronització}: Quan es crea un nou
+  controlador de domini, les zones es repliquen automàticament.
+\item
+  \textbf{Millor rendiment}: La sincronització de les zones integrades
+  al directori és més eficient que les actualitzacions estàndard,
+  evitant la transferència de tota la zona.
+\end{itemize}
+
+Si integreu les zones DNS amb AD DS, també simplifiqueu la gestió de la
+rèplica de bases de dades, evitant la necessitat de mantenir topologies
+de rèplica separades per a DNS i AD DS. Aquesta integració permet
+visualitzar la gestió com una única entitat administrativa.
+
+Finalment, només les zones primàries es poden emmagatzemar al directori.
+Les zones secundàries han d'emmagatzemar-se en fitxers de text
+estàndard, però amb el model de replicació multimaster d'AD DS, no són
+necessàries si totes les zones estan en AD DS.
+
+\end{document}
