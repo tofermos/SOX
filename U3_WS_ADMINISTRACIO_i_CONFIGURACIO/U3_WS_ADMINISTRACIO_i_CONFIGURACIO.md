@@ -22,7 +22,7 @@ output:
 
 # 1 Funcions d’un servidor
 
-Des del punt de vista del que series les funcions d'un Sisteam Operatiu de Xarxa trobem, com ja hem vist a l'anterior unitat, que es corresponen a alguns dels Rols i Característiques. Podem dir que Windows Server les implementa així. 
+Des del punt de vista del que series les funcions d'un Sistema Operatiu de Xarxa trobem, com ja hem vist a l'anterior unitat, que es corresponen a alguns dels Rols i Característiques. Podem dir que Windows Server les implementa així. 
 No tots els Rols i Característiques, menys encara, són funcions principals.
 
 1. La funció de Servei de Directori que a Linux serà en OpenLDAP i vorem més avant, ací els el **Active Directory Domain Services (AD DS)**: Permet crear i gestionar dominis de forma centralitzada i còmoda.
