@@ -5,44 +5,51 @@ lang: "ca-ES"
 papersize: A4
 linestretch: 1.5
 output:
-  pdf_document:
-    toc: true
-    keep_tex: true
-    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     toc_depth: 3
     df_print: paged
     number_sections: false
+  pdf_document:
+    toc: true
+    keep_tex: true
+    latex_engine: xelatex
 ---
 
 \newpage
 \renewcommand\tablename{Tabla}
 
-# 1 INSTAL·LACIÓ DEL WINDOWS SERVER 2019 AMB ENTORN GRÀFIC
+# 1 Resum
 
-**Resum**
-
-Un primer pas per emular una Domini serà la instal·lació d'un Windows Server i dos màquines de Windows 1X.
+En aquesta unitat prèvia a la creació d'un domini:
 
 1. Configurarem les MV com a Xarxa Interna. Emulem una xarxa local de computadores connectades a un switch.
 
-2. Configuració mitjançant IP fixes. IPs privades en la mateixa xarxa. 
+2. Configurarem la xarxa Windows mitjançant IP fixes privades en la mateixa xarxa. 
 
-3. Detecció de xarxes i compartició en Windows.
-  * Revisió de la configuració del Firewall
-  * Servicis necessari (dependències)
+3. Coneixerem sobre protocols i Firewall :
 
-4. Protocol ICMP4 (ping)
+  * protocols i aplicacions (detecció de xarxes i compartició en Windows) 
+  * altres prrotocols com el ICMP4 (ping) o SMB
+  * les restriccions del Firewall
+  
+4. Estudiarem aspectes bàsics de la compartició de carpetes.
 
-  * Revisió de la configuració del Firewall 
+5. Treballarem la captura d'unitats (GUI/CLI)
 
-5. Configuracions generals simples ( nom del PC i WG, Actualizacions automàtiques, Zona horària...)
+6. Veurem algunes configuracions generals simples ( nom del PC i WG, Actualizacions automàtiques, Zona horària...)
 
-# 2 CONFIGURAR EL SERVIDOR
+# 2 Canviar el nom del servidor i Workgroup
 
-# 2.1 "Xarxa Interna" en VirtualBox.
+
+![*Nom equip i del Grup de Treball*](png/ADDS/WorkgroupNomEquip.png)
+
+
+Configurar la xarxa Servidor
+
+
+# 3 Configuració de la xarxa en Virtualbox. "Xarxa Interna"
 
 Estem "conectant cables al switch".
 
@@ -56,7 +63,9 @@ Podem instal·lar un segon adaptador per disposar de la connexió d'Internet de 
 >
 > En el WINDOWS 1x hem de tindre NOMÉS la tarja interna. No perdeu de vista la "realitat" que estem emulant !
 
-# 2.2 Firewall de Windows. Aplicaciones permitidas
+# 4 Configuració de la xarxa en Windows.
+
+## 4.1 Firewall de Windows. Aplicaciones permitidas
 
 Des del mateix Administrador de Servidor accedir al **Firewall: Aplicaciones permitidas** i assegurar que ens permeta Compartir i Detectar recursos a través de la xarxa. Dos capacitat que activarem en l'apartat següent:
 
@@ -66,32 +75,9 @@ Des del mateix Administrador de Servidor accedir al **Firewall: Aplicaciones per
 
 ![*Firewall permet compartir y detectar xarxes*](png/ADDS/FirewallCompartiryDetectar.png)
 
+`
 
-# 2.3 Net use
-
-Fins i tot quan no funcione la detecció de xarxes podem accedir a les carpetes compartides a través d ela xarxa fent ús dels comandaments NET USE.
-
-**Raó**
-
-La detecció de xarxes en Windows es basa en una combinació de protocols (LLMNR, NetBIOS, SSDP) i serveis com l'Explorador de equipos. Enn canvi, el comandament **net use** usa el protocolo **SMB  Samba** per establri una **conexió directa** con el recurs compartit.
-
-*Win + R:cmd*
-
-```cmd
-net use F: \\WinServ1\Dades2024 /persistent:yes
-```
-
-Per veure totes les Unitat de xarxa ( "lletres") assignades
-```cmd
-net use
-```
-
-Per eliminar-ne alguna
-```cmd
-net use f: /delete
-```
-
-# 2.4 Configuració de xarxa en Windows. IPs privades en la mateixa xarxa
+## 4.2 IPs privades en la mateixa xarxa
 
 Com ja sabeu del mòdul de XAL de 1r de SMX haureu de configurar les IPs. Per exemple:
 
@@ -103,7 +89,7 @@ Com ja sabeu del mòdul de XAL de 1r de SMX haureu de configurar les IPs. Per ex
 <img width=60% src="png/ADDS/tarja2.png"></img>
 
 
-## 2.5 Configuració de xarxa en Windows. Detecció de xarxes i recursos
+## 4.3 Detecció de xarxes i recursos
 
 
 *Windows+R: Configuración, Red e internet, Centro de Redes y Recursos Compartidos*
@@ -122,7 +108,7 @@ Configuración, Red e internet ( o *Win + I*) Centro de Redes y Recursos Compart
 
 ![](png/ADDS/ActivaUsoCompartidoCarpetasPúblicasyContrasenya.png)
 
-## Problema en Windows Server i la Xarxa Privada
+## 4.4 Problema en Windows Server i la Xarxa Privada
 
 **Problema:**
 
@@ -137,7 +123,7 @@ La detecció de serveis compartits depén d'altres serveis que no estan executan
 
 **Solució:**
 
-Abans que res assegureu-vos que teniu el Firewall configurat com hem indicat al punt anterior ( Aplicaciones permitidas...). Si és correcte...
+Abans que res assegureu-vos que teniu el Firewall configurat com hem indicat al punt anterior (Aplicaciones permitidas...). Si és correcte...
 
 Fent spoiler al tema de **Serveis de Windows** que tractarem més avant, cal que activem una sèrie de serveis necessaris (dependències)
 
@@ -147,29 +133,27 @@ Això es deu a que no estan habilitats, caldrà executar la consola de microsoft
 Els serveis que cal que estiguen executant-se ( dependències) són:
 
 * Client DNS
-
 ![Servici Client de DNS](png/ADDS/ClienteDNS.png)
 
 * Publicación de resursos de deteccción de función
-
 ![*Servici de publicación de detección de redes*](png/ADDS/PublicacióndeRecursodeDeteccióndeFunción.png)
 
 * Detección host de SSDP
-
 ![*Detección SSDP des de servermanager*](png/ADDS/DetecciónSSDP.png)
 
 Veiem que no podem inciar-lo. Cal prèviament habilitar-lo des de la consola (Win + R: *services.msc*).
 
+
 ![*Detección SSDP des de servermanager*](png/ADDS/ServicioDetecciónSSDP.png)
 
-* Dispositivo host de UPnP
 
+* Dispositivo host de UPnP
 De forma anàloga procedirem amb aquest servei:
 
 ![*Servici de Dispositiu host de UPnP*](png/ADDS/ServicioDispositivoUPnP.png)
 
 
-## 2.6 Provar la connectivitat amb el protocol ICMP (ping)
+## 4.5 Provar la connectivitat amb el protocol ICMP (ping)
 
 Una prova molt clàssica és la del ping (protocol ICMP4). La fem des de totes les màquines.
 
@@ -183,11 +167,8 @@ Si tenim problemes podem revisar, la configuració del Firewall:
 ![*Firewall ICMP4 (echo salida)*](png/ADDS/FirewallICMP4Salida.png)
 
 
-# 3 Canviar el nom del servidor i Workgroup
 
-![*Nom equip i del Grup de Treball*](png/ADDS/WorkgroupNomEquip.png)
-
-# 4 Revisar aspectes bàsics de la configuració
+# 5 Aspectes bàsics de la configuració des del *msconfig*
 
 
 Un exemple podria ser desactivar/activar el **Servei d'actualitzacions**
@@ -207,9 +188,13 @@ Cal connexió a Internet. Caldrà una segona tarja connectada a un router (NAT e
 
 <img width=60% src="png/ADDS/zonahoraria.png"></img>
 
-# 5 Carpetes compartires i consola *fsmgmt.msc*
+# 6 Recursos compartits en xarxa
+
+
+## 6.1 Compartició de carpetes
 
 La compartició de carpetes la farem sense especificar permisos per a usuaris donat que encra no tenim ususari del domini. No anem a "replicar-los" com hem fet en un Workgroup. 
+
 ![*Compartició de carpeta*](png/ADDS/Compartir.png)
 
 Pondem limitar el nombre d'usuaris que hi poden accedir
@@ -222,15 +207,36 @@ Pondem limitar el nombre d'usuaris que hi poden accedir
 D'igual manera passaria amb els fitxers oberts.
 
 
-## 5.1 Assignació o captura d'Unitat de Xarxa
+## 6.2 Assignació o captura d'Unitat de Xarxa
 
 Ja ho hem vist anteriorment amb el Net use, però una vegaga funciona correctament la els protocols que faciliten *la compartició de carpetes i impressores* i la *detecció de la xarxa*, podem assignar unitats a través del GUI buscant el recurs per la xarxa.
 Simplement amb botó contrari *Asignar unidad de red*. En reiniciar el client vorem que continua (el mateix efecte que el /persistent:yes).
 
 La forma en que es podrà automatitzar esta captura per a tots els clients d'una xarxa la vorem més avant.
 
+## 6.3 Net use
 
-## 5.3 Consola del sistema de fitxers *fsmgmt.msc*
+Amb els comandaments *net* podem, entre d'altres coses, assignar també unitat de xarxa. 
+Fins i tot quan no funcione la detecció de xarxes (el problema de dependències tractat al punt 2.5 podem accedir a les carpetes compartides a través de la xarxa fent ús dels comandaments *Net use*. 
+Net use estableix una connexió directa basad en el protocol SMB (Samba) i no usa els altres protocls al·ludits al punt 2.5.
+
+*Win + R:cmd*
+
+```cmd
+net use F: \\WinServ1\Dades2024 /persistent:yes
+```
+
+Per veure totes les Unitat de xarxa ( "lletres") assignades
+```cmd
+net use
+```
+
+Per eliminar-ne alguna
+```cmd
+net use f: /delete
+```
+
+# 7 Consola del sistema de fitxers *fsmgmt.msc*
 
 La consola *fsmgmt.msc* ens permet
 
@@ -239,3 +245,23 @@ La consola *fsmgmt.msc* ens permet
 * Veure els recursos compartits amb el nom que es comparteixen. Si acaba amb $ són ocults.
 
 ![*Consola de sistema de fitxers*](png/ADDS/fsmgmt.png)
+
+
+
+# 8 Nota final sobre els prototocols en Windows Server
+
+**Protocols**
+
+La detecció de xarxes en Windows es basa en una combinació de protocols (LLMNR, NetBIOS, SSDP) i serveis com. Tenim, per tant, unes "dependències".
+L'Explorador de equipos En canvi, el comandament **net use** usa el protocolo **SMB  Samba** per establiis una **conexió directa** con el recurs compartit.
+També hem vist que podem usar el **ICMP4** fent un ping. 
+
+**Com a servicis**
+
+Per una banda veiem que podem habilitar-los com a serveis i, una vegada habilitats, iniciar-los o apagar-los ( també inici automàtic).
+*Wind +R : services.msc*
+
+**Firewall**
+El Firewall no sols pot bloquejar "apliacions" com la *detecció de xarxa* o *compartició de fitxers i impressores* que hem vist. També ens permet establir regles d'entrada o eixida per a cadascun del protocols.
+
+![*Vista del Firewall*](png/ADDS/ExemplesEnFirewall.png)

@@ -133,13 +133,9 @@
 \newpage
 \renewcommand\tablename{Tabla}
 
-\section{1 INSTAL·LACIÓ DEL WINDOWS SERVER 2019 AMB ENTORN
-GRÀFIC}\label{installaciuxf3-del-windows-server-2019-amb-entorn-gruxe0fic}
+\section{1 Resum}\label{resum}
 
-\textbf{Resum}
-
-Un primer pas per emular una Domini serà la instal·lació d'un Windows
-Server i dos màquines de Windows 1X.
+En aquesta unitat prèvia a la creació d'un domini:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -147,46 +143,47 @@ Server i dos màquines de Windows 1X.
   Configurarem les MV com a Xarxa Interna. Emulem una xarxa local de
   computadores connectades a un switch.
 \item
-  Configuració mitjançant IP fixes. IPs privades en la mateixa xarxa.
+  Configurarem la xarxa Windows mitjançant IP fixes privades en la
+  mateixa xarxa.
 \item
-  Detecció de xarxes i compartició en Windows.
+  Coneixerem sobre protocols i Firewall :
 \end{enumerate}
 
 \begin{itemize}
 \tightlist
 \item
-  Revisió de la configuració del Firewall
+  protocols i aplicacions (detecció de xarxes i compartició en Windows)
 \item
-  Servicis necessari (dependències)
+  altres prrotocols com el ICMP4 (ping) o SMB
+\item
+  les restriccions del Firewall
 \end{itemize}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{3}
-\tightlist
 \item
-  Protocol ICMP4 (ping)
+  Estudiarem aspectes bàsics de la compartició de carpetes.
+\item
+  Treballarem la captura d'unitats (GUI/CLI)
+\item
+  Veurem algunes configuracions generals simples ( nom del PC i WG,
+  Actualizacions automàtiques, Zona horària\ldots)
 \end{enumerate}
 
-\begin{itemize}
-\tightlist
-\item
-  Revisió de la configuració del Firewall
-\end{itemize}
+\section{2 Canviar el nom del servidor i
+Workgroup}\label{canviar-el-nom-del-servidor-i-workgroup}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{4}
-\tightlist
-\item
-  Configuracions generals simples ( nom del PC i WG, Actualizacions
-  automàtiques, Zona horària\ldots)
-\end{enumerate}
+\begin{figure}
+\centering
+\includegraphics{png/ADDS/WorkgroupNomEquip.png}
+\caption{\emph{Nom equip i del Grup de Treball}}
+\end{figure}
 
-\section{2 CONFIGURAR EL SERVIDOR}\label{configurar-el-servidor}
+Configurar la xarxa Servidor
 
-\section{2.1 ``Xarxa Interna'' en
-VirtualBox.}\label{xarxa-interna-en-virtualbox.}
+\section{3 Configuració de la xarxa en Virtualbox. ``Xarxa
+Interna''}\label{configuraciuxf3-de-la-xarxa-en-virtualbox.-xarxa-interna}
 
 Estem ``conectant cables al switch''.
 
@@ -209,7 +206,10 @@ En el WINDOWS 1x hem de tindre NOMÉS la tarja interna. No perdeu de
 vista la ``realitat'' que estem emulant !
 \end{quote}
 
-\section{2.2 Firewall de Windows. Aplicaciones
+\section{4 Configuració de la xarxa en
+Windows.}\label{configuraciuxf3-de-la-xarxa-en-windows.}
+
+\subsection{4.1 Firewall de Windows. Aplicaciones
 permitidas}\label{firewall-de-windows.-aplicaciones-permitidas}
 
 Des del mateix Administrador de Servidor accedir al \textbf{Firewall:
@@ -229,46 +229,10 @@ l'apartat següent:
 \caption{\emph{Firewall permet compartir y detectar xarxes}}
 \end{figure}
 
-\section{2.3 Net use}\label{net-use}
+`
 
-Fins i tot quan no funcione la detecció de xarxes podem accedir a les
-carpetes compartides a través d ela xarxa fent ús dels comandaments NET
-USE.
-
-\textbf{Raó}
-
-La detecció de xarxes en Windows es basa en una combinació de protocols
-(LLMNR, NetBIOS, SSDP) i serveis com l'Explorador de equipos. Enn canvi,
-el comandament \textbf{net use} usa el protocolo \textbf{SMB Samba} per
-establri una \textbf{conexió directa} con el recurs compartit.
-
-\emph{Win + R:cmd}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{net use F: \textbackslash{}\textbackslash{}WinServ1\textbackslash{}Dades2024 }\AttributeTok{/persistent:}\NormalTok{yes}
-\end{Highlighting}
-\end{Shaded}
-
-Per veure totes les Unitat de xarxa ( ``lletres'') assignades
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{net use}
-\end{Highlighting}
-\end{Shaded}
-
-Per eliminar-ne alguna
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{net use f: }\AttributeTok{/delete}
-\end{Highlighting}
-\end{Shaded}
-
-\section{2.4 Configuració de xarxa en Windows. IPs privades en la
-mateixa
-xarxa}\label{configuraciuxf3-de-xarxa-en-windows.-ips-privades-en-la-mateixa-xarxa}
+\subsection{4.2 IPs privades en la mateixa
+xarxa}\label{ips-privades-en-la-mateixa-xarxa}
 
 Com ja sabeu del mòdul de XAL de 1r de SMX haureu de configurar les IPs.
 Per exemple:
@@ -279,8 +243,8 @@ IP Windows Server: 192.168.0.1/24
 \emph{Windows+R: Configuración, Red e internet, Centro de Redes y
 Recursos Compartidos, Ethernet}
 
-\subsection{2.5 Configuració de xarxa en Windows. Detecció de xarxes i
-recursos}\label{configuraciuxf3-de-xarxa-en-windows.-detecciuxf3-de-xarxes-i-recursos}
+\subsection{4.3 Detecció de xarxes i
+recursos}\label{detecciuxf3-de-xarxes-i-recursos}
 
 \emph{Windows+R: Configuración, Red e internet, Centro de Redes y
 Recursos Compartidos}
@@ -306,7 +270,7 @@ avanzado:*
 
 \includegraphics{png/ADDS/ActivaUsoCompartidoCarpetasPúblicasyContrasenya.png}
 
-\subsection{Problema en Windows Server i la Xarxa
+\subsection{4.4 Problema en Windows Server i la Xarxa
 Privada}\label{problema-en-windows-server-i-la-xarxa-privada}
 
 \textbf{Problema:}
@@ -326,7 +290,7 @@ executant-se.
 \textbf{Solució:}
 
 Abans que res assegureu-vos que teniu el Firewall configurat com hem
-indicat al punt anterior ( Aplicaciones permitidas\ldots). Si és
+indicat al punt anterior (Aplicaciones permitidas\ldots). Si és
 correcte\ldots{}
 
 Fent spoiler al tema de \textbf{Serveis de Windows} que tractarem més
@@ -341,40 +305,14 @@ habilitar-los prèviament.
 Els serveis que cal que estiguen executant-se ( dependències) són:
 
 \begin{itemize}
-\tightlist
 \item
-  Client DNS
-\end{itemize}
-
-\begin{figure}
-\centering
-\includegraphics{png/ADDS/ClienteDNS.png}
-\caption{Servici Client de DNS}
-\end{figure}
-
-\begin{itemize}
-\tightlist
+  Client DNS \includegraphics{png/ADDS/ClienteDNS.png}
 \item
   Publicación de resursos de deteccción de función
-\end{itemize}
-
-\begin{figure}
-\centering
-\includegraphics{png/ADDS/PublicacióndeRecursodeDeteccióndeFunción.png}
-\caption{\emph{Servici de publicación de detección de redes}}
-\end{figure}
-
-\begin{itemize}
-\tightlist
+  \includegraphics{png/ADDS/PublicacióndeRecursodeDeteccióndeFunción.png}
 \item
-  Detección host de SSDP
+  Detección host de SSDP \includegraphics{png/ADDS/DetecciónSSDP.png}
 \end{itemize}
-
-\begin{figure}
-\centering
-\includegraphics{png/ADDS/DetecciónSSDP.png}
-\caption{\emph{Detección SSDP des de servermanager}}
-\end{figure}
 
 Veiem que no podem inciar-lo. Cal prèviament habilitar-lo des de la
 consola (Win + R: \emph{services.msc}).
@@ -388,10 +326,9 @@ consola (Win + R: \emph{services.msc}).
 \begin{itemize}
 \tightlist
 \item
-  Dispositivo host de UPnP
+  Dispositivo host de UPnP De forma anàloga procedirem amb aquest
+  servei:
 \end{itemize}
-
-De forma anàloga procedirem amb aquest servei:
 
 \begin{figure}
 \centering
@@ -399,7 +336,7 @@ De forma anàloga procedirem amb aquest servei:
 \caption{\emph{Servici de Dispositiu host de UPnP}}
 \end{figure}
 
-\subsection{2.6 Provar la connectivitat amb el protocol ICMP
+\subsection{4.5 Provar la connectivitat amb el protocol ICMP
 (ping)}\label{provar-la-connectivitat-amb-el-protocol-icmp-ping}
 
 Una prova molt clàssica és la del ping (protocol ICMP4). La fem des de
@@ -419,17 +356,8 @@ Si tenim problemes podem revisar, la configuració del Firewall:
 \caption{\emph{Firewall ICMP4 (echo salida)}}
 \end{figure}
 
-\section{3 Canviar el nom del servidor i
-Workgroup}\label{canviar-el-nom-del-servidor-i-workgroup}
-
-\begin{figure}
-\centering
-\includegraphics{png/ADDS/WorkgroupNomEquip.png}
-\caption{\emph{Nom equip i del Grup de Treball}}
-\end{figure}
-
-\section{4 Revisar aspectes bàsics de la
-configuració}\label{revisar-aspectes-buxe0sics-de-la-configuraciuxf3}
+\section{\texorpdfstring{5 Aspectes bàsics de la configuració des del
+\emph{msconfig}}{5 Aspectes bàsics de la configuració des del msconfig}}\label{aspectes-buxe0sics-de-la-configuraciuxf3-des-del-msconfig}
 
 Un exemple podria ser desactivar/activar el \textbf{Servei
 d'actualitzacions}
@@ -449,13 +377,21 @@ Altre exemple podria ser assegurar la \textbf{Zona horària}.
 Cal connexió a Internet. Caldrà una segona tarja connectada a un router
 (NAT en l'emulació nostra de Virtualbox)
 
-\section{\texorpdfstring{5 Carpetes compartires i consola
-\emph{fsmgmt.msc}}{5 Carpetes compartires i consola fsmgmt.msc}}\label{carpetes-compartires-i-consola-fsmgmt.msc}
+\section{6 Recursos compartits en
+xarxa}\label{recursos-compartits-en-xarxa}
+
+\subsection{6.1 Compartició de
+carpetes}\label{comparticiuxf3-de-carpetes}
 
 La compartició de carpetes la farem sense especificar permisos per a
 usuaris donat que encra no tenim ususari del domini. No anem a
 ``replicar-los'' com hem fet en un Workgroup.
+
+\begin{figure}
+\centering
 \includegraphics{png/ADDS/Compartir.png}
+\caption{\emph{Compartició de carpeta}}
+\end{figure}
 
 Pondem limitar el nombre d'usuaris que hi poden accedir
 
@@ -474,7 +410,7 @@ sessions sense tancar . Des de la consola del sistema de fitxers es
 podrien expulsar. D'igual manera passaria amb els fitxers oberts.
 \end{quote}
 
-\subsection{5.1 Assignació o captura d'Unitat de
+\subsection{6.2 Assignació o captura d'Unitat de
 Xarxa}\label{assignaciuxf3-o-captura-dunitat-de-xarxa}
 
 Ja ho hem vist anteriorment amb el Net use, però una vegaga funciona
@@ -487,8 +423,41 @@ que continua (el mateix efecte que el /persistent:yes).
 La forma en que es podrà automatitzar esta captura per a tots els
 clients d'una xarxa la vorem més avant.
 
-\subsection{\texorpdfstring{5.3 Consola del sistema de fitxers
-\emph{fsmgmt.msc}}{5.3 Consola del sistema de fitxers fsmgmt.msc}}\label{consola-del-sistema-de-fitxers-fsmgmt.msc}
+\subsection{6.3 Net use}\label{net-use}
+
+Amb els comandaments \emph{net} podem, entre d'altres coses, assignar
+també unitat de xarxa. Fins i tot quan no funcione la detecció de xarxes
+(el problema de dependències tractat al punt 2.5 podem accedir a les
+carpetes compartides a través de la xarxa fent ús dels comandaments
+\emph{Net use}. Net use estableix una connexió directa basad en el
+protocol SMB (Samba) i no usa els altres protocls al·ludits al punt 2.5.
+
+\emph{Win + R:cmd}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{net use F: \textbackslash{}\textbackslash{}WinServ1\textbackslash{}Dades2024 }\AttributeTok{/persistent:}\NormalTok{yes}
+\end{Highlighting}
+\end{Shaded}
+
+Per veure totes les Unitat de xarxa ( ``lletres'') assignades
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{net use}
+\end{Highlighting}
+\end{Shaded}
+
+Per eliminar-ne alguna
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{net use f: }\AttributeTok{/delete}
+\end{Highlighting}
+\end{Shaded}
+
+\section{\texorpdfstring{7 Consola del sistema de fitxers
+\emph{fsmgmt.msc}}{7 Consola del sistema de fitxers fsmgmt.msc}}\label{consola-del-sistema-de-fitxers-fsmgmt.msc}
 
 La consola \emph{fsmgmt.msc} ens permet
 
@@ -507,6 +476,35 @@ La consola \emph{fsmgmt.msc} ens permet
 \centering
 \includegraphics{png/ADDS/fsmgmt.png}
 \caption{\emph{Consola de sistema de fitxers}}
+\end{figure}
+
+\section{8 Nota final sobre els prototocols en Windows
+Server}\label{nota-final-sobre-els-prototocols-en-windows-server}
+
+\textbf{Protocols}
+
+La detecció de xarxes en Windows es basa en una combinació de protocols
+(LLMNR, NetBIOS, SSDP) i serveis com. Tenim, per tant, unes
+``dependències''. L'Explorador de equipos En canvi, el comandament
+\textbf{net use} usa el protocolo \textbf{SMB Samba} per establiis una
+\textbf{conexió directa} con el recurs compartit. També hem vist que
+podem usar el \textbf{ICMP4} fent un ping.
+
+\textbf{Com a servicis}
+
+Per una banda veiem que podem habilitar-los com a serveis i, una vegada
+habilitats, iniciar-los o apagar-los ( també inici automàtic).
+\emph{Wind +R : services.msc}
+
+\textbf{Firewall} El Firewall no sols pot bloquejar ``apliacions'' com
+la \emph{detecció de xarxa} o \emph{compartició de fitxers i
+impressores} que hem vist. També ens permet establir regles d'entrada o
+eixida per a cadascun del protocols.
+
+\begin{figure}
+\centering
+\includegraphics{png/ADDS/ExemplesEnFirewall.png}
+\caption{\emph{Vista del Firewall}}
 \end{figure}
 
 \end{document}
