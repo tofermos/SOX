@@ -22,7 +22,7 @@ output:
 
 # 1. Introducció a Windows Server
 
-Windows Server és un sistema operatiu desenvolupat per Microsoft, dissenyat per a administrar xarxes, emmagatzematge i aplicacions a nivell empresarial. A diferència de les versions de Windows orientades a usuaris individuals, Windows Server està optimitzat per a la gestió de serveis en xarxa, com ara allotjament de llocs web, gestió de bases de dades i centralització de recursos compartits.
+Windows Server és un sistema operatiu desenvolupat per Microsoft, dissenyat per a administrar xarxes, emmagatzematge i aplicacions a nivell empresarial, allotjament de llocs web, gestió de bases de dades i centralització de recursos compartits.
 
 Algunes de les principals característiques de Windows Server inclouen:
 
@@ -36,15 +36,19 @@ Algunes de les principals característiques de Windows Server inclouen:
 
 # 2. Instal·lació en un equip informàtic
 
-Abans d’utilitzar Windows Server, és essencial entendre el procés d’instal·lació, que consta de diversos passos tècnics importants. Aquests asseguren que el sistema operatiu funcione correctament i que estiga ben integrat amb el maquinari i els recursos de la xarxa.
-
-No obstant, no són molt diferents al ja vistos en un Windows 1x.
+Abans d’utilitzar Windows Server, és essencial entendre el procés d’instal·lació, que consta de diversos passos tècnics importants. No obstant, no són molt diferents al ja vistos en un Windows 1x.
+Ens centrem en repassar allò més important.
 
 ## 2.1 Particions i sistemes d’arxius
 
 ### Particions
 
-Són divisions del disc dur on s’emmagatzemarà el sistema operatiu o les dades. Durant la instal·lació de Windows Server  (com la de qualsevol SO), cal triar com particionar el disc. 
+Són divisions del disc dur on s’emmagatzemarà el sistema operatiu o les dades. Durant la instal·lació de Windows Server (com la de qualsevol SO), cal triar com particionar el disc. 
+
+>Nota:
+>
+>En un servidor hem de separar les dades de la instal·lació del SO. 
+>
 
 ### Taula de particions
 
@@ -71,7 +75,7 @@ Si es necessita més de 4 particions, es poden tenir 3 particions primàries i 1
 
 - **Nombre màxim de particions:** Teòricament il·limitat, però pràcticament uns 128 en la majoria de sistemes operatius.
 - **Tipus de particions:**
-  - Totes les particions són **primàries**, no hi ha limitació d'estesa o lògiques com en MBR.
+    Totes les particions són **primàries**, no hi ha limitació d'estesa o lògiques com en MBR.
 - **Nombre màxim de particions:** Teòricament il·limitat, però pràcticament uns 128 en la majoria de sistemes operatius.
 - **Tipus de particions:**
   - Totes les particions són **primàries**
@@ -87,9 +91,9 @@ Windows Server utilitza principalment el sistema **NTFS (New Technology File Sys
 
 3. **Seguretat i permisos:** NTFS permet assignar permisos d'accés més detallats que el simple Lectura/Escriptura/Control Total a fitxers i carpetes. 
 
-4. **Encriptació (EFS - Encrypting File System):**. Permet xifrar fitxers i carpetes individualment, mantenint-lo protegit davant accés no autoritzat. ÉS una encriptació transparent per a l'usuari autoritzat que pot accedir-hi sense desxifrar manualment els fitxers, mentre que altres usuaris o sistemes no.
+4. **Encriptació (EFS - Encrypting File System):**. Permet xifrar fitxers i carpetes individualment, mantenint-lo protegit davant accés no autoritzat. És una encriptació transparent per a l'usuari autoritzat (pot accedir-hi sense desxifrar manualment els fitxers) mentre que altres usuaris o sistemes no.
   
-5. **Compressió (NTFS Compression):** Compressió nativa i transparent: el sfitxers i carpetes es poden utilitzar normalment sense necessitat de descomprimir-los manualment. Penalització molt poc el rendiment: molt útil si tenim fitxers que usem poc i més si tenen prou tamany.
+5. **Compressió (NTFS Compression):** Compressió nativa i transparent: els fitxers i carpetes es poden utilitzar normalment sense necessitat de descomprimir-los manualment. Penalitza molt poc el rendiment: molt útil si tenim fitxers que usem poc i més si tenen prou tamany.
 
 6. **Recuperació d'errors:** NTFS registra les transaccions (journaling) i pot recuperar-se automàticament d'alguns errors del sistema, cosa que FAT32 no fa.
 
@@ -97,14 +101,18 @@ Windows Server utilitza principalment el sistema **NTFS (New Technology File Sys
 
 8 **Fragmentació:** NTFS gestiona millor la fragmentació de dades en disc en comparació amb FAT32.
 
+**ReFS (Resilient File System)** Tot i que NTFS és l'estàndard, sobretot per a la partició de sistema, ReFS es un sistema més nou per a servidores con alta resiliència a errors.
+
+Al present curs anem a treballar amb NTFS.
+
 ## Recomanacions generals
 
-1. Usar GPT preferentment.
+1. Usar GPT.
 2. Separar en discos durs distints la instal·lació del SO de la resta de dades.
 3. Si només tenim un disc (o conjunt que implementes una unitat tipus RAID), crearem particions distintes.
-4. Si potser les crearem en el procés d'intal·lació o, almenys, abans de començar a operar. En cas contrari, hem de fer còpia de seguretat de les dades abans de reparticionar discos.
-5. Si tenim discos de distint rendiment (SSD i HDD), és preferible que el SO i les aplicacions més utilitzades o de més demanda de capacitat de processament estiguen instal·lades al disc més ràpid.
-6. Tant el backup com els sitems de redundància són fonamentals. (Els veiem més avant)
+4. Si, pot ser, les crearem en el procés d'intal·lació o, almenys, abans de començar a operar. En cas contrari, hem de fer còpia de seguretat de les dades abans de reparticionar discos.
+5. Si tenim discos de distint rendiment (SSD i HDD), és preferible que el SO i les aplicacions més utilitzades estiguen instal·lades al disc més ràpid.
+6. Tant el backup com els sistemes de redundància són fonamentals. També les snapshots. (Els veiem més avant)
 
 ## 2.2 Gestors d’arrancada
 

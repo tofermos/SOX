@@ -2764,7 +2764,7 @@ que te la proporcionen després.</p>
 </blockquote>
 <div id="descripció" class="section level1">
 <h1>Descripció</h1>
-<p>No aneu a cerar encara un domini però tots sí tots els primers passos
+<p>No aneu a crear encara un domini però tots sí tots els primers passos
 per a fer-ho.</p>
 <div id="pas-1" class="section level2">
 <h2>Pas 1:</h2>
@@ -2783,15 +2783,53 @@ Unitat 2 com el Windows Update i indiqueu perquè.</li>
 <h2>Pas 2:</h2>
 <p>Una vegada el WG funcionant, creeu una carpeta compartida en les dos
 màquines i assigneu una unitat de xarxa.</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Màquina</th>
+<th align="left">Nom carpeta</th>
+<th align="left">Permisos compartició</th>
+<th align="right">Nombre màxim de connexions</th>
+<th align="left">Unitat (des de l’altre PC)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Windows Server</td>
+<td align="left">DADESSERVIDOR</td>
+<td align="left">Lectura y escriptura</td>
+<td align="right">25</td>
+<td align="left">F:</td>
+</tr>
+<tr class="even">
+<td align="left">Windows 1x</td>
+<td align="left">TEMPORAL</td>
+<td align="left">Lectura</td>
+<td align="right">2</td>
+<td align="left">G:</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><p>En el client, l’assignareu des del GUI (a la carpeta del
-servidor).</p></li>
-<li><p>En el servidor, l’assignareu des del CLI (a la carpeta del
-client)</p></li>
+<li><p>En el client, l’assignareu des del GUI ( F: a la carpeta del
+DADESSERVIDOR).</p></li>
+<li><p>En el servidor, l’assignareu des del CLI (G: a la carpeta del
+client TEMPORAL).</p></li>
 </ul>
-<p>Crea un fitxr txt (amb el Bloc de Notas, per exemple) en la carpeta
-compartida del servidor i obri’l des del client. Força el seu tantcament
-des del servidor.</p>
+<p>1 Crea un fitxer <em>f1.txt</em> (amb el Bloc de Notas, per exemple)
+en la carpeta <em>F:\DADESSERVIDOR\f1.txt</em> compartida del servidor i
+obri’l des del client.</p>
+<p>2 Deixa’l obert en Windows 1x. En l’apartat “Sesiones” de
+<em>fsmgmnt.exe</em>, veus alguna sessió del Windows 1x?</p>
+<p>3 Força el tacament del fitxer obert en “Ficehros abiertos”</p>
+<p>5 Comprova que s’ha tancat.</p>
 </div>
 </div>
 

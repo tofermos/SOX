@@ -39,6 +39,16 @@
 \makeatother
 \usepackage{xcolor}
 \usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -110,7 +120,7 @@ que te la proporcionen després.
 
 \section{Descripció}\label{descripciuxf3}
 
-No aneu a cerar encara un domini però tots sí tots els primers passos
+No aneu a crear encara un domini però tots sí tots els primers passos
 per a fer-ho.
 
 \subsection{Pas 1:}\label{pas-1}
@@ -136,6 +146,32 @@ caldrà, a més :
 Una vegada el WG funcionant, creeu una carpeta compartida en les dos
 màquines i assigneu una unitat de xarxa.
 
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Màquina
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Nom carpeta
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Nom compartició
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Nombre màxim de connexions
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Unitat (des de l'altre PC)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Windows Server & DADES & DADESSERVIDOR & 25 & F: \\
+Windows 1x & BORRAR & TEMPORAL & 2 & G: \\
+\end{longtable}
+
 \begin{itemize}
 \item
   En el client, l'assignareu des del GUI (a la carpeta del servidor).
@@ -143,8 +179,8 @@ màquines i assigneu una unitat de xarxa.
   En el servidor, l'assignareu des del CLI (a la carpeta del client)
 \end{itemize}
 
-Crea un fitxr txt (amb el Bloc de Notas, per exemple) en la carpeta
-compartida del servidor i obri'l des del client. Força el seu tantcament
-des del servidor.
+Crea un fitxer \emph{f1.txt} (amb el Bloc de Notas, per exemple) en la
+carpeta compartida del servidor i obri'l des del client. Força el seu
+tantcament des del servidor.
 
 \end{document}
