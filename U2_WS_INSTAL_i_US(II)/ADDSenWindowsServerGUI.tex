@@ -177,7 +177,7 @@ Workgroup}\label{canviar-el-nom-del-servidor-i-workgroup}
 \begin{figure}
 \centering
 \includegraphics{png/ADDS/WorkgroupNomEquip.png}
-\caption{\emph{Nom equip i del Grup de Treball}}
+\caption{\emph{Figura1: Nom equip i del Grup de Treball}}
 \end{figure}
 
 Configurar la xarxa Servidor
@@ -196,7 +196,7 @@ d'Internet de l'amfitrió (adaptador NAT). De moment és opcional.
 \begin{figure}
 \centering
 \includegraphics{png/ADDS/xarxainterna.png}
-\caption{\emph{Xarxa interna}}
+\caption{\emph{Figura 2: Xarxa interna}}
 \end{figure}
 
 \begin{quote}
@@ -220,13 +220,13 @@ l'apartat següent:
 \begin{figure}
 \centering
 \includegraphics{png/ADDS/PermitirUnaAplicacionATravesdeFirewall.png}
-\caption{\emph{Permitir una aplicación a través de Firewall}}
+\caption{\emph{Figura 3: Permitir una aplicación a través de Firewall}}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics{png/ADDS/FirewallCompartiryDetectar.png}
-\caption{\emph{Firewall permet compartir y detectar xarxes}}
+\caption{\emph{Figura 4: Firewall permet compartir y detectar xarxes}}
 \end{figure}
 
 `
@@ -242,6 +242,12 @@ IP Windows Server: 192.168.0.1/24
 
 \emph{Windows+R: Configuración, Red e internet, Centro de Redes y
 Recursos Compartidos, Ethernet}
+
+\begin{figure}
+\centering
+\includegraphics{png/ADDS/tarja2.png}
+\caption{\emph{Figura 5: Adaptador de xarxa}}
+\end{figure}
 
 \subsection{4.3 Detecció de xarxes i
 recursos}\label{detecciuxf3-de-xarxes-i-recursos}
@@ -290,8 +296,8 @@ executant-se.
 \textbf{Solució:}
 
 Abans que res assegureu-vos que teniu el Firewall configurat com hem
-indicat al punt anterior (Aplicaciones permitidas\ldots). Si és
-correcte\ldots{}
+indicat al punt anterior (\textbf{Aplicaciones permitidas\ldots{}}). Si
+és correcte\ldots{}
 
 Fent spoiler al tema de \textbf{Serveis de Windows} que tractarem més
 avant, cal que activem una sèrie de serveis necessaris (dependències)
@@ -302,53 +308,64 @@ altres no. Això es deu a que no estan habilitats, caldrà executar la
 consola de microsoft específica de servicis (\emph{services.msc}) i
 habilitar-los prèviament.
 
-Els serveis que cal que estiguen executant-se ( dependències) són:
-
-\begin{itemize}
-\item
-  Client DNS \includegraphics{png/ADDS/ClienteDNS.png}
-\item
-  Publicación de resursos de deteccción de función
-  \includegraphics{png/ADDS/PublicacióndeRecursodeDeteccióndeFunción.png}
-\item
-  Detección host de SSDP \includegraphics{png/ADDS/DetecciónSSDP.png}
-\end{itemize}
-
-Veiem que no podem inciar-lo. Cal prèviament habilitar-lo des de la
-consola (Win + R: \emph{services.msc}).
-
-\begin{figure}
-\centering
-\includegraphics{png/ADDS/ServicioDetecciónSSDP.png}
-\caption{\emph{Detección SSDP des de servermanager}}
-\end{figure}
+Els serveis que cal que estiguen executant-se (dependències) són:
 
 \begin{itemize}
 \tightlist
 \item
-  Dispositivo host de UPnP De forma anàloga procedirem amb aquest
-  servei:
+  Client DNS
+\item
+  Publicación de resursos de deteccción de
+\item
+  Detección host de SSDP
+\item
+  Dispositivo host de UPnP
 \end{itemize}
+
+Per a iniciar els servicis primer cal que estiguen habilitats. Per això
+anem a la \textbf{consola MC de servicis} amb \emph{Win R:
+services.msc}).
+
+1.- Assegurem que estiguen no estiguen deshabilitats. El tipus d'inici
+ha de ser \textbf{Automático} per a que s'engeguen en iniciar el
+servidor.
 
 \begin{figure}
 \centering
-\includegraphics{png/ADDS/ServicioDispositivoUPnP.png}
-\caption{\emph{Servici de Dispositiu host de UPnP}}
+\includegraphics{png/ADDS/ServicioDetecciónSSDP.png}
+\caption{\emph{Figura 8: Canviem en tipus d'inici a Automático}}
 \end{figure}
 
-\subsection{4.5 Provar la connectivitat amb el protocol ICMP
-(ping)}\label{provar-la-connectivitat-amb-el-protocol-icmp-ping}
+2.- Podem iniciar manualment per no reiniciar ara.
+
+\begin{figure}
+\centering
+\includegraphics{png/ADDS/ServiciInici.png}
+\caption{\emph{Figura 9: Iniciem manuelament un servici}}
+\end{figure}
+
+\begin{quote}
+Nota:
+
+Encara que supose continuar fent spoiler sobre el tema de servicis,
+observa que amb un \textbf{Inici automàtic}, el servei està en marxa en
+engegar-se el servidor \textbf{sense necessitat d'iniciar sessió al
+Servidor} \#\# 4.5 Provar la connectivitat amb el protocol ICMP (ping)
+\end{quote}
 
 Una prova molt clàssica és la del ping (protocol ICMP4). La fem des de
 totes les màquines.
 
-Si tenim problemes podem revisar, la configuració del Firewall:
-
 \begin{figure}
 \centering
-\includegraphics{png/ADDS/FirewallICMP4Entrada.png}
-\caption{\emph{Firewall ICMP4 (echo entrada)}}
+\includegraphics{png/ADDS/ping.png}
+\caption{\emph{Ping des de totes les màquines de la xarxa}}
 \end{figure}
+
+Si tenim problemes podem revisar, la configuració del Firewall:
+
+!\emph{Firewall ICMP4 (echo
+entrada)}{]}(png/ADDS/FirewallICMP4Entrada.png)
 
 \begin{figure}
 \centering

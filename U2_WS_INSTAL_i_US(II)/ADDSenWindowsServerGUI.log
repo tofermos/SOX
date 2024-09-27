@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2024.3.16)  26 SEP 2024 15:14
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2024.3.16)  27 SEP 2024 09:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -833,72 +833,49 @@ p)
 File: png/ADDS/FirewallCompartiryDetectar.png Graphic file (type bmp)
 <png/ADDS/FirewallCompartiryDetectar.png>
 [3] [4]
+File: png/ADDS/tarja2.png Graphic file (type bmp)
+<png/ADDS/tarja2.png>
 File: png/ADDS/ActivaDetecciónyUsoCompartidoPrivada.png Graphic file (type bmp)
 
 <png/ADDS/ActivaDetecciónyUsoCompartidoPrivada.png>
-[5]
+[5] [6]
 File: png/ADDS/ActivaDetecciónyUsoCompartidoPublico.png Graphic file (type bmp)
 
 <png/ADDS/ActivaDetecciónyUsoCompartidoPublico.png>
 File: png/ADDS/ActivaUsoCompartidoCarpetasPúblicasyContrasenya.png Graphic file
  (type bmp)
 <png/ADDS/ActivaUsoCompartidoCarpetasPúblicasyContrasenya.png>
-[6]
-File: png/ADDS/ClienteDNS.png Graphic file (type bmp)
-<png/ADDS/ClienteDNS.png>
-
-Overfull \hbox (51.52586pt too wide) in paragraph at lines 309--311
-[]\TU/lmr/m/n/10 Client DNS [] 
- []
-
-[7]
-File: png/ADDS/PublicacióndeRecursodeDeteccióndeFunción.png Graphic file (type 
-bmp)
-<png/ADDS/PublicacióndeRecursodeDeteccióndeFunción.png>
-
-Overfull \hbox (207.85658pt too wide) in paragraph at lines 311--314
-[]\TU/lmr/m/n/10 Publicación de resursos de deteccción de función [] 
- []
-
-File: png/ADDS/DetecciónSSDP.png Graphic file (type bmp)
-<png/ADDS/DetecciónSSDP.png>
-
-Overfull \hbox (105.46532pt too wide) in paragraph at lines 314--315
-[]\TU/lmr/m/n/10 Detección host de SSDP [] 
- []
-
-[8]
+[7] [8]
 File: png/ADDS/ServicioDetecciónSSDP.png Graphic file (type bmp)
 <png/ADDS/ServicioDetecciónSSDP.png>
-[9]
-File: png/ADDS/ServicioDispositivoUPnP.png Graphic file (type bmp)
-<png/ADDS/ServicioDispositivoUPnP.png>
-File: png/ADDS/FirewallICMP4Entrada.png Graphic file (type bmp)
-<png/ADDS/FirewallICMP4Entrada.png>
+File: png/ADDS/ServiciInici.png Graphic file (type bmp)
+<png/ADDS/ServiciInici.png>
+File: png/ADDS/ping.png Graphic file (type bmp)
+<png/ADDS/ping.png>
 File: png/ADDS/FirewallICMP4Salida.png Graphic file (type bmp)
 <png/ADDS/FirewallICMP4Salida.png>
-[10] [11]
+[9] [10]
 File: png/ADDS/Compartir.png Graphic file (type bmp)
 <png/ADDS/Compartir.png>
 File: png/ADDS/Compartir2.png Graphic file (type bmp)
 <png/ADDS/Compartir2.png>
-[12] [13]
+[11] [12] [13]
 File: png/ADDS/fsmgmt.png Graphic file (type bmp)
 <png/ADDS/fsmgmt.png>
 [14]
 File: png/ADDS/ExemplesEnFirewall.png Graphic file (type bmp)
 <png/ADDS/ExemplesEnFirewall.png>
 
-LaTeX Warning: Float too large for page by 14.5754pt on input line 508.
+LaTeX Warning: Float too large for page by 14.5754pt on input line 525.
 
 [15] [16] (./ADDSenWindowsServerGUI.aux) ) 
 Here is how much of TeX's memory you used:
- 20191 strings out of 476191
- 374847 string characters out of 5812072
- 864425 words of memory out of 5000000
- 40625 multiletter control sequences out of 15000+600000
+ 20173 strings out of 476191
+ 373858 string characters out of 5812072
+ 864345 words of memory out of 5000000
+ 40609 multiletter control sequences out of 15000+600000
  475694 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 86i,6n,121p,1019b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 86i,6n,121p,1019b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on ADDSenWindowsServerGUI.pdf (16 pages).

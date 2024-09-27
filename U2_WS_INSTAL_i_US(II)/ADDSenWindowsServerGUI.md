@@ -5,16 +5,16 @@ lang: "ca-ES"
 papersize: A4
 linestretch: 1.5
 output:
+  pdf_document:
+    toc: true
+    keep_tex: true
+    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     toc_depth: 3
     df_print: paged
     number_sections: false
-  pdf_document:
-    toc: true
-    keep_tex: true
-    latex_engine: xelatex
 ---
 
 \newpage
@@ -43,7 +43,7 @@ En aquesta unitat prèvia a la creació d'un domini:
 # 2 Canviar el nom del servidor i Workgroup
 
 
-![*Nom equip i del Grup de Treball*](png/ADDS/WorkgroupNomEquip.png)
+![*Figura1: Nom equip i del Grup de Treball*](png/ADDS/WorkgroupNomEquip.png)
 
 
 Configurar la xarxa Servidor
@@ -57,7 +57,7 @@ De moment només ens fa falta la tarja que es connectarà a un switch on es cone
 
 Podem instal·lar un segon adaptador per disposar de la connexió d'Internet de l'amfitrió (adaptador NAT). De moment és opcional.
 
-![*Xarxa interna*](png/ADDS/xarxainterna.png)
+![*Figura 2: Xarxa interna*](png/ADDS/xarxainterna.png)
 
 > NOTA:
 >
@@ -69,11 +69,10 @@ Podem instal·lar un segon adaptador per disposar de la connexió d'Internet de 
 
 Des del mateix Administrador de Servidor accedir al **Firewall: Aplicaciones permitidas** i assegurar que ens permeta Compartir i Detectar recursos a través de la xarxa. Dos capacitat que activarem en l'apartat següent:
 
+![*Figura 3: Permitir una aplicación a través de Firewall*](png/ADDS/PermitirUnaAplicacionATravesdeFirewall.png)
 
-![*Permitir una aplicación a través de Firewall*](png/ADDS/PermitirUnaAplicacionATravesdeFirewall.png)
 
-
-![*Firewall permet compartir y detectar xarxes*](png/ADDS/FirewallCompartiryDetectar.png)
+![*Figura 4: Firewall permet compartir y detectar xarxes*](png/ADDS/FirewallCompartiryDetectar.png)
 
 `
 
@@ -86,7 +85,7 @@ Com ja sabeu del mòdul de XAL de 1r de SMX haureu de configurar les IPs. Per ex
     
 *Windows+R: Configuración, Red e internet, Centro de Redes y Recursos Compartidos, Ethernet*
 
-<img width=60% src="png/ADDS/tarja2.png"></img>
+![*Figura 5: Adaptador de xarxa*](png/ADDS/tarja2.png)
 
 
 ## 4.3 Detecció de xarxes i recursos
@@ -123,46 +122,46 @@ La detecció de serveis compartits depén d'altres serveis que no estan executan
 
 **Solució:**
 
-Abans que res assegureu-vos que teniu el Firewall configurat com hem indicat al punt anterior (Aplicaciones permitidas...). Si és correcte...
+Abans que res assegureu-vos que teniu el Firewall configurat com hem indicat al punt anterior (**Aplicaciones permitidas...**). Si és correcte...
 
 Fent spoiler al tema de **Serveis de Windows** que tractarem més avant, cal que activem una sèrie de serveis necessaris (dependències)
 
 Alguns d'aquests servicis podrem inciar-los des l'Administrador del Servidor (*servermanager.exe*) que tenim obert normalment però altres no. 
 Això es deu a que no estan habilitats, caldrà executar la consola de microsoft específica de servicis (*services.msc*) i habilitar-los prèviament.
 
-Els serveis que cal que estiguen executant-se ( dependències) són:
+Els serveis que cal que estiguen executant-se (dependències) són:
 
 * Client DNS
-![Servici Client de DNS](png/ADDS/ClienteDNS.png)
-
-* Publicación de resursos de deteccción de función
-![*Servici de publicación de detección de redes*](png/ADDS/PublicacióndeRecursodeDeteccióndeFunción.png)
-
+* Publicación de resursos de deteccción de 
 * Detección host de SSDP
-![*Detección SSDP des de servermanager*](png/ADDS/DetecciónSSDP.png)
-
-Veiem que no podem inciar-lo. Cal prèviament habilitar-lo des de la consola (Win + R: *services.msc*).
-
-
-![*Detección SSDP des de servermanager*](png/ADDS/ServicioDetecciónSSDP.png)
-
-
 * Dispositivo host de UPnP
-De forma anàloga procedirem amb aquest servei:
-
-![*Servici de Dispositiu host de UPnP*](png/ADDS/ServicioDispositivoUPnP.png)
 
 
+Per a iniciar els servicis primer cal que estiguen habilitats. Per això anem a la **consola MC de servicis** amb *Win R: services.msc*).
+
+1.- Assegurem que estiguen no estiguen deshabilitats. El tipus d'inici ha de ser **Automático** per a que s'engeguen en iniciar el servidor.
+
+![*Figura 8: Canviem en tipus d'inici a Automático*](png/ADDS/ServicioDetecciónSSDP.png)
+
+
+2.- Podem iniciar manualment per no reiniciar ara.
+
+![*Figura 9: Iniciem manuelament un servici*](png/ADDS/ServiciInici.png)
+
+
+>Nota:
+> 
+>Encara que supose continuar fent spoiler sobre el tema de servicis, observa que amb un **Inici automàtic**, el servei està en marxa en engegar-se el servidor **sense necessitat d'iniciar sessió al Servidor**
 ## 4.5 Provar la connectivitat amb el protocol ICMP (ping)
 
 Una prova molt clàssica és la del ping (protocol ICMP4). La fem des de totes les màquines.
 
-<img width=60% src="png/ADDS/ping.png"></img>
+![*Ping des de totes les màquines de la xarxa*](png/ADDS/ping.png)
 
 Si tenim problemes podem revisar, la configuració del Firewall:
 
 
-![*Firewall ICMP4 (echo entrada)*](png/ADDS/FirewallICMP4Entrada.png)
+!*Firewall ICMP4 (echo entrada)*](png/ADDS/FirewallICMP4Entrada.png)
 
 ![*Firewall ICMP4 (echo salida)*](png/ADDS/FirewallICMP4Salida.png)
 
