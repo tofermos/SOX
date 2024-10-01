@@ -49,4 +49,5 @@ linestretch: 1.5
 |Crear un domini|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-II-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-II-.pdf)|
 |Afegir un client al domini|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-III-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-III-.pdf)|
 |El servei DHCP|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-IV-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-IV-.pdf)|
+|Activitat 3|[![](recursos/iconohtml.png)](U3_Activitat3/U3_Activitat3.html)|[![](recursos/iconopdf.png)](U3_Activitat3/U3_Activitat3.pdf)|
 
