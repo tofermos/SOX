@@ -12,7 +12,7 @@
 <meta name="author" content="@tofermos 2024" />
 
 
-<title>U2. Windows Server. Instal·lació i ús</title>
+<title>U3.Adminsitració i configuració del Windows Server</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -2749,302 +2749,62 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">U2. Windows Server. Instal·lació i ús</h1>
+<h1 class="title toc-ignore">U3.Adminsitració i configuració del Windows
+Server</h1>
+<h3 class="subtitle">Activitat Unitat 3. Creació de domini</h3>
 <h4 class="author"><span class="citation">@tofermos</span> 2024</h4>
 
 </div>
 
 
-<div id="introducció-a-windows-server" class="section level1">
-<h1>1. Introducció a Windows Server</h1>
-<p>Windows Server és un sistema operatiu desenvolupat per Microsoft,
-dissenyat per a administrar xarxes, emmagatzematge i aplicacions a
-nivell empresarial, allotjament de llocs web, gestió de bases de dades i
-centralització de recursos compartits.</p>
-<p>Algunes de les principals característiques de Windows Server
-inclouen:</p>
-<ul>
-<li><p><strong>Active Directory</strong>: Un <em>servei de
-directori</em> que permet la gestió d’usuaris, equips i polítiques de
-seguretat en la xarxa de forma centralitzada.</p></li>
-<li><p><strong>Hyper-V</strong>: Tecnologia de virtualització integrada
-que permet crear i administrar màquines virtuals.</p></li>
-<li><p><strong>IIS (Internet Information Services)</strong>: Plataforma
-per a allotjar aplicacions web. Pemet que el servidor siga un servidor
-web.</p></li>
-<li><p><strong>Administració de servidors</strong>: A través d’eines com
-l’Administrador de Servidors, es poden gestionar múltiples rols i
-funcions del servidor.</p></li>
-</ul>
-</div>
-<div id="installació-en-un-equip-informàtic" class="section level1">
-<h1>2. Instal·lació en un equip informàtic</h1>
-<p>Abans d’utilitzar Windows Server, és essencial entendre el procés
-d’instal·lació, que consta de diversos passos tècnics importants. No
-obstant, no són molt diferents al ja vistos en un Windows 1x. Ens
-centrem en repassar allò més important.</p>
-<div id="particions-i-sistemes-darxius" class="section level2">
-<h2>2.1 Particions i sistemes d’arxius</h2>
-<div id="particions" class="section level3">
-<h3>Particions</h3>
-<p>Són divisions del disc dur on s’emmagatzemarà el sistema operatiu o
-les dades. Durant la instal·lació de Windows Server (com la de qualsevol
-SO), cal triar com particionar el disc.</p>
 <blockquote>
-<p>Nota:</p>
-<p>En un servidor hem de separar les dades de la instal·lació del
-SO.</p>
+<p>NOTA PRÈVIA:</p>
+<p>Abans de començar, estudieu la Unitat 3 i llegiu TOTA la pràctica. Hi
+pot haver un apartat que no pugues contestar fins el final o una dada
+que te la proporcionen després.</p>
 </blockquote>
-</div>
-<div id="taula-de-particions" class="section level3">
-<h3>Taula de particions</h3>
-<p>Tenim dos possibilitats la més antiga <strong>MBR (Master Boot
-Record)</strong> i la més moderna hui en dia ja generalitzada
-<strong>GPT</strong> que é sla que usarem.</p>
-<p><strong>MBR (Master Boot Record)</strong></p>
-<ul>
-<li><strong>Nombre màxim de particions:</strong> 4 particions
-primàries.</li>
-</ul>
-<p>Si es necessita més de 4 particions, es poden tenir 3 particions
-primàries i 1 partició estesa, dins la qual es poden crear múltiples
-particions lògiques.</p>
-<ul>
-<li><p><strong>Tipus de particions:</strong></p>
-<ul>
-<li><p><strong>Primàries:</strong> Particions directament accessibles
-pel sistema operatiu (màxim 4).</p></li>
-<li><p><strong>Estesa:</strong> Una partició que pot contenir particions
-lògiques.</p></li>
-<li><p><strong>Lògiques:</strong> Particions dins de la partició
-estesa.</p></li>
-</ul></li>
-<li><p><strong>Tamany màxim del disc</strong>: 2 TB (terabytes), el MBR
-utilitza 32 bits per adreçar sectors de 512 Bytes.</p></li>
-</ul>
-</div>
-<div id="gpt-guid-partition-table" class="section level3">
-<h3>GPT (GUID Partition Table)</h3>
-<ul>
-<li><strong>Nombre màxim de particions:</strong> Teòricament il·limitat,
-però pràcticament uns 128 en la majoria de sistemes operatius.</li>
-<li><strong>Tipus de particions:</strong> Totes les particions són
-<strong>primàries</strong>, no hi ha limitació d’estesa o lògiques com
-en MBR.</li>
-<li><strong>Nombre màxim de particions:</strong> Teòricament il·limitat,
-però pràcticament uns 128 en la majoria de sistemes operatius.</li>
-<li><strong>Tipus de particions:</strong>
-<ul>
-<li>Totes les particions són <strong>primàries</strong></li>
-</ul></li>
-<li><strong>Tamany màxim del disc</strong> 9.4 ZB (zettabytes)
-teòrics.GPT utilitza un esquema d’adreces de 64 bits</li>
-</ul>
-</div>
-<div id="sistema-darxius." class="section level3">
-<h3>Sistema d’arxius.</h3>
-<p>Windows Server utilitza principalment el sistema <strong>NTFS (New
-Technology File System)</strong>, que ofereix millores respecte a FAT32.
-Les dos primeres superen les limitacions vistes al curs anterior de
-particions de 32GBytes i fitxers de 4GBytes de FAT32:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Suport per a fitxers grans:</strong> NTFS admet fitxers
-de fins a 16 TB, mentre que FAT32 està limitat a 4 GB per
-fitxer.</p></li>
-<li><p><strong>Tamany màxim de partició:</strong> NTFS suporta
-particions de fins a 256 TB, mentre que FAT32 es limita a 32 GB (en
-Windows).</p></li>
-<li><p><strong>Seguretat i permisos:</strong> NTFS permet assignar
-permisos d’accés més detallats que el simple Lectura/Escriptura/Control
-Total a fitxers i carpetes.</p></li>
-<li><p><strong>Encriptació (EFS - Encrypting File System):</strong>.
-Permet xifrar fitxers i carpetes individualment, mantenint-lo protegit
-davant accés no autoritzat. És una encriptació transparent per a
-l’usuari autoritzat (pot accedir-hi sense desxifrar manualment els
-fitxers) mentre que altres usuaris o sistemes no.</p></li>
-<li><p><strong>Compressió (NTFS Compression):</strong> Compressió nativa
-i transparent: els fitxers i carpetes es poden utilitzar normalment
-sense necessitat de descomprimir-los manualment. Penalitza molt poc el
-rendiment: molt útil si tenim fitxers que usem poc i més si tenen prou
-tamany.</p></li>
-<li><p><strong>Recuperació d’errors:</strong> NTFS registra les
-transaccions (journaling) i pot recuperar-se automàticament d’alguns
-errors del sistema, cosa que FAT32 no fa.</p></li>
-</ol>
-<p>7 <strong>Quotes de discs</strong> Suposa poder limitar l’espai de
-disc per als usuaris. Ho practicarem en properes unitats.</p>
-<p>8 <strong>Fragmentació:</strong> NTFS gestiona millor la fragmentació
-de dades en disc en comparació amb FAT32.</p>
-<p><strong>ReFS (Resilient File System)</strong> Tot i que NTFS és
-l’estàndard, sobretot per a la partició de sistema, ReFS es un sistema
-més nou per a servidores con alta resiliència a errors.</p>
-<p>Al present curs anem a treballar amb NTFS.</p>
-</div>
-</div>
-<div id="recomanacions-generals" class="section level2">
-<h2>Recomanacions generals</h2>
-<ol style="list-style-type: decimal">
-<li>Usar GPT.</li>
-<li>Separar en discos durs distints la instal·lació del SO de la resta
-de dades.</li>
-<li>Si només tenim un disc (o conjunt que implementes una unitat tipus
-RAID), crearem particions distintes.</li>
-<li>Si, pot ser, les crearem en el procés d’intal·lació o, almenys,
-abans de començar a operar. En cas contrari, hem de fer còpia de
-seguretat de les dades abans de reparticionar discos.</li>
-<li>Si tenim discos de distint rendiment (SSD i HDD), és preferible que
-el SO i les aplicacions més utilitzades estiguen instal·lades al disc
-més ràpid.</li>
-<li>Tant el backup com els sistemes de redundància són fonamentals.
-També les snapshots. (Els veiem més avant)</li>
-</ol>
-</div>
-<div id="gestors-darrancada" class="section level2">
-<h2>2.2 Gestors d’arrancada</h2>
-<p>El gestor d’arrancada és un programari que s’encarrega d’iniciar el
-sistema operatiu durant el procés d’arrancada de l’equip.</p>
-<ul>
-<li><strong>Windows Boot Manager</strong> és el gestor d’arrancada
-predeterminat de Windows Server. Aquest programari s’encarrega de
-gestionar el procés d’arrancada del sistema i, en cas d’haver-hi
-diversos sistemes operatius instal·lats en l’equip, permet seleccionar
-quin iniciar.</li>
-</ul>
-</div>
-<div id="procés-dinstallació" class="section level2">
-<h2>2.3 Procés d’instal·lació</h2>
-<p>El procés d’instal·lació de Windows Server és similar al de les
-versions d’escriptori de Windows, però amb alguns passos addicionals per
-a la configuració de rols i característiques del servidor. Els passos
-generals inclouen:</p>
-<ol style="list-style-type: decimal">
-<li><strong>Preparar l’equip</strong>: Comprovar els requisits de
-maquinari, com CPU, RAM i espai en disc.</li>
-<li><strong>Arrancada des del mitjà d’instal·lació</strong>: Açò pot ser
-des d’un DVD o una unitat USB bootable. Al VirtualBox usarem la unitat
-òptica.</li>
-<li><strong>Selecció de la partició</strong>: Triar la unitat o partició
-on s’instal·larà Windows Server.</li>
-<li><strong>Configuració inicial</strong>: Assignar un nom al servidor,
-configurar la xarxa i el compte d’administrador. Serà administrador de
-tota la xarxa com vorem.</li>
-<li><strong>Configuració de rols</strong>: Durant o després de la
-instal·lació, es poden afegir rols al servidor. El més important és el
-de controlador de domini però hi ha altres.</li>
-</ol>
-<p>Aquests darres aspectes el veiem de forma pràctica en al document
-següent.</p>
-</div>
-</div>
-<div id="utilització-de-windows-server" class="section level1">
-<h1>3. Utilització de Windows Server</h1>
-<p>Una vegada instal·lat, és essencial familiaritzar-se amb la
-interfície i les funcionalitats bàsiques de Windows Server per a poder
-administrar-lo correctament.</p>
-<div id="conceptes-generals.-rols-i-característiques." class="section level2">
-<h2>3.1 Conceptes generals. Rols i característiques.</h2>
-<div id="rols" class="section level3">
-<h3>Rols</h3>
-<p>Els rols són funcionalitats principals que pot exercir el servidor.
-En <strong>Windows Server</strong> hi ha diversos <strong>rols de
-servidor</strong> que poden ser instal·lats per oferir serveis
-específics a una xarxa o organització.</p>
-<p>Els rols principals que estudiarem al curs de SOX relacionats amb
-funcions pròpies són:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Active Directory Domain Services (AD DS)</strong>: Permet
-crear i gestionar dominis, i és el component clau de l’Active Directory
-per a la gestió d’usuaris i dispositius en una xarxa.</p></li>
-<li><p><strong>DHCP Server</strong>: Assigna automàticament adreces IP
-als dispositius de la xarxa.</p></li>
-<li><p><strong>DNS Server</strong>: Traduïx noms de domini a adreces IP,
-facilitant l’accés als serveis dins d’una xarxa o a internet.
-IIS)<strong>: Hosteja aplicacions web i llocs web utilitzant
-</strong>Internet Information Services (IIS)**.</p></li>
-</ol>
-</div>
-<div id="característiques" class="section level3">
-<h3>Característiques</h3>
-<p>A més dels rols, <strong>Windows Server</strong> ofereix
-<strong>característiques</strong> que són complements als rols i que
-proporcionen funcionalitats addicionals.</p>
-<p>I de totes les característiques que enumerem i comentem a la propera
-unitat, les més destacables són:</p>
-<ol style="list-style-type: decimal">
-<li><p><strong>Windows PowerShell</strong>. Llenguatge d’scripts basat
-em ordre (cmdLets) molt potent i avançat.</p></li>
-<li><p><strong>Servici de backup de Seguretat de Windows
-Server</strong>. El vorem.</p></li>
-<li><p><strong>.NET Framework</strong> (no el vorem)</p></li>
-<li><p><strong>Windows Defender</strong></p></li>
-<li><p><strong>Remote assistence</strong></p></li>
-</ol>
-<p>Com veiem hi ha una clara relació entre el roll i la classificació
-dels servidors segons la funció que vam estudiar a la unitat
-anterior.</p>
-<p>Per altra banda, la característica ve a complementar el roll o
-facilitar la tasca de l’administrador.</p>
-</div>
-</div>
-<div id="llicències" class="section level2">
-<h2>3.2 Llicències</h2>
-<p>Windows Server requereix llicències tant per al sistema operatiu com
-per als usuaris o dispositius que accedeixen al servidor (CALs - Client
-Access Licenses).</p>
-<p>Per tant en un Domini Windows Server haurem de pagar llicències no
-sols per cada Windows 1x de PC sinó també la llicència per servidor
-Windows Server i una per cada PC o usuari que s’hi connecte al
-Domini.</p>
-<p>El Domini s’encareix en quant a llicències respecte al Workgroup.</p>
+<div id="descripció" class="section level1">
+<h1>Descripció</h1>
+<p>En aquesta activitat anem a crear el domini. Abandonarem el model de
+WorkGroup i passarem a una arquitectura clarament ja de
+Client/Servidor.</p>
 <blockquote>
-<p>Sobre llicèncias CAL’s</p>
-<p>Has de saber què interessa en cada cas concreta. Pagar llicències per
-PC o per usuaris.</p>
+<p>NOTA</p>
+<p>On diu <em>nomteu</em> has de posar el teu cognom primer o nom de
+pila</p>
 </blockquote>
+<div id="pasos-per-crear-el-domini" class="section level2">
+<h2>Pasos per crear el Domini</h2>
+<p>Seguiu la documentació del repositori (U3 Administració i
+configuració II):</p>
+<ul>
+<li>Instal·lar el AD-DS</li>
+<li>Promocionar el Windows Server a DC</li>
+<li>Crear un nou bosc amb el nom de domini rel: <em>nomteu.local</em>
+*Ens assegurem que el servidor serà el Servidor DNS.</li>
+</ul>
 </div>
-<div id="interfície-gràfica" class="section level2">
-<h2>3.2 Interfície gràfica</h2>
-<p>La interfície gràfica de Windows Server és similar a la de les
-versions d’escriptori de Windows, però està optimitzada per a
-l’administració de servidors. Algunes característiques clau
-inclouen:</p>
-<p>Al <strong>curs de Windows 11</strong> d’aquest mateix repositori
-podreu trobar informació sobre l’entorn gràfic <strong>comú de tots els
-sistemes Windows</strong> per a la gestió. Estudieu-ho.</p>
-<p><a href="https://tofermos.github.io/Windows11/interfaces/interfaces.html">Introducció
-a l’entorn gràfic de Windows</a></p>
+<div id="pasos-per-crear-algun-objetes-del-ad" class="section level2">
+<h2>Pasos per crear algun objetes del AD</h2>
+<ul>
+<li>Crea una UO amb el nom “usuari_DelegacioNord”</li>
+<li>Crea un grup d’usuaris de la delegació creada amb el nom
+“gr_programadors”</li>
+<li>Crea un usuari pertanyent al grup amb el nom:
+“nomteu_programador”</li>
+<li>Assigna-li una contrassenya</li>
+</ul>
 </div>
-<div id="tancament-de-sessió-i-apagat-del-servidor" class="section level2">
-<h2>3.3 Tancament de sessió i apagat del servidor</h2>
-<p><strong>Paperera de reciclatge</strong></p>
-<p>Un aspecte important de les xarxes Windows és que quan eliminem un
-arxiu o carpeta a través de la xarxa, aquest despareix definitivament.
-La paperera només funciona per a fitxers locals eliminats accedint a
-través de les unitats locals. Aquest handicap ens obliga a configurar la
-paperera del servidor amb l’advertència <strong><em>“Mostrar cuadro de
-diálogo para confirmar la eliminación”</em></strong> com es mostra a la
-figura:</p>
-<div class="float">
-<img src="data:image/png;base64,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" alt="Figura 1: Paperera d’un Windows Server" />
-<div class="figcaption"><em>Figura 1: Paperera d’un Windows
-Server</em></div>
 </div>
-<p><strong>Tancar i iniciar sessió en el Servidor</strong></p>
-<p>El tancament de sessió i l’apagat d’un servidor requereix més
-precaucions que en una estació de treball (Windows 1x).</p>
-<p>Respecte a l’<strong>apagat del servidor</strong>, aquets, solen
-estar executant serveis crítics i aplicacions de xarxa. Apagar
-incorrectament un servidor pot causar pèrdua de dades o interrupció del
-servei. El procés d’apagat ha de ser planificat i queda registrada la
-causa que indiquem.</p>
-<p>Respecte al <strong>tancament de sessió</strong>, l’estat normal deu
-ser amb la sessió tancada excepte quan un administrador ha de fer alguna
-tasca. La sessió deu estar el temps estrictament necessari i el login no
-deu estar visible per raons de seguretat.</p>
-<p>Per raons de seguretat, a banda d’evitar l’accès físic al servidor,
-cal que només tinguem iniciada una sessió el temps justet per fer la
-tasca de manteniment.</p>
-</div>
+<div id="afig-el-windows-1x-al-domini" class="section level1">
+<h1>Afig el Windows 1x al domini</h1>
+<p>Afig el PC al domini. Inicia sessió amb l’usuari del domini creat</p>
+<p>1 Accedeix a: <em>F:\DADESSERVIDOR\f1.txt</em> compartida del
+servidor i obri’l des del client.</p>
+<p>2 Deixa’l obert en Windows 1x. En l’apartat “Sesiones” de
+<em>fsmgmnt.exe</em>. Ara, veus alguna sessió del Windows 1x?</p>
+<p>3 Força el tacament del fitxer obert en “Ficheros abiertos”</p>
+<p>4 Comprova que s’ha tancat.</p>
 </div>
 
 

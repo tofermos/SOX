@@ -1,0 +1,20 @@
+// Pregunta sobre AD DS
+::Active Directory:: Quin servei de directori implementa Windows Server? {=Active Directory Domain Services (AD DS) ~OpenLDAP ~LDAP}
+
+::DNS Server:: Quin servei tradueix noms de domini a adreces IP a Windows Server? {=DNS Server ~DHCP Server ~IIS}
+
+::Rols de servidor:: Quin servei assigna automàticament adreces IP en una xarxa? {=DHCP Server ~DNS Server ~IIS}
+
+::Remote Desktop Services:: Quin servei permet als usuaris connectar-se remotament a escriptoris virtuals o aplicacions? {=Remote Desktop Services (RDS) ~DNS Server ~DHCP Server}
+
+::Funcions principals:: Quin d'aquests és un rol principal de Windows Server? {=File and Storage Services ~Print Services ~Task Scheduler}
+
+::Administrador de servidors:: Quina utilitat gestiona el servidor centralment per configurar rols i característiques? {=servermanager.exe ~fsmgmt.msc ~dnsmgmt.msc}
+
+::Consola DNS:: Quina consola gestiona zones i registres DNS a Windows Server? {=dnsmgmt.msc ~dhcpmgmt.msc ~dcpromo.msc}
+
+::Carpetes compartides:: Quina consola gestiona carpetes compartides a Windows Server? {=fsmgmt.msc ~cluadmin.msc ~tsadmin.msc}
+
+::Gestió de DHCP:: Quina consola permet administrar adreces IP automàtiques? {=dhcpmgmt.msc ~dnsmgmt.msc ~servermanager.exe}
+
+::Clúster de Failover:: Quina consola gestiona clústers de tolerància a fallades en Windows Server? {=cluadmin.msc ~fsmgmt.msc ~dnsmgmt.msc}

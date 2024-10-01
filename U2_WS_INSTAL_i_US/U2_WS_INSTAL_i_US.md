@@ -5,16 +5,16 @@ lang: "ca-ES"
 papersize: A4
 linestretch: 1.5
 output:
-  pdf_document:
-    toc: true
-    keep_tex: true
-    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     toc_depth: 3
     df_print: paged
     number_sections: false
+  pdf_document:
+    toc: true
+    keep_tex: true
+    latex_engine: xelatex
 ---
 
 \newpage
@@ -193,6 +193,15 @@ Al **curs de Windows 11** d'aquest mateix repositori podreu trobar informació s
 [Introducció a l'entorn gràfic de Windows](https://tofermos.github.io/Windows11/interfaces/interfaces.html)
 
 ## 3.3 Tancament de sessió i apagat del servidor
+
+**Paperera de reciclatge**
+
+Un aspecte important de les xarxes Windows és que quan eliminem un arxiu o carpeta a través de la xarxa, aquest despareix definitivament. La paperera només funciona per a fitxers locals eliminats accedint a través de les unitats locals.
+Aquest handicap ens obliga a configurar la paperera del servidor amb l'advertència ***"Mostrar cuadro de diálogo para confirmar la eliminación"*** com es mostra a la figura:
+
+![*Figura 1: Paperera d'un Windows Server*](png/PapeleraWS.png)
+
+**Tancar i iniciar sessió en el Servidor**
 
 El tancament de sessió i l’apagat d’un servidor requereix més precaucions que en una estació de treball (Windows 1x).
 
