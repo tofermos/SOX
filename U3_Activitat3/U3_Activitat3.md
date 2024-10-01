@@ -1,5 +1,5 @@
 ---
-title: U3.Adminsitració i configuració del Windows Server
+title: U3.Administració i configuració del Windows Server
 subtitle: Activitat Unitat 3. Creació de domini
 author: "@tofermos 2024"
 lang: "ca-ES"
