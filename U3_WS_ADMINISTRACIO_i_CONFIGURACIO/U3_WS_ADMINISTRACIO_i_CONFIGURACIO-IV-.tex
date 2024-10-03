@@ -118,19 +118,38 @@ dispositius com és el cas de les WIFIS públiques o el router domèstic.
 
 \subsection{1.1 Conceptes previs}\label{conceptes-previs}
 
-\begin{verbatim}
-Recordatori:  Conceptes del mòdul de XAL de 1r SMX
+\textbf{Recordatori: Conceptes del mòdul de XAL de 1r SMX}
 
-- Adreça IP: Una adreça única dins del rang establit pel servidor.
+\begin{itemize}
+\item
+  Adreça IP: Una adreça única dins del rang establit pel servidor. En
+  una LAN que és on implemetarem el nostre domini són ip privades.
+\item
+  Màscara de subxarxa: Indica la porció de la xarxa a la qual pertany
+  l'adreça IP.
+\end{itemize}
 
-- Màscara de subxarxa: Indica la porció de la xarxa a la qual pertany l'adreça IP.
+Exemple: IP1 192.168.1.3 amb mascara /24 (255.255.255.0) IP2
+192.168.1.45 amb mascara /24 (255.255.255.0)
 
-- Adreça MAC: Adreça única de cada dispositiu (tarja ethernet, WIFI o boca d'un switch). Conté 6 bytes, els 3 més alts identifiquen el fabricant. Els altres 3, al dipositiu de forma única.
-
-- Passarel·la predeterminada: Normalment, és l'adreça del router o un altre dispositiu de xarxa que connecta la xarxa local amb Internet.
-
--Servidors DNS: Les adreces dels servidors que resolen els noms de domini a adreces IP.
-\end{verbatim}
+\begin{itemize}
+\item
+  Adreça MAC: Adreça única de cada dispositiu (tarja ethernet, WIFI o
+  boca d'un switch). Conté 6 bytes, els 3 més alts identifiquen el
+  fabricant. Els altres 3 bytes, al dipositiu de forma única.
+\item
+  Passarel·la predeterminada (Gateway o porta d'enllaç): Normalment, és
+  l'adreça del router o un altre dispositiu de xarxa que connecta la
+  xarxa local amb Internet.
+\item
+  Servidor DNS: És el servidor que fa la funció de resoldre NOMS-IPs
+  dins de l'espai de noms creat amb el nou domini.
+\item
+  Servidor DNS alternatiu: Quan ens adrecem a un recurs que el nom no
+  està dins del nostre espai de noms (xarxa local en el nostre cas), ens
+  dirigirem a ell (mitjançant el gateway). Solem posar la IPv4 de Google
+  com 8.8.8.8 o 8.8.4.4
+\end{itemize}
 
 El servei \textbf{DHCP (Dynamic Host Configuration Protocol)} en
 \textbf{Windows Server} és una \textbf{funció de servidor} que permet
@@ -224,14 +243,30 @@ instal·lem i configurem el servei.
 
 \subsubsection{Creem un rang de IP}\label{creem-un-rang-de-ip}
 
-\textbf{Pasos recomanables} * El/s rang/s ha d'abarcar TOTES les volem a
-la xarxa local. Després indicarem (dins de rang) quines queden excloses:
-* Exclourem les que vulguem assignar manualment (estàtiques)\ldots{} (
-servidors, altres routers\ldots). Vorem que el servidor DNS i el Gateway
-(encaminador) ens el demana ara. * Exclourem les que posem a disposició
-d'altri (administrador extern de fotocopiadores de xarxa o de càmeres
-IP, per exemple). * Fer les reserves de IP per a determinades MAC:
-Assignem les IP ( dinàmica) però constant a un dispositiu en concret
+\textbf{Pasos recomanables}
+
+\begin{itemize}
+\item
+  El/s rang/s ha d'abarcar TOTES les volem a la xarxa local. Després
+  indicarem (dins de rang) quines queden excloses:
+\item
+  Exclourem les que vulguem assignar manualment (estàtiques)\ldots{}
+  (servidors, altres routers\ldots). Vorem que el servidor DNS i el
+  Gateway (encaminador) ens el demana ara.
+\item
+  Exclourem les que posem a disposició d'altri (instal·lador extern de
+  fotocopiadores de xarxa o de càmeres IP, per exemple).
+\item
+  Fer les reserves de IP per a determinades MAC: el DHCP les assigna
+  (són dinàmiques) però sempre al mateix dispositiu.
+\end{itemize}
+
+\begin{quote}
+Nota:
+
+Les IPs excloses poden assignar-se manualment. Les IPs reservades les
+assigan el DHCP. No estan disponibles per a assignar-se manualment.
+\end{quote}
 
 \includegraphics[width=0.6\textwidth,height=\textheight]{png/DHCP8.png}
 
@@ -259,7 +294,15 @@ Indiquem la IP que té el servidor amb el servei DNS.
 
 \includegraphics[width=0.6\textwidth,height=\textheight]{png/DHCP13.png}
 
-\section{3 DHCP com servei}\label{dhcp-com-servei}
+\section{3 DHCP com a serveis en Windows Server i Windows
+1x}\label{dhcp-com-a-serveis-en-windows-server-i-windows-1x}
+
+\subsection{3.1 El servei en el
+servidor}\label{el-servei-en-el-servidor}
+
+És qui està pendent de les peticions d'IP dels dispositius connectats a
+la xarxa (no únicament PCs amb Windows 1x). Disposem d'ell quan
+instal·lem el ROL corresponent.
 
 Mirarem més avant els servicis però podem observar ja alguna
 característica típica d'este software de servidor. Entrem a la consola
@@ -272,6 +315,9 @@ de Serveis (\textbf{services.msc}):
 \end{itemize}
 
 \includegraphics[width=0.6\textwidth,height=\textheight]{png/ServiciDHCP0.png}
+
+Evidetment és un servei que ha d'estar disponible des del primer moment
+per tant, el tipus d'inici serà \textbf{automòatic}.
 
 \begin{itemize}
 \tightlist
@@ -292,28 +338,43 @@ de Serveis (\textbf{services.msc}):
 
 \includegraphics[width=0.6\textwidth,height=\textheight]{png/ServiciDHCP2.png}
 
-\section{4 Client}\label{client}
+\subsection{3.2 La part client del DHCP}\label{la-part-client-del-dhcp}
 
-En el client devem canviar la configuració de la NIC i especificar que,
-ara, la IP l'assignarà el DHCP
+En el PC client devem canviar la configuració de la NIC i especificar
+que, ara, la IP l'assignarà el DHCP: \textbf{assignació dinàmica}
 
 \includegraphics[width=0.6\textwidth,height=\textheight]{png/DHCP14.png}
 
-\subsection{4.1 El servici DHCP en el
-client.}\label{el-servici-dhcp-en-el-client.}
+\subsection{3.3 El servici DHCP en el
+client}\label{el-servici-dhcp-en-el-client}
+
+És qui demana la IP al servidor i la serveix al software del PC Windows
+1x.
 
 \begin{itemize}
-\tightlist
 \item
-  L'assignació dinàmica de IP o protocol DHCP respon al \textbf{model
-  client servidor}.
+  No hem d'oblidar que l'assignació dinàmica de IP o protocol DHCP
+  respon al \textbf{model client servidor}.
 \item
-  Altra qüestió és que la implementació del ``client DHCP'' en els PC
-  satèlits o clients siga mitjançant un ``servei local de Windows''.
+  Altra qüestió és que \textbf{la implementació del software ``client
+  DHCP'' en un Windows 1x es fa mitjançant un ``servei local de
+  Windows''}. No és un ``servici'' per a altres PC sinó per al mateix
+  software del PC.
 \item
-  Per vore el software client, entrem en la consola de serveis:
-  \textbf{services.msc}
+  Per comprovar si el client DHCP està funcionant correctament, entrem
+  en la consola de serveis \textbf{services.msc} del PC Windows 1x com
+  en el Servidor (encara que òbviament no és e mateix software).
 \end{itemize}
+
+\begin{quote}
+Nota:
+
+Una qüestió és que la funció típica d'un SOX del DHCP respon al model
+Client/Servidor. Un dispositiu demana i un servidor respon. Altra
+qüestión és la implemententació del software als dos costats
+(dispositiu/Servidor) que fa Windows mitjançant servicis propis en els
+Windows 1x i en el Windows Server.
+\end{quote}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}

@@ -28,20 +28,23 @@ Es tracta de la funció bàsica de proporcionar IP provades en les LAN . Encara 
 
 ## 1.1 Conceptes previs
 
-```
-Recordatori:  Conceptes del mòdul de XAL de 1r SMX
+**Recordatori:  Conceptes del mòdul de XAL de 1r SMX**
 
-- Adreça IP: Una adreça única dins del rang establit pel servidor.
+* Adreça IP: Una adreça única dins del rang establit pel servidor. En una LAN que és on implemetarem el nostre domini són ip privades.
 
-- Màscara de subxarxa: Indica la porció de la xarxa a la qual pertany l'adreça IP.
+* Màscara de subxarxa: Indica la porció de la xarxa a la qual pertany l'adreça IP.
 
-- Adreça MAC: Adreça única de cada dispositiu (tarja ethernet, WIFI o boca d'un switch). Conté 6 bytes, els 3 més alts identifiquen el fabricant. Els altres 3, al dipositiu de forma única.
+Exemple:
+IP1 192.168.1.3 amb mascara /24 (255.255.255.0)
+IP2 192.168.1.45 amb mascara /24 (255.255.255.0)
 
-- Passarel·la predeterminada: Normalment, és l'adreça del router o un altre dispositiu de xarxa que connecta la xarxa local amb Internet.
+* Adreça MAC: Adreça única de cada dispositiu (tarja ethernet, WIFI o boca d'un switch). Conté 6 bytes, els 3 més alts identifiquen el fabricant. Els altres 3 bytes, al dipositiu de forma única.
 
--Servidors DNS: Les adreces dels servidors que resolen els noms de domini a adreces IP.
+* Passarel·la predeterminada (Gateway o porta d'enllaç): Normalment, és l'adreça del router o un altre dispositiu de xarxa que connecta la xarxa local amb Internet.
 
-```
+* Servidor DNS: És el servidor que fa la funció de resoldre NOMS-IPs dins de l'espai de noms creat amb el nou domini.
+
+* Servidor DNS alternatiu: Quan ens adrecem a un recurs que el nom no està dins del nostre espai de noms (xarxa local en el nostre cas), ens dirigirem a ell (mitjançant el gateway). Solem posar la IPv4 de Google com 8.8.8.8 o 8.8.4.4
 
 El servei **DHCP (Dynamic Host Configuration Protocol)** en **Windows Server** és una **funció de servidor** que permet als administradors de xarxa automatitzar l'assignació d'adreces IP i altres paràmetres de configuració de xarxa als dispositius que es connecten a la xarxa.
 
@@ -100,11 +103,20 @@ Un dels servicis més típics i usats d'un servidor senzill de xarxa és l'assig
 ### Creem un rang de IP
 
 **Pasos recomanables** 
+
 * El/s rang/s ha d'abarcar TOTES les volem a la xarxa local. Després indicarem (dins de rang) quines queden excloses:
-* Exclourem les que vulguem assignar manualment (estàtiques)... ( servidors, altres routers...). Vorem que el servidor DNS i el Gateway (encaminador) ens el demana ara.
-* Exclourem les que posem a disposició d'altri (administrador extern de fotocopiadores de xarxa o de càmeres IP, per exemple).
-* Fer les reserves de IP per a determinades MAC: Assignem les IP ( dinàmica) però constant a un dispositiu en concret
-  
+
+* Exclourem les que vulguem assignar manualment (estàtiques)... (servidors, altres routers...). Vorem que el servidor DNS i el Gateway (encaminador) ens el demana ara.
+
+* Exclourem les que posem a disposició d'altri (instal·lador extern de fotocopiadores de xarxa o de càmeres IP, per exemple).
+
+* Fer les reserves de IP per a determinades MAC: el DHCP les assigna (són dinàmiques) però sempre al mateix dispositiu.
+
+>Nota:
+>
+>Les IPs excloses poden assignar-se manualment.
+>Les IPs reservades les assigan el DHCP. No estan disponibles per a assignar-se manualment.
+
 ![](png/DHCP8.png){width=60%}
 
 ### Exclusions
@@ -130,13 +142,19 @@ Indiquem la IP que té el servidor amb el servei DNS.
 
 ![](png/DHCP13.png){width=60%}
 
-# 3 DHCP com servei
+# 3 DHCP com a serveis en Windows Server i Windows 1x
+
+## 3.1 El servei en el servidor
+
+És qui està pendent de les peticions d'IP dels dispositius connectats a la xarxa (no únicament PCs amb Windows 1x). Disposem d'ell quan instal·lem el ROL corresponent.
 
 Mirarem més avant els servicis però podem observar ja alguna característica típica d'este software de servidor. Entrem a la consola de Serveis (**services.msc**):
 
 * Podem reiniciar-lo o aturar-lo
   
 ![](png/ServiciDHCP0.png){width=60%}
+
+Evidetment és un servei que ha d'estar disponible des del primer moment per tant, el tipus d'inici serà **automòatic**.
 
 * El tipus d'inici per defecte és, obviament, automàtic
 
@@ -149,17 +167,27 @@ Mirarem més avant els servicis però podem observar ja alguna característica t
 ![](png/ServiciDHCP2.png){width=60%}
 
 
-# 4 Client 
+## 3.2 La part client del DHCP
 
-En el client devem canviar la configuració de la NIC i especificar que, ara, la IP l'assignarà el DHCP
+En el PC client devem canviar la configuració de la NIC i especificar que, ara, la IP l'assignarà el DHCP: **assignació dinàmica**
 
 ![](png/DHCP14.png){width=60%}
 
-## 4.1 El servici DHCP en el client.
+## 3.3 El servici DHCP en el client
 
-* L'assignació dinàmica de IP o protocol DHCP respon al **model client servidor**.
-* Altra qüestió és que la implementació del "client DHCP" en els PC satèlits o clients siga mitjançant un "servei local de Windows".
-* Per vore el software client, entrem en la consola de serveis: **services.msc**
+És qui demana la IP al servidor i la serveix al software del PC Windows 1x.
+
+* No hem d'oblidar que l'assignació dinàmica de IP o protocol DHCP respon al **model client servidor**.
+* Altra qüestió és que **la implementació del software "client DHCP" en un Windows 1x es fa mitjançant un "servei local de Windows"**. No és un "servici" per a altres PC sinó per al mateix software del PC.
+
+
+* Per comprovar si el client DHCP està funcionant correctament, entrem en la consola de serveis **services.msc** del PC Windows 1x com en el Servidor (encara que òbviament no és e mateix software).
+
+>Nota:
+>
+>Una qüestió és que la funció típica d'un SOX del DHCP respon al model Client/Servidor. Un dispositiu demana i un servidor respon.
+> Altra qüestión és la implemententació del software als dos costats (dispositiu/Servidor) que fa Windows mitjançant servicis propis en els Windows 1x i en el Windows Server.
+
 
 |Model C/S| Nom del servici Windows|Acció|
 |---|---|---|
