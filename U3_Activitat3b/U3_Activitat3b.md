@@ -41,9 +41,16 @@ En aquesta activitat farem:
 
 * Fer una reserva d'una IPv4 a l'aderça MAC d'un PC.
 
-* Alternativament, fent ús de la Reserva i una assignació automàtica, podeu reproduir un error de duplicitat en les IP.
 
-* Altra prova que podeu fer és canviar el tipus d'inici del Servici DHCP del client a *manual*, *detenir-lo* i reiniciar el PC.
+## Opcional
+
+Es tracta de provocar dos errors per entendre millor el funcionament del DHCP.
+
+* Fent ús de la Reserva i una assignació automàtica, podeu reproduir un error de duplicitat en les IP.
+
+* Canvieu el tipus d'inici del Servici DHCP del client a *manual*. Després el *detenir-lo* i reinicieu el PC.
+
+Funciona? Prova canviar el temps d'assignació de IP del servidor i reinicia després que caduque.
 
 # 3 Objectius
 
