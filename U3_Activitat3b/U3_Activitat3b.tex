@@ -125,13 +125,24 @@ En aquesta activitat farem:
   PC) que funciona.
 \item
   Fer una reserva d'una IPv4 a l'aderça MAC d'un PC.
-\item
-  Alternativament, fent ús de la Reserva i una assignació automàtica,
-  podeu reproduir un error de duplicitat en les IP.
-\item
-  Altra prova que podeu fer és canviar el tipus d'inici del Servici DHCP
-  del client a \emph{manual}, \emph{detenir-lo} i reiniciar el PC.
 \end{itemize}
+
+\subsection{Opcional}\label{opcional}
+
+Es tracta de provocar dos errors per entendre millor el funcionament del
+DHCP.
+
+\begin{itemize}
+\item
+  Fent ús de la Reserva i una assignació automàtica, podeu reproduir un
+  error de duplicitat en les IP.
+\item
+  Canvieu el tipus d'inici del Servici DHCP del client a \emph{manual}.
+  Després el \emph{detenir-lo} i reinicieu el PC.
+\end{itemize}
+
+Funciona? Prova canviar el temps d'assignació de IP del servidor i
+reinicia després que caduque.
 
 \section{3 Objectius}\label{objectius}
 
