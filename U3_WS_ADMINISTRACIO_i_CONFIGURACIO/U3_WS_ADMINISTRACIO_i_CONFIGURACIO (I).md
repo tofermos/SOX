@@ -47,42 +47,81 @@ No tots els Rols i Característiques, menys encara, són **funcions principals**
 
 # 2 Administració i configuració bàsica
 
-## Consoles i altres utilitats comuns a tots el sistemes Windows
+## 2.1 Consoles i altres utilitats comuns a tots el sistemes Windows
 
-Al curs de Windows 11 d'aquest repositori podreu trobar una guia més que suficient sobre les utitlitas gràfiques del sistema Windows per configurar i administrar una màquina.
-
-[Consoles i altres utilitats](https://tofermos.github.io/Windows11/gestiodelequip/gestiodelequip.html)
-
-## Consoles i altres utilitats específiques de Windows Server
 
 A banda de les vistes en l'apartat anterior, específicament de Windows Server tenim les consoles i utilitats següents:
 
 **servermanager.exe** - Administrador de Servidors. Aquesta és la utilitat (no es consola estrictament parlant) central per a gestionar el servidor. Permet configurar rols i característiques, gestionar discos, supervisar el rendiment, entre altres funcions.
 
-**dcpromo.msc** - Promoció de controlador de domini: Utilitzada per configurar un controlador de domini (AD DS), una funció exclusiva de Windows Server.
+**dcpromo.msc** - Promoció de controlador de domini: Utilitzada per configurar un controlador de domini (AD-DS), una funció exclusiva de Windows Server.
 
-**dnsmgmt.msc** - Gestió de DNS: Disponible en Windows Server per gestionar zones i registres DNS.
+**dsa.msc** - Consola per administrar tots els **objectes del Active Directory**. 
 
-**dhcpmgmt.msc** - Gestió de DHCP: Permet administrar el rol de servidor DHCP per assignar adreces IP automàticament a dispositius de la xarxa.
+**gpmc.msc** - Consola per a gestionar el objectes polítiques de grup **directives**.
 
 **fsmgmt.msc** - Carpetes compartides: Una consola específica per gestionar carpetes i recursos compartits al servidor, encara que també es pot trobar en versions professionals de Windows 10/11.
 
-*(els 2 següents no anem a mirar-los en SOX)*
+**dnsmgmt.msc** - Gestió de DNS: Disponible en Windows Server per gestionar zones i registres DNS.
+
+**dhcpmgmt.msc** - Gestió de DHCP: Permet administrar el rol de servidor DHCP per assignar adreces IP automàticament a dispositius de la xarxa
+
+**eventvwr.msc** - Visor d'events.
+
+**services.msc** - Gestor de servicis. 
 
 **tsadmin.msc** o Remote Desktop Services Manager: Utilitzada per gestionar sessions d'escriptori remot, més comuna en Windows Server per administrar entorns d’escriptori remot (RDS).
 
 **cluadmin.msc** - Gestió de Clúster de Failover: Disponible en Windows Server per administrar clústers de tolerància a fallades i alta disponibilitat, especialment útil per entorns crítics empresarials.
 
-## PowerShell (El vorem més avant)
+* Des de l'Administrador del Servidor o Control de Panel podem accedir a moltes.
 
-Més avant, si farem una ullada interessant al lleguatge d'scripts basat en cmdLets (comandaments de Windows).
+* Al curs de Windows 11 d'aquest repositori podreu trobar una guia més que suficient sobre les utitlitas gràfiques del sistema Windows per configurar i administrar una màquina.
+
+[Consoles i altres utilitats](https://tofermos.github.io/Windows11/gestiodelequip/gestiodelequip.html)
+
+
+## 2.1 PowerShell (El vorem més avant)
+
+Més avant, si farem una ullada interessant al lleguatge d'scripts basat en cmdLets (comandaments de Windows). Totes les tasques d'instal·lació, configuració i administració es poden fer amb cmdLets.
 
 Si voleu consultar, teniu un curs de PowerShell en aquest repositori:
 
 [Curs PowerShell](https://github.com/tofermos/PowerShell)
 
-# 3 Administració i configuració de comptes locals
 
-Els comptes locals perden importància en un Domini. No obstant podeu consultar el curs de Windows 1x d'aquest repositori, ja que és un tema comú a tots els Windows Server.
+## 2.2 Variables del Sistema
 
-[Comptes locals](https://tofermos.github.io/Windows11/gestions/comptesLocals.html)
+Podem accedir a elles:
+
+* Des del cmd
+
+![*Figura 1. Variables del sistema. Ordre SET*](png/Variables1.png)
+
+* Per consultar alguna.
+
+1 Windows usa la mateixa ordre que Unix. 
+2 En Windows en compte d'anar precedides de $, van entre %var% ( En PowerShell usarem el $ tant en lectura com en escriptura)
+3 No es case-sensitive. No diferència majúscules de minúscules
+
+![*Figura 1. Variables del sistema. Ordre ECHO*](png/Variables2.png)
+
+* Despres d'afegir un directori (potser calga reiniciar el servidor)
+
+```cmd
+set PATH=%PATH%;C:\PROGRAMES_MEUS
+```
+
+* Des del GUI
+
+![*Figura 3: Variables del sistema. Sistema](png/Variables3.png)
+
+
+Llig les variables del sistema. Algunes les usarem més avant o son interessants:
+
+* %userdomain%
+* %userdnsdomain%
+* %computername%
+* %username%
+* %path*
+* etc.

@@ -1,0 +1,160 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{catalan}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={U3.Administració i configuració del Windows Server. DHCP},
+  pdfauthor={@tofermos 2024},
+  pdflang={ca-ES},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{U3.Administració i configuració del Windows Server. DHCP}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Activitat Unitat 3. Prova de DHCP}
+\author{@tofermos 2024}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\setstretch{1.5}
+\newpage
+\renewcommand\tablename{Tabla}
+
+\begin{quote}
+NOTA PRÈVIA:
+
+Abans de començar, estudieu la Unitat 3 i llegiu TOTA la pràctica. Podeu
+continuar a partir de la Activitat anterior.
+\end{quote}
+
+\section{1 Descripció}\label{descripciuxf3}
+
+Activitat per provar l'usuari del domini i el servei DHCP.
+
+\section{2 Pasos}\label{pasos}
+
+En aquesta activitat farem:
+
+\begin{itemize}
+\item
+  Provar que l'usuari del domini pot iniciar sessió des de 2 PC clients.
+\item
+  Veure les sessions i els fitxers des del servidor (\emph{fsmgmt.msc})
+\item
+  Configurar DHCP ( Servidor i clients) i provar (reiniciant adaptador o
+  PC) que funciona.
+\item
+  Fer una reserva d'una IPv4 a l'aderça MAC d'un PC.
+\end{itemize}
+
+\subsection{Opcional}\label{opcional}
+
+Es tracta de provocar dos errors per entendre millor el funcionament del
+DHCP.
+
+\begin{itemize}
+\item
+  Fent ús de la Reserva i una assignació automàtica, podeu reproduir un
+  error de duplicitat en les IP.
+\item
+  Canvieu el tipus d'inici del Servici DHCP del client a \emph{manual}.
+  Després el \emph{detenir-lo} i reinicieu el PC.
+\end{itemize}
+
+Funciona? Prova canviar el temps d'assignació de IP del servidor i
+reinicia després que caduque.
+
+\section{3 Objectius}\label{objectius}
+
+Bàsicament anem a comprovar:
+
+\begin{itemize}
+\item
+  Avantatge de la centralització de comptes (usuari del domini) vs
+  comptes locals en xarxa.
+\item
+  El funcionament més bàsic del DHCP com a servei de Windows Server en
+  clients Windows 1x.
+\end{itemize}
+
+\end{document}

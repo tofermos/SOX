@@ -1,21 +1,21 @@
 ---
 title: U3. WINDOWS SERVER. ADMINISTRACIÓ I CONFIGURACIÓ (V)
-subtitle: GESTIÓ DE UO I DIRECTIVES LOCALS DE SEGURETAT
+subtitle: GESTIÓ DE UO I AVANÇ DIRECTIVES LOCALS DE SEGURETAT
 author: "@tofermos 2024"
 lang: "ca-ES"
 papersize: A4
 linestretch: 1.5
 output:
-  pdf_document:
-    toc: true
-    keep_tex: true
-    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     toc_depth: 3
     df_print: paged
     number_sections: false
+  pdf_document:
+    toc: true
+    keep_tex: true
+    latex_engine: xelatex
 ---
 
 \newpage
@@ -64,17 +64,50 @@ Un exemple d'ús senzill és d'autoritzar a un usuari de la Delegació, Centre d
 >
 >Fixem-nos en el detall que parlem de "drets" i no de "permisos" que és un terme que circumscriurem a l'ambit del sistema de fitxers.
 
-## 2.3 Habilitem l'usuari per a iniciar sessió
+## 2.3 Habilitem l'usuari per a iniciar sessió. 
 
-Com bé sabem, els grups d'usuaris que poden iniciar sessió al servidor per defecte, en acabar la instal·lació, són "administradors". Te la seua raó en la seguretat evidentment.
+Com bé sabem, els grups d'usuaris que poden iniciar sessió al servidor per defecte, en acabar la instal·lació de Windows Server, són alguns grups predeterminats que direm genèricament i mal dit "administradors" (Administradors del servidor, del domini, operadors de comptes...). Té la seua raó en la seguretat evidentment.
 
-Com ja hem exposat, ara, anem a fer una excepció permentent l'accés al servidor a un usuari per a que faça **estrictament** les accions que hem especificat adés com a drets.
+![Figura 3:Usuaris per defecte](png/usuarisDEfecteWS.png)
+
+Com ja hem exposat, ara, anem a fer una excepció permentent l'accés al servidor a un usuari del domini (no és un informàtic dedicat a l'administració de la LAN) per a que faça només **estrictament** les accions que hem especificat adés com a drets.
 
 A la *Unitat 5. Windows Server. Monitorització i ús* tractarem l'inici de sessió remota, ara farem l'inici local.
 
 **Spoiler: directiva de seguretat**
 
 Tot i que les Directives de Seguretat es tracten a la *Unitat 4.Administració i configuració avançada* s'imposa la necessitat de fer un spoiler.
+
+### Canvi de la directiva: "Permitir inicio en sesión local""
+
+1- Executar **gpmc.msc**
+
+*A la Unitat 4 tractem un poc més a fons les directives en general*
+
+Busquem una directiva que afecta a la màquina (**Domain Controller**) ja que es tracta de permetre iniciar sessió local, per tant modificarem la plantilla de directives que ve per defecte de **Default Domain Controller Policy** la directiva:
+**Permitir el inicio de sesión local**
+
+* Observem quins grups poden inciar sessió localment en aquesta màquina.
+![*Figura 4:Veiem els valors per defecte*](png/mostrarDirectiva1.png)
+
+
+* Botó contrari:**EDITAR**
+
+![*Figura 5:Edició de la directiva local de seguretat*](png/EditarDirectiva1.png)
+
+* Seleccionem la directiva que volem canviar
+
+![*Figura 6:Edició de la directiva local de seguretat*](png/EditarDirectiva2.png)
+
+* Afegim l'usuari
+
+![*Figura 7:Edició de la directiva local de seguretat*](png/EditarDirectiva3.png)
+
+* Sempre que teniu **APLICAR** recordeu polsar abans que **Acceptar**
+
+![*Figura 8:Edició de la directiva local de seguretat*](png/EditarDirectiva4.png)
+
+
 
 **Comprovem...** Provem tancar la sessió de l'administrador en ús i comprovar que l'usuari ja pot inciar sessió localment al servidor. 
 Efectivament, pot. 
@@ -140,6 +173,21 @@ Relament quan ens deixa executar incialment, és com qual al terminal ens deixa 
 ![*Figura 8: Fora del UO no pot fer cap acció*](png/NoTienePrivilegios.png)
 
 
+## 2.6 Característiques avançades del dsamc.msc
+
+Per poder eliminar o fer canvis d'ubicacions de les UO, cal inhabilitar una protecció que tenen contra errors accidentals. 
+
+* Aquesta no està visible i hem danar a **Ver>Características Avanzadas** de la consola.
+
+![*Figura 9: Veure-ho tot en dsa.msc*](png/dsaCarateristicasAvanzadas.png)
+
+* Ara ja apareix la pestanya *Propiedades>Objeto* en per desprotegir (convindria que la tornàreu a deixar com estava en acabar).
+
+![*Figura 10: Desprotegir temporalment les UO*](png/protegerUO.png)
+
+* També ens apareix la pestanya *Propiedades>Seguridad* on podem veure quin usuari té el control.
+
+![*Figura 11: Qui té el control de la UO*](png/seguridaddeUO.png)
 
 
 
