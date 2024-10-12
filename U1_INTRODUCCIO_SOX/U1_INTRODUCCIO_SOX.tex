@@ -289,7 +289,10 @@ servidors i unes desenes de PC connectats mitjançant els stwitch.
 \caption{Figura 4. Estructura fisica}
 \end{figure}
 
-\section{3. Classificació segons la mida dels costats
+\section{3 Tipus d'arquitectures
+Client/Servidor}\label{tipus-darquitectures-clientservidor}
+
+\subsection{3.1 Classificació segons la mida dels costats
 (Client/Servidor)}\label{classificaciuxf3-segons-la-mida-dels-costats-clientservidor}
 
 Aquesta classificació es fa en funció de la càrrega que suporta cada
@@ -305,7 +308,7 @@ costat de l'arquitectura:
   del processament, i el servidor actua com a gestor de dades.
 \end{itemize}
 
-\section{4 Segons el tipus de serveis que
+\subsection{3.2 Segons el tipus de serveis que
 ofereix}\label{segons-el-tipus-de-serveis-que-ofereix}
 
 En una arquitectura client-servidor, els serveis proporcionats poden
@@ -313,7 +316,7 @@ variar considerablement segons les necessitats de l'empresa o
 organització. A continuació, es descriuen alguns dels tipus de serveis
 més comuns:
 
-\subsection{4.1 Servidor de fitxers}\label{servidor-de-fitxers}
+\subsubsection{3.2.1 Servidor de fitxers}\label{servidor-de-fitxers}
 
 Funció: Proporciona emmagatzematge centralitzat per a arxius, que poden
 ser accedits, modificats i compartits pels clients de la xarxa.
@@ -325,7 +328,7 @@ fitxer entre diversos usuaris. Això permet el treball col·laboratiu.
 Protocols associats habituals:SMB (Server Message Block) per a entorns
 Windows i NFS (Network File System) per a entorns Unix/Linux.
 
-\subsection{4.2 Servidor de bases de
+\subsubsection{3.2.2 Servidor de bases de
 dades}\label{servidor-de-bases-de-dades}
 
 \textbf{Funció:} Gestiona les bases de dades, processant sol·licituds de
@@ -336,7 +339,7 @@ electrònic, o qualsevol aplicació que depenga de dades estructurades.
 \textbf{Exemples de software:} MySQL, PostgreSQL, Microsoft SQL Server i
 Oracle.
 
-\subsection{4.3 Ressolució de noms.}\label{ressoluciuxf3-de-noms.}
+\subsubsection{3.2.3 Ressolució de noms.}\label{ressoluciuxf3-de-noms.}
 
 Sí, la \textbf{resolució de noms} és un \textbf{servei bàsic i
 fonamental en les xarxes} que converteix noms de domini i de recursos en
@@ -344,7 +347,7 @@ la xarxa en les seus adreces IP, permetent així que els dispositius es
 localitzen i es comuniquen entre ells. És essencial per a la navegació
 web.
 
-\subsubsection{DNS (Domain Name System)}\label{dns-domain-name-system}
+\paragraph{DNS (Domain Name System)}\label{dns-domain-name-system}
 
 El DNS és el servei més conegut per a la resolució de noms. Converteix
 noms de domini com \texttt{www.exemple.com} en adreces IP com
@@ -359,7 +362,7 @@ Nota: El DNS el vorem prompte en la instal·lació del Windows Server i
 l'accès des d'un client Windows 11.
 \end{quote}
 
-\subsubsection{Hosts File}\label{hosts-file}
+\paragraph{Hosts File}\label{hosts-file}
 
 Un fitxer de configuració local en els sistemes operatius que mapeja
 noms de domini a adreces IP. Els fitxers \texttt{hosts} es poden
@@ -372,7 +375,7 @@ petites o per a proves. - \textbf{Ubicació}: - \textbf{Windows}:
 Nota: El vorem en configurar el Servidor LDAP de Linux.
 \end{quote}
 
-\subsubsection{NetBIOS (Network Basic Input/Output
+\paragraph{NetBIOS (Network Basic Input/Output
 System)}\label{netbios-network-basic-inputoutput-system}
 
 Proporciona un sistema de resolució de noms per a xarxes locals de
@@ -400,7 +403,7 @@ infraestructura de xarxes que facilita la comunicació entre dispositius
 i aplicacions mitjançant la traducció de noms humans llegibles en
 adreces IP que els sistemes informàtics poden interpretar.
 
-\subsection{4.4 Servidor web}\label{servidor-web}
+\subsubsection{3.2.5 Servidor web}\label{servidor-web}
 
 Funció: Un servidor web s'encarrega d'allotjar i servir pàgines web als
 clients (normalment navegadors web). Aquest servidor interpreta
@@ -413,8 +416,10 @@ remot a informació i serveis empresarials.
 
 Protocols associats: HTTP i HTTPS són els protocols principals
 utilitzats per als servidors web. Els exemples més comuns de programari
-de servidors web són Apache, Nginx i Microsoft IIS. \#\#\# 4.5 Servidor
-d'autenticació i gestió centralitzada d'usuaris
+de servidors web són Apache, Nginx i Microsoft IIS.
+
+\subsubsection{3.2.6 Servidor d'autenticació i gestió centralitzada
+d'usuaris}\label{servidor-dautenticaciuxf3-i-gestiuxf3-centralitzada-dusuaris}
 
 \textbf{Funció:} La gestió centralitzada d'usuaris permet a les
 organitzacions administrar de manera centralitzada les credencials
@@ -463,7 +468,7 @@ a múltiples recursos, com fitxers, aplicacions o serveis. Això permet
 que els administradors gestionen permisos i configuracions des d'un únic
 punt, millorant l'eficiència i la seguretat.
 
-\subsection{4.7 Servidor d'impressió}\label{servidor-dimpressiuxf3}
+\subsubsection{3.2.7 Servidor d'impressió}\label{servidor-dimpressiuxf3}
 
 El servidor d'impressió gestiona la impressió de documents en una xarxa,
 actuant com a intermediari entre els clients que envien treballs
@@ -507,7 +512,7 @@ CUPS (Common Unix Printing System): Un programari de codi obert
 utilitzat en sistemes Unix/Linux i macOS per gestionar tasques
 d'impressió en xarxa.
 
-\subsubsection{4.7 Servidor de correu}\label{servidor-de-correu}
+\subsubsection{3.2.8 Servidor de correu}\label{servidor-de-correu}
 
 Funció: Gestiona el correu electrònic dins de l'organització, tant per a
 l'enviament com per a la recepció de missatges. Proporciona serveis com
@@ -522,7 +527,7 @@ Protocols associats: Els protocols més comuns són SMTP (Simple Mail
 Transfer Protocol) per a l'enviament de correu, i IMAP (Internet Message
 Access Protocol) o POP3 (Post Office Protocol) per a la recepció.
 
-\subsection{4.7 Servidors. Máquines o
+\subsection{3.3 Servidors. Máquines o
 serveis?}\label{servidors.-muxe1quines-o-serveis}
 
 Tal com hem exposat la classificació dels servidors segons el servei,
@@ -534,10 +539,10 @@ la xarxa local''. És ``servidor'' aquella màquina que respon a la
 petició d'un servei oferint-lo i pot tindre més d'un servei instal·lat i
 configurat.
 
-\section{5. Avantatges i inconvenients de l'arquitectura
+\section{4. Avantatges i inconvenients de l'arquitectura
 C/S}\label{avantatges-i-inconvenients-de-larquitectura-cs}
 
-\subsection{5.1. Avantantges}\label{avantantges}
+\subsection{4.1. Avantantges}\label{avantantges}
 
 \begin{itemize}
 \tightlist
@@ -552,7 +557,7 @@ C/S}\label{avantatges-i-inconvenients-de-larquitectura-cs}
   centralitzada.
 \end{itemize}
 
-\subsection{5.2. Inconvenients}\label{inconvenients}
+\subsection{4.2. Inconvenients}\label{inconvenients}
 
 \begin{itemize}
 \tightlist
@@ -584,9 +589,10 @@ un entorn de treball col·laboratiu i recursos software (Base e dades, pe
 exemple) o hardware (impressores, discos\ldots) es complica
 excessivament.
 
-\section{6. Sistema operatiu de xarxa}\label{sistema-operatiu-de-xarxa}
+\section{6. Sistema operatiu de xarxa
+(SOX)}\label{sistema-operatiu-de-xarxa-sox}
 
-\subsection{6.1 Concepte}\label{concepte}
+\subsection{6.1 Concepte de SOX}\label{concepte-de-sox}
 
 Un \textbf{sistema operatiu de xarxa} és aquell que permet la
 comunicació entre diferents ordinadors connectats a una xarxa,
@@ -801,7 +807,7 @@ passat. Convé revisar que la versió del Hipervisor siga la mateixa.
 \begin{figure}
 \centering
 \includegraphics{png/afegeixMV2.png}
-\caption{Figura 7. Seleccionar la máquina que tenim al disc extrïble}
+\caption{Figura 7. Seleccionar la máquina que tenim al disc extraïble}
 \end{figure}
 
 \end{document}

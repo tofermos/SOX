@@ -31,24 +31,24 @@ linestretch: 1.5
 
 |||||
 |:------|:--|:--|
-|Introducció als SOX (I)|[![](recursos/iconohtml.png)](U1_INTRODUCCIO_SOX/U1_INTRODUCCIO_SOX.html)|[![](recursos/iconopdf.png)](U1_INTRODUCCIO_SOX/U1_INTRODUCCIO_SOX.pdf)|
-|Introducció als SOX (II). Xarxa en VirtualBox i Workgroup de Windows 11|[![](recursos/iconohtml.png)](U1_WORKGROUP_VIRTUALBOX/U1_WORKGROUP_VIRTUALBOX.html)|[![](recursos/iconopdf.png)](U1_WORKGROUP_VIRTUALBOX/U1_WORKGROUP_VIRTUALBOX.pdf)|
+|U1. Introducció als SOX (I)|[![](recursos/iconohtml.png)](U1_INTRODUCCIO_SOX/U1_INTRODUCCIO_SOX.html)|[![](recursos/iconopdf.png)](U1_INTRODUCCIO_SOX/U1_INTRODUCCIO_SOX.pdf)|
+|U1 Introducció als SOX (II). Xarxa en VirtualBox i Workgroup de Windows 11|[![](recursos/iconohtml.png)](U1_WORKGROUP_VIRTUALBOX/U1_WORKGROUP_VIRTUALBOX.html)|[![](recursos/iconopdf.png)](U1_WORKGROUP_VIRTUALBOX/U1_WORKGROUP_VIRTUALBOX.pdf)|
 |Activitat 1|[![](recursos/iconohtml.png)](U1_Activitat1/U1_Activitat1.html)|[![](recursos/iconopdf.png)](U1_Activitat1/U1_Activitat1.pdf)|
 
 ### [2 WINDOWS SERVER. INSTAL·LACIÓ I ÚS](#U2)
 |||||
 |:------|:--|:--|
-|Introducció al Windows Server|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.pdf)|
-|Instal·lació en Virtualbox|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.pdf)|
+|U2 Introducció al Windows Server|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US/U2_WS_INSTAL_i_US.pdf)|
+|U2 Instal·lació en Virtualbox|[![](recursos/iconohtml.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.html)|[![](recursos/iconopdf.png)](U2_WS_INSTAL_i_US(II)/ADDSenWindowsServerGUI.pdf)|
 |Activitat 2|[![](recursos/iconohtml.png)](U2_Activitat2/U2_Activitat2.html)|[![](recursos/iconopdf.png)](U2_Activitat2/U2_Activitat2.pdf)|
 
 ### [3 WINDOWS SERVER. ADMINISTRACIÓ i CONFIGURACIÓ](#U3)
 |||||
 |:------|:--|:--|
-|Introducció al Servidor|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO--I-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO--I-.pdf)|
-|Crear un domini|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-II-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-II-.pdf)|
-|Afegir un client al domini|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-III-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-III-.pdf)|
-|El servei DHCP|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-IV-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-IV-.pdf)|
+|U3 Introducció al Servidor|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO--I-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO--I-.pdf)|
+|U3 Crear un domini|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-II-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-II-.pdf)|
+|U3 Afegir un client al domini|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-III-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-III-.pdf)|
+|U3 El servei DHCP|[![](recursos/iconohtml.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-IV-.html)|[![](recursos/iconopdf.png)](U3_WS_ADMINISTRACIO_i_CONFIGURACIO/U3_WS_ADMINISTRACIO_i_CONFIGURACIO-IV-.pdf)|
 |Activitat 3|[![](recursos/iconohtml.png)](U3_Activitat3/U3_Activitat3.html)|[![](recursos/iconopdf.png)](U3_Activitat3/U3_Activitat3.pdf)|
 |Activitat 3b (DHCP)|[![](recursos/iconohtml.png)](U3_Activitat3b/U3_Activitat3b.html)|[![](recursos/iconopdf.png)](U3_Activitat3b/U3_Activitat3b.pdf)|
 
