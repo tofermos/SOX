@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.16)  16 SEP 2024 00:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.16)  12 OCT 2024 15:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -591,60 +591,136 @@ Package pdftex.def Info: recursos/iconopdf.png  used on input line 131.
 (pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
 File: recursos/iconohtml.png Graphic file (type png)
 <use recursos/iconohtml.png>
-Package pdftex.def Info: recursos/iconohtml.png  used on input line 133.
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 134.
 (pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
 File: recursos/iconopdf.png Graphic file (type png)
 <use recursos/iconopdf.png>
-Package pdftex.def Info: recursos/iconopdf.png  used on input line 135.
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 136.
 (pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
 File: recursos/iconohtml.png Graphic file (type png)
 <use recursos/iconohtml.png>
-Package pdftex.def Info: recursos/iconohtml.png  used on input line 137.
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 138.
 (pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
 File: recursos/iconopdf.png Graphic file (type png)
 <use recursos/iconopdf.png>
-Package pdftex.def Info: recursos/iconopdf.png  used on input line 139.
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 140.
 (pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
 
-LaTeX Warning: Hyper reference `U2' on page 1 undefined on input line 144.
+LaTeX Warning: Hyper reference `U2' on page 1 undefined on input line 145.
 
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-44.
+45.
 (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 File: recursos/iconohtml.png Graphic file (type png)
 <use recursos/iconohtml.png>
-Package pdftex.def Info: recursos/iconohtml.png  used on input line 155.
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 156.
 (pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
 File: recursos/iconopdf.png Graphic file (type png)
 <use recursos/iconopdf.png>
-Package pdftex.def Info: recursos/iconopdf.png  used on input line 157.
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 158.
+(pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
+File: recursos/iconohtml.png Graphic file (type png)
+<use recursos/iconohtml.png>
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 160.
+(pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
+File: recursos/iconopdf.png Graphic file (type png)
+<use recursos/iconopdf.png>
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 162.
+(pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
+File: recursos/iconohtml.png Graphic file (type png)
+<use recursos/iconohtml.png>
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 164.
+(pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
+File: recursos/iconopdf.png Graphic file (type png)
+<use recursos/iconopdf.png>
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 166.
 (pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./recursos/iconohtml.png> 
-<./recursos/iconopdf.png>] (./index.aux)
+<./recursos/iconopdf.png>]
+
+LaTeX Warning: Hyper reference `U3' on page 2 undefined on input line 171.
+
+File: recursos/iconohtml.png Graphic file (type png)
+<use recursos/iconohtml.png>
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 182.
+(pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
+File: recursos/iconopdf.png Graphic file (type png)
+<use recursos/iconopdf.png>
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 184.
+(pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
+File: recursos/iconohtml.png Graphic file (type png)
+<use recursos/iconohtml.png>
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 186.
+(pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
+File: recursos/iconopdf.png Graphic file (type png)
+<use recursos/iconopdf.png>
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 188.
+(pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
+File: recursos/iconohtml.png Graphic file (type png)
+<use recursos/iconohtml.png>
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 190.
+(pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
+File: recursos/iconopdf.png Graphic file (type png)
+<use recursos/iconopdf.png>
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 192.
+(pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
+File: recursos/iconohtml.png Graphic file (type png)
+<use recursos/iconohtml.png>
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 194.
+(pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
+File: recursos/iconopdf.png Graphic file (type png)
+<use recursos/iconopdf.png>
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 196.
+(pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
+File: recursos/iconohtml.png Graphic file (type png)
+<use recursos/iconohtml.png>
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 198.
+(pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
+File: recursos/iconopdf.png Graphic file (type png)
+<use recursos/iconopdf.png>
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 200.
+(pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
+File: recursos/iconohtml.png Graphic file (type png)
+<use recursos/iconohtml.png>
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 202.
+(pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
+File: recursos/iconopdf.png Graphic file (type png)
+<use recursos/iconopdf.png>
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 204.
+(pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
+File: recursos/iconohtml.png Graphic file (type png)
+<use recursos/iconohtml.png>
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 206.
+(pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
+File: recursos/iconopdf.png Graphic file (type png)
+<use recursos/iconopdf.png>
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 208.
+(pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
+[2] (./index.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 14735 strings out of 478287
- 236130 string characters out of 5849289
- 584866 words of memory out of 5000000
- 32617 multiletter control sequences out of 15000+600000
- 519043 words of font info for 100 fonts, out of 8000000 for 9000
+ 14749 strings out of 478287
+ 236328 string characters out of 5849289
+ 586964 words of memory out of 5000000
+ 32623 multiletter control sequences out of 15000+600000
+ 523563 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,9n,77p,1002b,437s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 74i,9n,77p,1002b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/d
 vips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmr17.pfb>
-Output written on index.pdf (1 page, 83946 bytes).
+/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb>
+Output written on index.pdf (2 pages, 103097 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 500000)
- 30739 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 91 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
+ 11 named destinations out of 1000 (max. 500000)
+ 32787 words of extra memory for PDF output out of 35830 (max. 10000000)
 
