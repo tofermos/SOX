@@ -183,15 +183,24 @@ Fixem-nos en el detall que parlem de ``drets'' i no de ``permisos'' que
 \end{quote}
 
 \subsection{2.3 Habilitem l'usuari per a iniciar
-sessió}\label{habilitem-lusuari-per-a-iniciar-sessiuxf3}
+sessió.}\label{habilitem-lusuari-per-a-iniciar-sessiuxf3.}
 
 Com bé sabem, els grups d'usuaris que poden iniciar sessió al servidor
-per defecte, en acabar la instal·lació, són ``administradors''. Te la
-seua raó en la seguretat evidentment.
+per defecte, en acabar la instal·lació de Windows Server, són alguns
+grups predeterminats que direm genèricament i mal dit ``administradors''
+(Administradors del servidor, del domini, operadors de comptes\ldots).
+Té la seua raó en la seguretat evidentment.
+
+\begin{figure}
+\centering
+\includegraphics{png/usuarisDEfecteWS.png}
+\caption{Figura 3:Usuaris per defecte}
+\end{figure}
 
 Com ja hem exposat, ara, anem a fer una excepció permentent l'accés al
-servidor a un usuari per a que faça \textbf{estrictament} les accions
-que hem especificat adés com a drets.
+servidor a un usuari del domini (no és un informàtic dedicat a
+l'administració de la LAN) per a que faça només \textbf{estrictament}
+les accions que hem especificat adés com a drets.
 
 A la \emph{Unitat 5. Windows Server. Monitorització i ús} tractarem
 l'inici de sessió remota, ara farem l'inici local.
@@ -201,6 +210,71 @@ l'inici de sessió remota, ara farem l'inici local.
 Tot i que les Directives de Seguretat es tracten a la \emph{Unitat
 4.Administració i configuració avançada} s'imposa la necessitat de fer
 un spoiler.
+
+\subsubsection{\texorpdfstring{Canvi de la directiva: ``Permitir inicio
+en sesión
+local''''}{Canvi de la directiva: ``Permitir inicio en sesión local''\,''}}\label{canvi-de-la-directiva-permitir-inicio-en-sesiuxf3n-local}
+
+1- Executar \textbf{gpmc.msc}
+
+\emph{A la Unitat 4 tractem un poc més a fons les directives en general}
+
+Busquem una directiva que afecta a la màquina (\textbf{Domain
+Controller}) ja que es tracta de permetre iniciar sessió local, per tant
+modificarem la plantilla de directives que ve per defecte de
+\textbf{Default Domain Controller Policy} la directiva: \textbf{Permitir
+el inicio de sesión local}
+
+\begin{itemize}
+\item
+  Observem quins grups poden inciar sessió localment en aquesta màquina.
+  \includegraphics{png/mostrarDirectiva1.png}
+\item
+  Botó contrari:\textbf{EDITAR}
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{png/EditarDirectiva1.png}
+\caption{\emph{Figura 5:Edició de la directiva local de seguretat}}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Seleccionem la directiva que volem canviar
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{png/EditarDirectiva2.png}
+\caption{\emph{Figura 6:Edició de la directiva local de seguretat}}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Afegim l'usuari
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{png/EditarDirectiva3.png}
+\caption{\emph{Figura 7:Edició de la directiva local de seguretat}}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Sempre que teniu \textbf{APLICAR} recordeu polsar abans que
+  \textbf{Acceptar}
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{png/EditarDirectiva4.png}
+\caption{\emph{Figura 8:Edició de la directiva local de seguretat}}
+\end{figure}
 
 \textbf{Comprovem\ldots{}} Provem tancar la sessió de l'administrador en
 ús i comprovar que l'usuari ja pot inciar sessió localment al servidor.
@@ -312,6 +386,69 @@ imatge següent), no.
 \centering
 \includegraphics{png/NoTienePrivilegios.png}
 \caption{\emph{Figura 8: Fora del UO no pot fer cap acció}}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3 Gestió dels usuaris amb delegació. Característiques avançades
+del
+dsamc.msc}\label{gestiuxf3-dels-usuaris-amb-delegaciuxf3.-caracteruxedstiques-avanuxe7ades-del-dsamc.msc}
+
+Per poder eliminar o fer canvis d'ubicacions de les UO, cal inhabilitar
+una protecció que tenen contra errors accidentals.
+
+\begin{itemize}
+\tightlist
+\item
+  Aquesta no està visible i hem danar a
+  \textbf{Ver\textgreater Características Avanzadas} de la consola.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{png/dsaCarateristicasAvanzadas.png}
+\caption{\emph{Figura 9: Veure-ho tot en dsa.msc}}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Ara ja apareix la pestanya \emph{Propiedades\textgreater Objeto} en
+  per desprotegir (convindria que la tornàreu a deixar com estava en
+  acabar).
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{png/protegerUO.png}
+\caption{\emph{Figura 10: Desprotegir temporalment les UO}}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  També ens apareix la pestanya \emph{Propiedades\textgreater Seguridad}
+  on podem veure quin usuari té el control.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{png/seguridaddeUO.png}
+\caption{\emph{Figura 11: Qui té el control de la UO}}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Entrem en \emph{Características Avanzadas} i veiem tot la informació
+  detallada sobre quins usuaris i quis drets tenen sobre la UO. Des
+  d'ací podem afegir i llevar usuaris i drets.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{png/derechosUOAvanzado.png}
+\caption{*Figura 12: Gestió de drets i usuaris sobre la UO}
 \end{figure}
 
 \end{document}

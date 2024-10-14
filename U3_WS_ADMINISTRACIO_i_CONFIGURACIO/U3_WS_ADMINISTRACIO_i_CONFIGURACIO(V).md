@@ -6,16 +6,16 @@ lang: "ca-ES"
 papersize: A4
 linestretch: 1.5
 output:
+  pdf_document:
+    toc: true
+    keep_tex: true
+    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     toc_depth: 3
     df_print: paged
     number_sections: false
-  pdf_document:
-    toc: true
-    keep_tex: true
-    latex_engine: xelatex
 ---
 
 \newpage
@@ -172,8 +172,9 @@ Relament quan ens deixa executar incialment, és com qual al terminal ens deixa 
 
 ![*Figura 8: Fora del UO no pot fer cap acció*](png/NoTienePrivilegios.png)
 
+---
 
-## 2.6 Característiques avançades del dsamc.msc
+# 3 Gestió dels usuaris amb delegació. Característiques avançades del dsamc.msc
 
 Per poder eliminar o fer canvis d'ubicacions de les UO, cal inhabilitar una protecció que tenen contra errors accidentals. 
 
@@ -189,6 +190,10 @@ Per poder eliminar o fer canvis d'ubicacions de les UO, cal inhabilitar una prot
 
 ![*Figura 11: Qui té el control de la UO*](png/seguridaddeUO.png)
 
+* Entrem en *Características Avanzadas* i veiem tot la informació detallada sobre quins usuaris i quis drets tenen sobre la UO. 
+Des d'ací podem afegir i llevar usuaris i drets.
+
+![*Figura 12: Gestió de drets i usuaris sobre la UO](png/derechosUOAvanzado.png)
 
 
 
