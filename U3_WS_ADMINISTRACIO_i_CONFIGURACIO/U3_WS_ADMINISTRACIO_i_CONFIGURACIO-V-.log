@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2024.3.16)  14 OCT 2024 12:04
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2024.3.16)  14 OCT 2024 18:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -772,47 +772,4 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 7.99915pt on input line 94.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 94.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 94.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
-File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 94.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-)
-\tf@toc=\write3
-\openout3 = `U3_WS_ADMINISTRACIO_i_CONFIGURACIO-V-.toc'.
-
-[1
-
-]
-File: png/DelegarControl1.png Graphic file (type bmp)
-<png/DelegarControl1.png>
-File: png/DelegarControl2.png Graphic file (type bmp)
-<png/DelegarControl2.png>
-[2] [3] [4]
-
-LaTeX Warning: File `png/usuarisDEfecteWS.png' not found on input line 196.
-
-! Unable to load picture or PDF file 'png/usuarisDEfecteWS.png'.
-<to be read again> 
-                   }
-l.196 \includegraphics{png/usuarisDEfecteWS.png}
-                                                 
-Here is how much of TeX's memory you used:
- 19540 strings out of 476191
- 360985 string characters out of 5812072
- 853391 words of memory out of 5000000
- 40002 multiletter control sequences out of 15000+600000
- 472833 words of font info for 59 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 86i,6n,121p,1034b,357s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on U3_WS_ADMINISTRACIO_i_CONFIGURACIO-V-.pdf (4 pages).
+(Font)              scaled to size 5.99936pt

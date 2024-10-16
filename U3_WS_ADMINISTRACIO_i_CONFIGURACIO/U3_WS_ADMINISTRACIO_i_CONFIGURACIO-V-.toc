@@ -1,0 +1,16 @@
+\babel@toc {catalan}{}\relax 
+\contentsline {section}{1 Les UO}{2}{section*.2}%
+\contentsline {subsection}{Per a què es creen les UO?}{2}{section*.3}%
+\contentsline {subsection}{La divisió del treball duu l'especialització}{2}{section*.4}%
+\contentsline {section}{2 La delegació de control de la UO}{2}{section*.5}%
+\contentsline {subsection}{2.1 Selecionem l'usuari, usuaris o grups}{2}{section*.6}%
+\contentsline {subsection}{2.2 Assignem drets}{5}{section*.7}%
+\contentsline {subsection}{2.3 Habilitem l'usuari per a iniciar sessió.}{5}{section*.8}%
+\contentsline {subsubsection}{Canvi de la directiva: ``Permitir inicio en sesión local''''}{6}{section*.9}%
+\contentsline {subsection}{2.4 Comprovació de les accions que podem fer}{6}{section*.10}%
+\contentsline {subsubsection}{Accés a eines d'administració}{6}{section*.11}%
+\contentsline {subsection}{2.5 Conclusions}{11}{section*.12}%
+\contentsline {subsubsection}{Analogia i recordatori de SOM}{11}{section*.13}%
+\contentsline {subsubsection}{Les capes del SO}{12}{section*.14}%
+\contentsline {subsubsection}{Comproveu l'abast de la delegació}{12}{section*.15}%
+\contentsline {section}{3 Gestió dels usuaris amb delegació. Característiques avançades del dsamc.msc}{15}{section*.16}%
