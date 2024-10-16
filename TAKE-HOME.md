@@ -6,14 +6,14 @@ lang: "ca-ES"
 papersize: A4
 linestretch: 1.5
 output:
-  html_document:
-    toc: true
-    toc_float: true
-    number_sections: false
   pdf_document:
     toc: true
     keep_tex: true
     latex_engine: xelatex
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: false
 ---
 
 \newpage
@@ -66,17 +66,27 @@ Instal·la i configura el DHCP al servidor:
 
 2 Exclusió IP: 192.168.N.1 - 192.167.N.10/24
 
-3 Una reserva a un client Windows 10 (que has d'instal·lar)
-
-Les IP exclose serviran per a assignar-se de forma fixa als servidors, router... 
+Les IP excloses serviran per a assignar-se de forma fixa als servidors, router... 
 
 # 5 Client Windows 1x
 
 Instal·la el Windows 1x, afig-lo al Domini i configura'l amb IP dinàmica.
 
 Captura les unitats F: i G: com s'ha indicat al punt 3 de la següent manera:
+
   1. F: amb net use
+
   2. G: pel GUI
+
+Averigua la MAC amb
+```cmd
+
+ipconfig /all
+```
+
+Assigna una IP a la MAC
+
+Reinicia la NIC o el Windows 1x i comprova.
 
 # 6 Models
 

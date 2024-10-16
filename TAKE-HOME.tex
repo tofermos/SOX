@@ -1,0 +1,253 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{catalan}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={TAKE-HOME. DOMINI WINDOWS SERVER},
+  pdfauthor={@tofermos 2024},
+  pdflang={ca-ES},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{TAKE-HOME. DOMINI WINDOWS SERVER}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Domini, Unitats Organitzatives, DHCP}
+\author{@tofermos 2024}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\setstretch{1.5}
+\newpage
+\renewcommand\tablename{Tabla}
+
+Cada alumne teniu un codi assignat que direm N.
+
+\section{1 Servidor i Creació del
+Domini}\label{servidor-i-creaciuxf3-del-domini}
+
+Instal·leu un Windows Server amb un segon disc D: en VirtualBox
+
+Creeu el domini \emph{TAKEHOME-N.local}
+
+Creu una Unitat Organitzativa amb els usuaris, grups i carpetes
+compartides segon el model.
+
+IP del Servidor 192.168.N.1/24
+
+Nom Servidor: Server\emph{N}
+
+\section{2 Unitats Organitzatives}\label{unitats-organitzatives}
+
+Model A: Cada Unitat Organitzativa agrupa dos departaments que son 2
+grups d'usuaris
+
+Model B: Les Unitats Organitzatives responen a regions geogràfiques amb
+els seus grups d'usaris
+
+Els usuaris pertanyen als grups que heu creat.
+
+(Elimineu, si l'heu creat, l'usuari vboxuser)
+
+\textbf{Delegar el control de la UO sobre ususari no administrador}
+
+Un dels usuaris (no administrador) podrà ressetejar les contrasenyes de
+tots els companys de la UO.
+
+\section{3 Carpetes}\label{carpetes}
+
+Les carpetes compartides seran:
+
+D:\DADES2024 -\textgreater{} En el Client F: D:\DADES2025
+-\textgreater{} En el Client G:
+
+Els usuaris dels grups de la UO tindran permís per llegir i escriure en
+les dos carpetes (la resta d'usuaris, no podran ni llegir).
+
+\section{4 DHCP}\label{dhcp}
+
+Instal·la i configura el DHCP al servidor:
+
+1 Rang IP: 192.168.N.1- 192.168.N.100/24
+
+2 Exclusió IP: 192.168.N.1 - 192.167.N.10/24
+
+Les IP excloses serviran per a assignar-se de forma fixa als servidors,
+router\ldots{}
+
+\section{5 Client Windows 1x}\label{client-windows-1x}
+
+Instal·la el Windows 1x, afig-lo al Domini i configura'l amb IP
+dinàmica.
+
+Captura les unitats F: i G: com s'ha indicat al punt 3 de la següent
+manera:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  F: amb net use
+\item
+  G: pel GUI
+\end{enumerate}
+
+Averigua la MAC amb
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{ipconfig }\AttributeTok{/all}
+\end{Highlighting}
+\end{Shaded}
+
+Assigna una IP a la MAC
+
+Reinicia la NIC o el Windows 1x i comprova.
+
+\section{6 Models}\label{models}
+
+Els N parells fareu el model A Els N imparells fareu el model B.
+
+\section{Rúbrica}\label{ruxfabrica}
+
+La tasca sha de desenvolupar a casa i és un repàs de tot el que hem vist
+fins a 16/10/2024. Copiar la tasca d'un company implica el suspens
+immediat sense recuperació.
+
+1 Configuració de les aplicacions ``compartir recursos i detecció de
+xarxes'' correctament.
+
+2 Configuració correcta de les IP de les dos màquines.
+
+3 Configuració correcta del DHCP.
+
+4 Compartició correcta de les carpetes.
+
+5 Captura de les unitats de xarxa.
+
+6 Configuració correcta de les UO.
+
+7 Ubicació del Objectes.
+
+8 Delegació de control.
+
+\end{document}

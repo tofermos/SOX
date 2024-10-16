@@ -1520,8 +1520,7 @@ en les dos carpetes (la resta d’usuaris, no podran ni llegir).</p>
 <p>Instal·la i configura el DHCP al servidor:</p>
 <p>1 Rang IP: 192.168.N.1- 192.168.N.100/24</p>
 <p>2 Exclusió IP: 192.168.N.1 - 192.167.N.10/24</p>
-<p>3 Una reserva a un client Windows 10 (que has d’instal·lar)</p>
-<p>Les IP exclose serviran per a assignar-se de forma fixa als
+<p>Les IP excloses serviran per a assignar-se de forma fixa als
 servidors, router…</p>
 </div>
 <div id="client-windows-1x" class="section level1">
@@ -1529,7 +1528,16 @@ servidors, router…</p>
 <p>Instal·la el Windows 1x, afig-lo al Domini i configura’l amb IP
 dinàmica.</p>
 <p>Captura les unitats F: i G: com s’ha indicat al punt 3 de la següent
-manera: 1. F: amb net use 2. G: pel GUI</p>
+manera:</p>
+<ol style="list-style-type: decimal">
+<li><p>F: amb net use</p></li>
+<li><p>G: pel GUI</p></li>
+</ol>
+<p>Averigua la MAC amb</p>
+<pre class="cmd"><code>
+ipconfig /all</code></pre>
+<p>Assigna una IP a la MAC</p>
+<p>Reinicia la NIC o el Windows 1x i comprova.</p>
 </div>
 <div id="models" class="section level1">
 <h1>6 Models</h1>
