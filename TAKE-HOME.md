@@ -53,8 +53,8 @@ Un dels usuaris (no administrador) podrà ressetejar les contrasenyes de tots el
 
 Les carpetes compartides seran:
 
-D:\DADES2024 -> En el Client F:
-D:\DADES2025 -> En el Client G:
+D:\\DADES2024 -> En el Client F:
+D:\\DADES2025 -> En el Client G:
 
 Els usuaris dels grups de la UO tindran permís per llegir i escriure en les dos carpetes (la resta d'usuaris, no podran ni llegir).
 
