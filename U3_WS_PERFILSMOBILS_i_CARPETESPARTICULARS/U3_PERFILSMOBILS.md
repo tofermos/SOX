@@ -121,6 +121,20 @@ Independentment de la carpeta (Documents, Baixades...), podem optar per comparti
 ![](png/CrearCarpetaRuta2.png)
 
 
+# gpupdate
+
+Recordeu:
+```cmd
+gpupdate /force
+```
+
+Si teniu iniciada la sessió d'un usuari tindreu este error:
+
+![](png/gpupdateError.png)
+
+Tanquem la sessió i repetim el *gpupdate /force*
+
+
 # Exemples d'ús
 
 Optem per carpetes particulars amb accès a través d'una unitat de xarxa (P:) on cada usuari té una carpeta. Indiquem que no usen Documentos per a informació de l'empresa. També podem ocultar la carpeta Documentos en el client (com vàrem vore el curs passat en SOM).
@@ -131,13 +145,21 @@ O bé manteir les dos opcions. Carpeta Particular per a un tipus d'informació i
 
 Independentment, el Perfil pot ser o no mòbil.
 
-# Consideració final
+# Consideracions finals
 
-No existeix una forma "correcta"  de treballar. Els administradors de la xarxa han de tindre en compte les necessitats de l'organització, dels usuaris i els costums que tenen per decidir:
+## Relació amb les Unitats Organitzatives (UO)
 
-1.  **Quina informació** convé desar al Servidor i fer **backup periòdicament** i quiè pot quedar-se al PC Client per no tindre valor per a l'organització.
-2. A partir d'ací, també haurà de marcar unes **normes d'ús** per als usuaris. Indicant-li on ha de guardar allò que és important per l'organització i on pot (si pot) deixar les "seues coses" o informació temporal sense valor.
-3. Es pot configurar que es guarde al Servidor fins i tot les descàrregues o altres fitxers temporals a efectes com hem vist.
+El que hem vist es exemple d'utilitat de les Unitats Organitzatives. Recordem que les UO són agrupacions d'objectes (usuaris, grups, altres UO, carpetes...) a efectes d'administració i transparents a l'usuari final.
+
+L'usuari guarda en "Documents" o en "P:" sense preocupar-se d'on ni saber com treballa el company. Són els administradors qui han assegurat que, encara que canvie de PC o es connecte amb un portatil al Domini, sempre accedirà a les mateixes carpetes de dades i així controlaran millor la còpia de seguretat o neteja de fitxers temporals.
+
+## La solució depén del cas
+
+No existeix una forma "correcta"  de configurar. Els administradors de la xarxa han de tindre en compte les necessitats de l'organització, dels usuaris i els seus costums per decidir:
+
+1.  **Quina informació** convé desar al Servidor i fer **backup periòdicament** i quina pot quedar-se al PC Client per no tindre valor per a l'organització.
+
+2. A partir d'ací, també hauran de marcar unes **normes d'ús** per als usuaris. Indicant-li on ha de guardar allò que és important per l'organització i on pot (si pot) deixar les "seues coses" o informació temporal sense valor.  Es pot configurar que es guarde al Servidor, fins i tot, les descàrregues o altres fitxers temporals a efectes com hem vist.
 
 
 

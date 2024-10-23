@@ -39,6 +39,46 @@
 \makeatother
 \usepackage{xcolor}
 \usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -275,6 +315,22 @@ per compartir en una sola carpeta.
 
 \includegraphics{png/CrearCarpetaRuta2.png}
 
+\section{gpupdate}\label{gpupdate}
+
+Recordeu:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gpupdate }\AttributeTok{/force}
+\end{Highlighting}
+\end{Shaded}
+
+Si teniu iniciada la sessió d'un usuari tindreu este error:
+
+\includegraphics{png/gpupdateError.png}
+
+Tanquem la sessió i repetim el \emph{gpupdate /force}
+
 \section{Exemples d'ús}\label{exemples-duxfas}
 
 Optem per carpetes particulars amb accès a través d'una unitat de xarxa
@@ -290,27 +346,42 @@ d'informació i Documents per a altra.
 
 Independentment, el Perfil pot ser o no mòbil.
 
-\section{Consideració final}\label{consideraciuxf3-final}
+\section{Consideracions finals}\label{consideracions-finals}
 
-No existeix una forma ``correcta'' de treballar. Els administradors de
+\subsection{Relació amb les Unitats Organitzatives
+(UO)}\label{relaciuxf3-amb-les-unitats-organitzatives-uo}
+
+El que hem vist es exemple d'utilitat de les Unitats Organitzatives.
+Recordem que les UO són agrupacions d'objectes (usuaris, grups, altres
+UO, carpetes\ldots) a efectes d'administració i transparents a l'usuari
+final.
+
+L'usuari guarda en ``Documents'' o en ``P:'' sense preocupar-se d'on ni
+saber com treballa el company. Són els administradors qui han assegurat
+que, encara que canvie de PC o es connecte amb un portatil al Domini,
+sempre accedirà a les mateixes carpetes de dades i així controlaran
+millor la còpia de seguretat o neteja de fitxers temporals.
+
+\subsection{La solució depén del
+cas}\label{la-soluciuxf3-depuxe9n-del-cas}
+
+No existeix una forma ``correcta'' de configurar. Els administradors de
 la xarxa han de tindre en compte les necessitats de l'organització, dels
-usuaris i els costums que tenen per decidir:
+usuaris i els seus costums per decidir:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
   \textbf{Quina informació} convé desar al Servidor i fer \textbf{backup
-  periòdicament} i quiè pot quedar-se al PC Client per no tindre valor
+  periòdicament} i quina pot quedar-se al PC Client per no tindre valor
   per a l'organització.
 \item
-  A partir d'ací, també haurà de marcar unes \textbf{normes d'ús} per
+  A partir d'ací, també hauran de marcar unes \textbf{normes d'ús} per
   als usuaris. Indicant-li on ha de guardar allò que és important per
   l'organització i on pot (si pot) deixar les ``seues coses'' o
-  informació temporal sense valor.
-\item
-  Es pot configurar que es guarde al Servidor fins i tot les
-  descàrregues o altres fitxers temporals a efectes com hem vist.
+  informació temporal sense valor. Es pot configurar que es guarde al
+  Servidor, fins i tot, les descàrregues o altres fitxers temporals a
+  efectes com hem vist.
 \end{enumerate}
 
 \end{document}
