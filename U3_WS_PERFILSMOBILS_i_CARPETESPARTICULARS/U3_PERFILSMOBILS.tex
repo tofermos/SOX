@@ -1,0 +1,316 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{catalan}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={U3. WINDOWS SERVER. ADMINISTRACIÓ I CONFIGURACIÓ},
+  pdfauthor={@tofermos 2024},
+  pdflang={ca-ES},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{U3. WINDOWS SERVER. ADMINISTRACIÓ I CONFIGURACIÓ}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Perfils Mòbils, Carpetes particulars i readreçament de
+carpetes}
+\author{@tofermos 2024}
+\date{}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\setstretch{1.5}
+\newpage
+\renewcommand\tablename{Tabla}
+
+\section{Perfils mòbils.}\label{perfils-muxf2bils.}
+
+La configuració de Perfils Mòbils serveix per guardar al Servidor la
+configuració del perfil de l'usuari. Podem aplicar-ho a usuaris o grups
+concrets o a una Unitat Organitzativa o a tots els usuaris del Domini.
+De moment en esta unitat anem a fer-ho de forma individual a un usuari.
+
+Avantatges:
+
+\begin{itemize}
+\item
+  Possibilitat d'iniciar la sessió en qualsevol PC client i disposar del
+  teu perfil (Configuració d'Escriptori, Unitats de xarxa\ldots)
+\item
+  Possibilitat de que l'Operador de còpies de seguretat programe un
+  backup del nostre perfil.
+\end{itemize}
+
+Desavantages:
+
+\begin{itemize}
+\item
+  La càrrega del perfil des del servidor fins el PC client genera un
+  tràfic a la xarxa local que pot notar-se en iniciar tots el usuaris al
+  mateix temps.
+\item
+  Els usuaris poden despreocupar-se del tamany de les seues dades i
+  acabar, entre tots, ocupant massa espai de disc dur al servidor.
+\end{itemize}
+
+\subsection{Crear i compartir carpeta}\label{crear-i-compartir-carpeta}
+
+\begin{itemize}
+\item
+  Creem una carpeta en el servidor que compartim\ldots{}
+\item
+  \ldots donant permisos \textbf{control total} als usuaris als que
+  volem configurar un perfil mòbil per a que en el primer inici de
+  sessió puguen crear una subcarpeta i prendre possessió i guardar
+  fitxers.
+\item
+  La resta d'usuaris del domini no deuen accedir a una informació de
+  perfil.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{png/CarpetaPerfilsMobils.png}
+\caption{\emph{Figura1: Compartir una carpeta en el Servidor}}
+\end{figure}
+
+\subsubsection{Assignem la ruta del
+perfil}\label{assignem-la-ruta-del-perfil}
+
+En el \emph{dsa.msc} assignem el la ruta de la carpeta a un usuari
+(Figura 2) Si seleccione, més d'un usuari (seleccionat amb Control)
+podem fer-ho de colp amb la variable \textbf{\%username\%} (Figura 3)
+
+\begin{itemize}
+\tightlist
+\item
+  Per a un usuari podem usar el \emph{nom d'usuari} ( a la imatge usar
+  la variable \%username\% )
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{png/RutaPerfils.png}
+\caption{\emph{Figura2: Assignem la ruta del Perfi Mòbil a un usuari}}
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Per a assignar a més d'un usuari al mateix temps ens valem de
+  \%username\%
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{png/RutaPerfils2.png}
+\caption{\emph{Figura3: Assignem la ruta del Perfi Mòbil a más d'un
+usuari}}
+\end{figure}
+
+\section{Carpetes particulars}\label{carpetes-particulars}
+
+Son carpetes del Servidor que poden ser emprades per desar els treballs
+de cada usuari a efecte de centralitzar els backups. Ací es tracta més
+de dades del treball del dia a dia que de la confiuguració.
+
+Ho fem de forma anàloga a l'anterior amb els usuaris que vullguem.
+
+\begin{figure}
+\centering
+\includegraphics{png/CarpetaCarpetasParticulares.png}
+\caption{\emph{Figura4: Compartir una carpeta en el Servidor}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{png/RutaCarpetaParticular.png}
+\caption{\emph{Figura5: Assignem la ruta de la Carpeta Particular a un
+usuari}}
+\end{figure}
+
+També es pot aplicar a més d'un de colp amb \emph{\%username\%}
+
+\begin{quote}
+Nota
+
+Moltes d'estes funcionalitats que estem aplicant de forma
+individualitzada, més avant vorem que es poden (i deuen) fer de forma
+més automatizada per atots els usuairs o PC de les UO o Domini. Ací és
+on entren en joc els scripts amb cmdLets de PowerShell i les Directives
+de grup.
+\end{quote}
+
+\section{Readreçament de carpetes}\label{readreuxe7ament-de-carpetes}
+
+També és interessant que les carpetes habituals de treball com són
+``Documentos'', ``Baixades'' etc. les puguem tindre guardades al
+servidor i que també puga l'administrados del domini o l'operador de
+backups fer una còpia d'elles.
+
+\subsection{Crear la Directiva}\label{crear-la-directiva}
+
+Podem seleccionar la \textbf{UO (o el Domini sencer)} on volem que
+s'aplique el nou adreçament. O crear la directiva i després vincular-la.
+
+\begin{figure}
+\centering
+\includegraphics{png/CrearGPORedireccionar.png}
+\caption{\emph{Figura6:Creem un nova directiva}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{png/EditarGPORedireccionar.png}
+\caption{\emph{Figura7:L'editem}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{png/PropiedadesGPORedireccionar.png}
+\caption{*Figura8:Busquem en la plantilla el que volem modificar}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{png/Basico.png}
+\caption{\emph{Figura9:Sols per a un grup: Básico}}
+\end{figure}
+
+\subsubsection{Una carpeta per usuari}\label{una-carpeta-per-usuari}
+
+Independentment de la carpeta (Documents, Baixades\ldots), podem optar
+per separar la informació de cada usuari.
+
+Ací per crear una carpeta per cada usuari NO hem d'indicar el nom ni
+\%username\%
+
+\includegraphics{png/CrearCarpeta.png}
+
+\includegraphics{png/CrearCarpetaRuta.png}
+
+\subsubsection{Compartir tot en un sola
+carpeta}\label{compartir-tot-en-un-sola-carpeta}
+
+Independentment de la carpeta (Documents, Baixades\ldots), podem optar
+per compartir en una sola carpeta.
+
+\includegraphics{png/CrearCarpetaRuta2.png}
+
+\section{Exemples d'ús}\label{exemples-duxfas}
+
+Optem per carpetes particulars amb accès a través d'una unitat de xarxa
+(P:) on cada usuari té una carpeta. Indiquem que no usen Documentos per
+a informació de l'empresa. També podem ocultar la carpeta Documentos en
+el client (com vàrem vore el curs passat en SOM).
+
+Alternativament podem readrecem Documents a una carpeta compartida i no
+usar les Carpetes Particulars.
+
+O bé manteir les dos opcions. Carpeta Particular per a un tipus
+d'informació i Documents per a altra.
+
+Independentment, el Perfil pot ser o no mòbil.
+
+\section{Consideració final}\label{consideraciuxf3-final}
+
+No existeix una forma ``correcta'' de treballar. Els administradors de
+la xarxa han de tindre en compte les necessitats de l'organització, dels
+usuaris i els costums que tenen per decidir:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Quina informació} convé desar al Servidor i fer \textbf{backup
+  periòdicament} i quiè pot quedar-se al PC Client per no tindre valor
+  per a l'organització.
+\item
+  A partir d'ací, també haurà de marcar unes \textbf{normes d'ús} per
+  als usuaris. Indicant-li on ha de guardar allò que és important per
+  l'organització i on pot (si pot) deixar les ``seues coses'' o
+  informació temporal sense valor.
+\item
+  Es pot configurar que es guarde al Servidor fins i tot les
+  descàrregues o altres fitxers temporals a efectes com hem vist.
+\end{enumerate}
+
+\end{document}

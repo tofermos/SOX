@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.16)  12 OCT 2024 15:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.16)  23 OCT 2024 23:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -700,6 +700,14 @@ File: recursos/iconopdf.png Graphic file (type png)
 <use recursos/iconopdf.png>
 Package pdftex.def Info: recursos/iconopdf.png  used on input line 208.
 (pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
+File: recursos/iconohtml.png Graphic file (type png)
+<use recursos/iconohtml.png>
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 210.
+(pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
+File: recursos/iconopdf.png Graphic file (type png)
+<use recursos/iconopdf.png>
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 212.
+(pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
 [2] (./index.aux)
 
 LaTeX Warning: There were undefined references.
@@ -717,10 +725,10 @@ Here is how much of TeX's memory you used:
 vips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm
 /lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb>
-Output written on index.pdf (2 pages, 103097 bytes).
+Output written on index.pdf (2 pages, 103597 bytes).
 PDF statistics:
- 91 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
+ 93 PDF objects out of 1000 (max. 8388607)
+ 74 compressed objects within 1 object stream
  11 named destinations out of 1000 (max. 500000)
  32787 words of extra memory for PDF output out of 35830 (max. 10000000)
 
