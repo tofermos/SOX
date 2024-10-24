@@ -88,10 +88,12 @@ També es pot aplicar a més d'un de colp amb *%username%*
 
 # Readreçament de carpetes
 
-També és interessant que les carpetes habituals de treball com són "Documentos", "Baixades" etc. les puguem tindre guardades al servidor i que també puga l'administrados del domini o l'operador de backups fer una còpia d'elles.
+També és interessant que les carpetes habituals de treball com són "Documentos", "Baixades" etc. les puguem tindre guardades al servidor i que també puga l'administrador del domini o l'operador de backups fer una còpia d'elles.
 
 
-## Crear la Directiva
+## Crear la Directiva de Grup
+
+Ara treballarem en la consola de directives de grup: **gpmc.msc** ( **Administración de Directivas de Grupo**)
 
 Podem seleccionar la **UO (o el Domini sencer)** on volem que s'aplique el nou adreçament. O crear la directiva i després vincular-la.
 
