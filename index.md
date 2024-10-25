@@ -5,15 +5,15 @@ subtitle: |
   | IES MARIA ENRÍQUEZ
 author: "tofermos2024"
 output:
-  pdf_document: 
-    toc: true
-    keep_tex: true
   html_document:
     toc: true
     toc_float: true
     toc_depth: 1
     df_print: paged
     number_sections: false
+  pdf_document: 
+    toc: true
+    keep_tex: true
   word_document:
     toc: true
     toc_depth: '3'
