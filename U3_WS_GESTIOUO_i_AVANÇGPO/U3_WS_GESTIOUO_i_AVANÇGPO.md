@@ -54,9 +54,13 @@ Hem de buscar i seleccionar correctament l'usuari.
 
 ![*Figura 1:Delegar control*](png/DelegarControl1.png)
 
+---
+
 ## 2.2 Assignem drets 
 
 ![*Figura 2: Assignar drets en la delegació*](png/DelegarControl2.png)
+
+---
 
 Un exemple d'ús senzill és d'autoritzar a un usuari de la Delegació, Centre de Producció o Projecte que represente la UO per a que reinicie les contrassenyes dels usuaris. Així cada vegada que un operador d'ordinador se li oblida la contrasenya no cal que cride a l'administrador
 
@@ -90,24 +94,28 @@ Busquem una directiva que afecta a la màquina (**Domain Controller**) ja que es
 * Observem quins grups poden inciar sessió localment en aquesta màquina.
 ![*Figura 3: Veiem els valors per defecte*](png/mostrarDirectiva1.png)
 
+---
 
 * Botó contrari:**EDITAR**
 
 ![*Figura 4: Edició de la directiva local de seguretat*](png/EditarDirectiva1.png)
+---
 
 * Seleccionem la directiva que volem canviar
 
 ![*Figura 5: Edició de la directiva local de seguretat*](png/EditarDirectiva2.png)
+---
 
 * Afegim l'usuari
 
 ![*Figura 6: Edició de la directiva local de seguretat*](png/EditarDirectiva3.png)
+---
 
 * Sempre que teniu **APLICAR** recordeu polsar abans que **Acceptar**
 
 ![*Figura 7: Edició de la directiva local de seguretat*](png/EditarDirectiva4.png)
 
-
+---
 
 **Comprovem...** Provem tancar la sessió de l'administrador en ús i comprovar que l'usuari ja pot inciar sessió localment al servidor. 
 Efectivament, pot. 
@@ -121,20 +129,21 @@ Per defecte, no se'ns obri el panel d'Administració de Servidor. Cosa lògica s
 Si intentem accedir a alguna eina d'administració com les consoles de Microsoft (dsa.mmc, per exmple), l'administrador  del servidor (servermanger.exe), panel de control per fer un canvi... Ens demanarà que ens autentiquem...
 
 ![*Figura 8: Autenticació d'usuari*](png/permisUsuariDelegat.png)
-
+---
 
 Una vegada ens autentiquem com a l'usuari delegat veiem que podem entrar sense problemes (en principi).
 És més, encara que l'acció no estava entre les autoritzades (apartat 2.2 i Figura 2), potser ens deixe "iniciar-la", fer com uns "primers pasos" dins de cada eina GUI però arriba un moment en que se'ns denega.
 
-
 ![*Figura 9: Panel de control, canviar hora*](png/canviHoraNO.png)
+---
 
 ![*Figura 10: Instal·lar ROL*](png/InstalarRolNO.png)
+---
 
 Una prova que heu de fer és la provar les accions permeses dins de la UO on tenim delegat el control i fora.
 
 ![*Figura 11: Accions permeses però fora de la UO*](png/NoTienePrivilegios.png)
-
+---
 
 ## 2.5 Conclusions
 
@@ -147,11 +156,12 @@ El que passa és exactament el que ens passava a l'aula de SOM, l'any anterior s
 **Exemple 1** No podem instal·lar un ROL com quan en Linux no podíem instal·lar un paquet...
 
 ![*Figura 12: Eines per instal·lar apt*](png/rosaUpdate.png)
-
+---
 
 **Exemple 2** No podem canviar l'hora des del Panel de Control del Windows Server, ve a dir-nos que no "som sudoer"
 
 ![*Figura 13: Canvi de data*](png/rosaHora.png)
+---
 
 ### Les capes del SO
 
@@ -161,7 +171,7 @@ GUI: L'eina de configuració (consola msa.msc, per exemple) és un aplicació de
 
 CLI: El terminal de Linux (o Powershell com vorem) també fan la mateixa funció.
 
-Relament quan ens deixa executar incialment, és com qual al terminal ens deixa escriure "sudo apt...". És quan li donem a Enter ( o Aplicar/Acceptar) quen **enviem l'ordre al kernel** quan...
+Realment quan ens deixa executar incialment, és com qual al terminal ens deixa escriure "sudo apt...". És quan li donem a Enter ( o Aplicar/Acceptar) quen **enviem l'ordre al kernel** quan...
 
 2- **Seguretat i protecció** El Kernel (nucli del SO) de Windows i de Linux comprovem que l'usuari no està autoritzat.
 
@@ -185,16 +195,15 @@ Per poder eliminar o fer canvis d'ubicacions de les UO, cal inhabilitar una prot
 * Ara ja apareix la pestanya *Propiedades>Objeto* en per desprotegir (convindria que la tornàreu a deixar com estava en acabar).
 
 ![*Figura 16: Desprotegir temporalment les UO*](png/protegerUO.png)
+---
 
 * També ens apareix la pestanya *Propiedades>Seguridad* on podem veure quin usuari té el control.
 
 ![*Figura 17: Qui té el control de la UO*](png/seguridaddeUO.png)
+---
 
 * Entrem en *Características Avanzadas* i veiem tot la informació detallada sobre quins usuaris i quis drets tenen sobre la UO. 
 Des d'ací podem afegir i llevar usuaris i drets.
 
 ![*Figura 18: Gestió de drets i usuaris sobre la UO](png/derechosUOAvanzado.png)
-
-
-
 
