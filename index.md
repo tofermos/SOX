@@ -59,3 +59,4 @@ linestretch: 1.5
 |||||
 |:------|:--|:--|
 |Permisos Share i unitats|[![](recursos/iconohtml.png)](U4_WS_SHARE_i_UNITATS/U4_WS_SHARE_i_UNITATS.html)|[![](recursos/iconopdf.png)](U4_WS_SHARE_i_UNITATS/U4_WS_SHARE_i_UNITATS.pdf)|
+

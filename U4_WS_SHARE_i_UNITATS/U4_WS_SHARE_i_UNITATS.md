@@ -4,16 +4,16 @@ subtitle: COMPARTICIÓ de DIRECTORIS (SHARING) I ASSIGNACIÓ D'UNITATS
 papersize: A4
 linestretch: 1.5
 output:
+  pdf_document:
+    toc: true
+    keep_tex: true
+    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     toc_depth: 3
     df_print: paged
     number_sections: false
-  pdf_document:
-    toc: true
-    keep_tex: true
-    latex_engine: xelatex
 ---
 
 
@@ -23,9 +23,15 @@ output:
 
 # RESUM
 
-Aquest és un tema pont entre la Unitat 3 i la Unitat 4 de la Programació Didàctica recentement presentada del curs 2024/2025. Repassem conceptes sobre la compartició de carpetes en Windows i els contextualitzem en Unitat Organitzatives introduint el concpete de "permís  efectiou" que vorem quan tractem els permisos NTFS.
-Esta unitat tratarem el Sistema de Fitxers des de dos vesants. La de l'accès (permisos) i ús (quotes) per part dels usuaris i la de la seguretat.
-Grosso modo podem dir que tratarem la *disponibilitat* i la *confidencialitat*.
+Aquest és un tema pont entre la Unitat 3 i la Unitat 4 de la Programació Didàctica recentement presentada del curs 2024/2025.
+
+Repassem punts avançats sobre la compartició de carpetes en Windows i els contextualitzem en Unitat Organitzatives introduint el concepte de "permís  efectiu" que vorem quan tractem els permisos NTFS.
+
+La Unitat 4 tracta el Sistema de Fitxers des de les tres vesssants de la tríada de la seguretat: 
+
+* La **disponibilitat i confidencialitat**: Permisos efectius i quotes.
+
+* La **integritat**: Directives de seguretat, Backups i RAIDs
 
 # 1 COMPARTICIÓ de CARPETA (SHARE)
 
@@ -110,34 +116,96 @@ Podeu usar la consola **fsmgmt.msc** de CARPETES COMPARTIDES per crear, comparti
 
 * NOMBRE D'ACCESOS PERMESOS podem limitar la quantitat d'usuaris de la xarxa que poden accedir al mateix temps.
 
-* NOM DEL RECURS COMPARTIT Si volem que la carpeta es veja a la xarxa amb un altre nom
+* NOM DEL RECURS COMPARTIT Si volem que la carpeta es veja a la xarxa amb un altre nom.
   
 
 ![](png/usCompartitAvançat.png)
 ![](png/usCompartitAvançat2.png)
 ![](png/usCompartitAvançat3.png)
 
+
+Recordeu que en la consola **fsmgmt.msc** veieu les sessions de xarxa. Si s'ha superat el **nombre màxim d'accessos simultanis** a una carpeta, podeu consultar (i expulsar l'usuari des d'ací).
+
 ---
 
-# 4 ACCÉS PER LA XARXA A LES CARPETES COMPARTIDES
-Des del client podem ja accedir als primers recursos compartits.
+# 4 ACCESOS I MAPEIG
+
+Des del client podem accedir als primers recursos compartits fins i tot si estan ocults
 
 ## 4.1 Formes d'accedir
 
 Si observem, podem vore les carpetes des de Red del client ( Windows 1x ) de 4 formes.
 
 * Gràficament des de l'explorador buscant el servidor
+
 * Gràficament des de l'explorador amb la IP del servidor. Útil per a:
+
     * Descatar si falla la resolució de noms per provar però no la connexió a nivell de xarxa.
-    * Visulitzar els directoris ocults escrivint el nom de recurs compartit amb el $
-* Des de l'interface d'ordres amb NET SHARE. Només per visualitzar.
-* Des de Powershell ( Ho estudiarem més avant )
+
+    * Visualitzar els directoris ocults escrivint el nom de recurs compartit amb el $
+
+* Des de l'interface d'ordres amb NET SHARE.
+
+* Des de Powershell.
 
 ![](png/CarpetesCompartidesDesdeWin10.png)
 ![](png/CarpetesCompartidesDesdeWin10IP.png)
 ![](png/CarpetesCompartidesOcultesDesdeWin10.png)
   
-# 5 Relació amb les Unitats Organitzatives
+
+L'assignació d'unitats es pot fer des del
+
+* GUI.
+* Des del cmd (*net use*, com ja vam avançar)*.
+* PowerShell. Teniu informació al Repositori de PowerShell 
+* Carpetes Particulars (ja estudiat).
+* GPO (apartat següent)
+
+Teniu informació sobre com s'accedeix amb els cdmLets de PowerShell al repositori de PowerShell:
+
+[Repositori PowerShell](https://github.com/tofermos/PowerShell/blob/main/md/PSCompartirRecursos.md)
+
+>TERMES QUIVALENTS:
+> Assignar unitat de xarxa, mapeig, capturar unitat... és el mateix.
+
+
+# 5 RELACIÓ AMB LES UNITATS ORGANITZATIVES i DIRECTIVA
 
 És molt probable que ens interesse que un departament  o una delegació de d l'empresa (una part del domini), els grups accedisquen a unes determindaes carpetes. I que tots accedisquen igual. 
-Amb el que hem vist al tema de UO i en aquest, podem donar solució. Fent que les carpetes estiguen a la UO i, amb la directiva, tots esl usuaris de la UO accedisquen igual ( F:, per exemple )
+Amb el que hem vist al tema de UO i en aquest, podem donar solució. Fent que les carpetes estiguen a la UO i, amb la directiva, tots esl usuaris de la UO accedisquen igual (F:, per exemple)
+
+## 5.1 Mapeig per GPO
+
+L'assignació d'una unitat de xarxa mitjançant una **Directiva de Grup (Group Policy Object, GPO)**, és centralitzat per al Domoini o UO amb tots els  avantatges importants de seguretat i administració que comporta.
+
+Avantatges:
+
+1. **Control Centralitzat d'Accés**
+
+2. **Assignació Automàtica amb Seguretat**: En lloc de confiar que cada usuari faci el mapeig manualment amb errors possibles.
+
+3. **Opcions de Filtrat per Seguretat**: A les GPOs pots fer ús del filtrat de seguretat i la **delimitació per grups**.
+
+4. **Opcions de Reconnectivitat i Persistència**: Les GPOs permeten definir si la unitat s’ha de tornar a connectar en iniciar sessió o no.
+
+5. **Auditoria i Compliment**: Mitjançant registres d'auditoria a l'Active Directory, pots seguir qui ha accedit als recursos compartits.
+
+## 5.2 Operativa
+
+1. **Obre la Consola de Gestió de Directives de Grup (gpmc.msc)
+2. Crea o selecciona una GPO existent en el domini o unitat organitzativa (OU) a la qual vols el mapeig.
+3. Ves a: **Configuració d'Usuari** > **Preferències** > **Configuració de Windows** > **Unitats**.
+4. Fes clic amb el botó dret i selecciona **Nuevo** > **Unitat de Mapeig**.
+5. Indica lletra disponible i del recurs compartit (per exemple, `\\WindowsServerDC\NotesTakeHome`).
+6. Selecciona les opcions d’actualització, connexió i desconnexió segons els requisits de seguretat i persistència.
+7. Utilitza el **Filtrat de Seguretat** per aplicar la GPO només a grups específics si cal.
+
+![GPO Assignació Unitat](png/CapturaGPO.png)
+
+Recorda: 
+
+```cmd
+gpupdate /force
+```
+
+

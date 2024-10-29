@@ -39,6 +39,46 @@
 \makeatother
 \usepackage{xcolor}
 \usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -92,13 +132,22 @@
 \section{RESUM}\label{resum}
 
 Aquest és un tema pont entre la Unitat 3 i la Unitat 4 de la Programació
-Didàctica recentement presentada del curs 2024/2025. Repassem conceptes
-sobre la compartició de carpetes en Windows i els contextualitzem en
-Unitat Organitzatives introduint el concpete de ``permís efectiou'' que
-vorem quan tractem els permisos NTFS. Esta unitat tratarem el Sistema de
-Fitxers des de dos vesants. La de l'accès (permisos) i ús (quotes) per
-part dels usuaris i la de la seguretat. Grosso modo podem dir que
-tratarem la \emph{disponibilitat} i la \emph{confidencialitat}.
+Didàctica recentement presentada del curs 2024/2025.
+
+Repassem punts avançats sobre la compartició de carpetes en Windows i
+els contextualitzem en Unitat Organitzatives introduint el concepte de
+``permís efectiu'' que vorem quan tractem els permisos NTFS.
+
+La Unitat 4 tracta el Sistema de Fitxers des de les tres vesssants de la
+tríada de la seguretat:
+
+\begin{itemize}
+\item
+  La \textbf{disponibilitat i confidencialitat}: Permisos efectius i
+  quotes.
+\item
+  La \textbf{integritat}: Directives de seguretat, Backups i RAIDs
+\end{itemize}
 
 \section{1 COMPARTICIÓ de CARPETA
 (SHARE)}\label{comparticiuxf3-de-carpeta-share}
@@ -238,19 +287,23 @@ crear, compartir i assignar permisos NTFS.
   xarxa que poden accedir al mateix temps.
 \item
   NOM DEL RECURS COMPARTIT Si volem que la carpeta es veja a la xarxa
-  amb un altre nom
+  amb un altre nom.
 \end{itemize}
 
 \includegraphics{png/usCompartitAvançat.png}
 \includegraphics{png/usCompartitAvançat2.png}
 \includegraphics{png/usCompartitAvançat3.png}
 
+Recordeu que en la consola \textbf{fsmgmt.msc} veieu les sessions de
+xarxa. Si s'ha superat el \textbf{nombre màxim d'accessos simultanis} a
+una carpeta, podeu consultar (i expulsar l'usuari des d'ací).
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{4 ACCÉS PER LA XARXA A LES CARPETES
-COMPARTIDES}\label{accuxe9s-per-la-xarxa-a-les-carpetes-compartides}
+\section{4 ACCESOS I MAPEIG}\label{accesos-i-mapeig}
 
-Des del client podem ja accedir als primers recursos compartits.
+Des del client podem accedir als primers recursos compartits fins i tot
+si estan ocults
 
 \subsection{4.1 Formes d'accedir}\label{formes-daccedir}
 
@@ -258,39 +311,136 @@ Si observem, podem vore les carpetes des de Red del client ( Windows 1x
 ) de 4 formes.
 
 \begin{itemize}
-\tightlist
 \item
   Gràficament des de l'explorador buscant el servidor
 \item
   Gràficament des de l'explorador amb la IP del servidor. Útil per a:
 
   \begin{itemize}
-  \tightlist
   \item
     Descatar si falla la resolució de noms per provar però no la
     connexió a nivell de xarxa.
   \item
-    Visulitzar els directoris ocults escrivint el nom de recurs
+    Visualitzar els directoris ocults escrivint el nom de recurs
     compartit amb el \$
   \end{itemize}
 \item
-  Des de l'interface d'ordres amb NET SHARE. Només per visualitzar.
+  Des de l'interface d'ordres amb NET SHARE.
 \item
-  Des de Powershell ( Ho estudiarem més avant )
+  Des de Powershell.
 \end{itemize}
 
 \includegraphics{png/CarpetesCompartidesDesdeWin10.png}
 \includegraphics{png/CarpetesCompartidesDesdeWin10IP.png}
 \includegraphics{png/CarpetesCompartidesOcultesDesdeWin10.png}
 
-\section{5 Relació amb les Unitats
-Organitzatives}\label{relaciuxf3-amb-les-unitats-organitzatives}
+L'assignació d'unitats es pot fer des del
+
+\begin{itemize}
+\tightlist
+\item
+  GUI.
+\item
+  Des del cmd (\emph{net use}, com ja vam avançar)*.
+\item
+  PowerShell. Teniu informació al Repositori de PowerShell
+\item
+  Carpetes Particulars (ja estudiat).
+\item
+  GPO (apartat següent)
+\end{itemize}
+
+Teniu informació sobre com s'accedeix amb els cdmLets de PowerShell al
+repositori de PowerShell:
+
+\href{https://github.com/tofermos/PowerShell/blob/main/md/PSCompartirRecursos.md}{Repositori
+PowerShell}
+
+\begin{quote}
+TERMES QUIVALENTS: Assignar unitat de xarxa, mapeig, capturar
+unitat\ldots{} és el mateix.
+\end{quote}
+
+\section{5 RELACIÓ AMB LES UNITATS ORGANITZATIVES i
+DIRECTIVA}\label{relaciuxf3-amb-les-unitats-organitzatives-i-directiva}
 
 És molt probable que ens interesse que un departament o una delegació de
 d l'empresa (una part del domini), els grups accedisquen a unes
 determindaes carpetes. I que tots accedisquen igual. Amb el que hem vist
 al tema de UO i en aquest, podem donar solució. Fent que les carpetes
 estiguen a la UO i, amb la directiva, tots esl usuaris de la UO
-accedisquen igual ( F:, per exemple )
+accedisquen igual (F:, per exemple)
+
+\subsection{5.1 Mapeig per GPO}\label{mapeig-per-gpo}
+
+L'assignació d'una unitat de xarxa mitjançant una \textbf{Directiva de
+Grup (Group Policy Object, GPO)}, és centralitzat per al Domoini o UO
+amb tots els avantatges importants de seguretat i administració que
+comporta.
+
+Avantatges:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Control Centralitzat d'Accés}
+\item
+  \textbf{Assignació Automàtica amb Seguretat}: En lloc de confiar que
+  cada usuari faci el mapeig manualment amb errors possibles.
+\item
+  \textbf{Opcions de Filtrat per Seguretat}: A les GPOs pots fer ús del
+  filtrat de seguretat i la \textbf{delimitació per grups}.
+\item
+  \textbf{Opcions de Reconnectivitat i Persistència}: Les GPOs permeten
+  definir si la unitat s'ha de tornar a connectar en iniciar sessió o
+  no.
+\item
+  \textbf{Auditoria i Compliment}: Mitjançant registres d'auditoria a
+  l'Active Directory, pots seguir qui ha accedit als recursos
+  compartits.
+\end{enumerate}
+
+\subsection{5.2 Operativa}\label{operativa-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  **Obre la Consola de Gestió de Directives de Grup (gpmc.msc)
+\item
+  Crea o selecciona una GPO existent en el domini o unitat organitzativa
+  (OU) a la qual vols el mapeig.
+\item
+  Ves a: \textbf{Configuració d'Usuari} \textgreater{}
+  \textbf{Preferències} \textgreater{} \textbf{Configuració de Windows}
+  \textgreater{} \textbf{Unitats}.
+\item
+  Fes clic amb el botó dret i selecciona \textbf{Nuevo} \textgreater{}
+  \textbf{Unitat de Mapeig}.
+\item
+  Indica lletra disponible i del recurs compartit (per exemple,
+  \texttt{\textbackslash{}\textbackslash{}WindowsServerDC\textbackslash{}NotesTakeHome}).
+\item
+  Selecciona les opcions d'actualització, connexió i desconnexió segons
+  els requisits de seguretat i persistència.
+\item
+  Utilitza el \textbf{Filtrat de Seguretat} per aplicar la GPO només a
+  grups específics si cal.
+\end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics{png/CapturaGPO.png}
+\caption{GPO Assignació Unitat}
+\end{figure}
+
+Recorda:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gpupdate }\AttributeTok{/force}
+\end{Highlighting}
+\end{Shaded}
+
 
 \end{document}
