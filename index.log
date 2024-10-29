@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.16)  25 OCT 2024 08:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.16)  29 OCT 2024 11:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -708,27 +708,38 @@ File: recursos/iconopdf.png Graphic file (type png)
 <use recursos/iconopdf.png>
 Package pdftex.def Info: recursos/iconopdf.png  used on input line 212.
 (pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
-[2] (./index.aux)
+
+LaTeX Warning: Hyper reference `U4' on page 2 undefined on input line 217.
+
+File: recursos/iconohtml.png Graphic file (type png)
+<use recursos/iconohtml.png>
+Package pdftex.def Info: recursos/iconohtml.png  used on input line 228.
+(pdftex.def)             Requested size: 44.16554pt x 44.16554pt.
+File: recursos/iconopdf.png Graphic file (type png)
+<use recursos/iconopdf.png>
+Package pdftex.def Info: recursos/iconopdf.png  used on input line 230.
+(pdftex.def)             Requested size: 48.17986pt x 48.17986pt.
+[2] [3] (./index.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 14749 strings out of 478287
- 236328 string characters out of 5849289
- 586964 words of memory out of 5000000
- 32623 multiletter control sequences out of 15000+600000
- 523563 words of font info for 103 fonts, out of 8000000 for 9000
+ 14757 strings out of 478287
+ 236446 string characters out of 5849289
+ 587168 words of memory out of 5000000
+ 32626 multiletter control sequences out of 15000+600000
+ 523660 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,9n,77p,1002b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/d
 vips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm
 /lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb>
-Output written on index.pdf (2 pages, 103619 bytes).
+Output written on index.pdf (3 pages, 104842 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
- 74 compressed objects within 1 object stream
- 11 named destinations out of 1000 (max. 500000)
+ 102 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
+ 14 named destinations out of 1000 (max. 500000)
  32787 words of extra memory for PDF output out of 35830 (max. 10000000)
 

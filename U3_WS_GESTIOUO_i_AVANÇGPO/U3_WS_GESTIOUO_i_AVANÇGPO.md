@@ -18,8 +18,9 @@ output:
     number_sections: false
 ---
 
-\newpage
+
 \renewcommand\tablename{Tabla}
+\newpage
 
 # 1 Les UO
 
@@ -54,7 +55,6 @@ Hem de buscar i seleccionar correctament l'usuari.
 
 ![*Figura 1:Delegar control*](png/DelegarControl1.png)
 
----
 
 ## 2.2 Assignem drets 
 

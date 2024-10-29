@@ -1,0 +1,296 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={U4. WINDOWS SERVER. ADMINISTRACIÓ I CONFIGURACIÓ},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{U4. WINDOWS SERVER. ADMINISTRACIÓ I CONFIGURACIÓ}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{COMPARTICIÓ de DIRECTORIS (SHARING) I ASSIGNACIÓ D'UNITATS}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\setstretch{1.5}
+\renewcommand\tablename{Tabla}
+\newpage
+
+\section{RESUM}\label{resum}
+
+Aquest és un tema pont entre la Unitat 3 i la Unitat 4 de la Programació
+Didàctica recentement presentada del curs 2024/2025. Repassem conceptes
+sobre la compartició de carpetes en Windows i els contextualitzem en
+Unitat Organitzatives introduint el concpete de ``permís efectiou'' que
+vorem quan tractem els permisos NTFS. Esta unitat tratarem el Sistema de
+Fitxers des de dos vesants. La de l'accès (permisos) i ús (quotes) per
+part dels usuaris i la de la seguretat. Grosso modo podem dir que
+tratarem la \emph{disponibilitat} i la \emph{confidencialitat}.
+
+\section{1 COMPARTICIÓ de CARPETA
+(SHARE)}\label{comparticiuxf3-de-carpeta-share}
+
+Ja hem vist la compartició de les carpetes en xarxes Windows, tant en la
+part final del curs passat com en les activitats anteriors de Workgroup
+i Domini. Podem dir que, junt a la gestió centralitzada de comptes
+(usuaris i grups) és el més bàsic d'una xarxa local.
+
+\subsection{1.1 Prèvia}\label{pruxe8via}
+
+En Windows tenim dos sistemes de permisos:
+
+\begin{itemize}
+\item
+  Sharing o compartició de carpetes. Admet només permisos de Lectura,
+  Escriptura i Control Total. Poden aplicarse sobre particions NTFS o
+  FAT32. S'apliquen només si accedim per la xarxa.
+\item
+  Permisos NTFS, permet detallar més les accions a poder fer en el
+  sistema de fitxers. En un domini, el normal és aplicar-los després de
+  l'anterior per concretar el permisos. Només s'apliquen sobre
+  particions NTFS i actuen també en local.
+\end{itemize}
+
+Anem a centrar-nos en els permisos SHARE
+
+\subsection{1.2 Permisos de Compartició
+(Sharing)}\label{permisos-de-comparticiuxf3-sharing}
+
+Els permisos de \textbf{compartició (sharing)} en Windows es configuren
+per controlar l'accés a carpetes \textbf{a través de la xarxa}, sense
+alterar els permisos NTFS locals.
+
+Els permisos de compartició són més simples que els NTFS i es centren
+principalment en el nivell d'accés remot, mentre que la
+\textbf{propietat} fa referència a qui és el responsable de la carpeta o
+fitxer, la qual cosa afecta la capacitat de gestió de permisos.
+
+Els permisos de compartició s'utilitzen tres tipus principals:
+
+\textbf{Lectura (Read)}: Permet veure el contingut de la carpeta i obrir
+fitxers, però no es poden modificar ni crear nous elements.
+
+\textbf{Canvi (Change)}: A banda de lectura, permet modificar (editar,
+afegir i eliminar fitxers o carpetes) dins de la carpeta compartida.
+
+\textbf{Control total (Full Control)}: Dóna al usuari o grup el màxim
+nivell d'accés. A bada dels anteriors, canviar els permisos de
+compartició de la carpeta.
+
+\begin{quote}
+\textbf{Nota:} Es tracta de decidir quins grups/usuaria accediran des de
+la xarxa i què podran fer.
+\end{quote}
+
+\subsection{1.3 La propietat}\label{la-propietat}
+
+Només el \textbf{propietari} (o un administrador) té permisos per
+ajustar els permisos de compartició (i NTFS de la carpeta). La propietat
+també permet que el propietari puga recuperar l'accés o modificar
+permisos, fins i tot si altres usuaris han establert restriccions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2. CONFIGURACIÓ}\label{configuraciuxf3}
+
+Els passos generals són:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Seleccionar la carpeta}: Clic dret a la carpeta que vols
+  compartir i seleccionar \textbf{Propietats}.
+\item
+  \textbf{Compartició}: Accedir a la pestanya \textbf{Compartició} i fer
+  clic a \textbf{Compartir\ldots{}} o \textbf{Compartició avançada} per
+  opcions més detallades.
+\item
+  \textbf{Afegeix usuaris}: En aquesta finestra, pots especificar grups
+  o usuaris concrets de la xarxa (locals del Servidor no té cap sentit)
+  i assignar els permisos adequats (Lectura, Canvi o Control total).
+\item
+  \textbf{Guardar canvis}: Recordeu que heu de provar accedint des de
+  Xarxa. No a c:/... d:/...
+\end{enumerate}
+
+\subsection{\texorpdfstring{2.1 Herència i Permisos Efectius en
+Compartició \emph{( ho vorem de nou en donar
+NTFS)}}{2.1 Herència i Permisos Efectius en Compartició ( ho vorem de nou en donar NTFS)}}\label{heruxe8ncia-i-permisos-efectius-en-comparticiuxf3-ho-vorem-de-nou-en-donar-ntfs}
+
+Els permisos de compartició no tenen herència (NTFS, sí).
+\textbf{S'apliquen només a la carpeta compartida i no a les
+subcarpetes}. No obstant vorem més avant que els \textbf{permisos
+efectius} en una carpeta compartida són la combinació dels dos tipus de
+permisos amb regles en cas de contradicció.
+
+\subsection{2.2 Recomanacions}\label{recomanacions}
+
+\begin{itemize}
+\item
+  \textbf{Assigna permisos mínims}: Com sempre, limita l'accés de cada
+  grup als permisos mínims que necessite (Lectura/Canvi/Control total)
+  per minimitzar riscos de seguretat. \textbf{Evita ``Control total''}.
+\item
+  \textbf{Revisa els permisos efectius} per garantir que els usuaris
+  només tinguin l'accés necessari quan combinen permisos de compartició
+  amb els permisos NTFS locals.
+\item
+  \textbf{Crea grups} encara que siga d'un usuari, et facilitarà la
+  gestió si després tens nous usuaris de perfils similar.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3 OPERATIVA}\label{operativa}
+
+\subsection{3.1 Compartició}\label{comparticiuxf3}
+
+Des del Servidor compartim unes carpetes.
+
+\includegraphics{png/CarpetesCompartides1.png}
+\includegraphics{png/CarpetesCompartides2.png}
+
+Podeu usar la consola \textbf{fsmgmt.msc} de CARPETES COMPARTIDES per
+crear, compartir i assignar permisos NTFS.
+
+\includegraphics{png/CC1.png}
+
+\subsection{3.2 Compartició avançada}\label{comparticiuxf3-avanuxe7ada}
+
+\begin{itemize}
+\item
+  CONTROL TOTAL Permís per a canviar el permisos i propietari.
+\item
+  NOMBRE D'ACCESOS PERMESOS podem limitar la quantitat d'usuaris de la
+  xarxa que poden accedir al mateix temps.
+\item
+  NOM DEL RECURS COMPARTIT Si volem que la carpeta es veja a la xarxa
+  amb un altre nom
+\end{itemize}
+
+\includegraphics{png/usCompartitAvançat.png}
+\includegraphics{png/usCompartitAvançat2.png}
+\includegraphics{png/usCompartitAvançat3.png}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4 ACCÉS PER LA XARXA A LES CARPETES
+COMPARTIDES}\label{accuxe9s-per-la-xarxa-a-les-carpetes-compartides}
+
+Des del client podem ja accedir als primers recursos compartits.
+
+\subsection{4.1 Formes d'accedir}\label{formes-daccedir}
+
+Si observem, podem vore les carpetes des de Red del client ( Windows 1x
+) de 4 formes.
+
+\begin{itemize}
+\tightlist
+\item
+  Gràficament des de l'explorador buscant el servidor
+\item
+  Gràficament des de l'explorador amb la IP del servidor. Útil per a:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Descatar si falla la resolució de noms per provar però no la
+    connexió a nivell de xarxa.
+  \item
+    Visulitzar els directoris ocults escrivint el nom de recurs
+    compartit amb el \$
+  \end{itemize}
+\item
+  Des de l'interface d'ordres amb NET SHARE. Només per visualitzar.
+\item
+  Des de Powershell ( Ho estudiarem més avant )
+\end{itemize}
+
+\includegraphics{png/CarpetesCompartidesDesdeWin10.png}
+\includegraphics{png/CarpetesCompartidesDesdeWin10IP.png}
+\includegraphics{png/CarpetesCompartidesOcultesDesdeWin10.png}
+
+\section{5 Relació amb les Unitats
+Organitzatives}\label{relaciuxf3-amb-les-unitats-organitzatives}
+
+És molt probable que ens interesse que un departament o una delegació de
+d l'empresa (una part del domini), els grups accedisquen a unes
+determindaes carpetes. I que tots accedisquen igual. Amb el que hem vist
+al tema de UO i en aquest, podem donar solució. Fent que les carpetes
+estiguen a la UO i, amb la directiva, tots esl usuaris de la UO
+accedisquen igual ( F:, per exemple )
+
+\end{document}
