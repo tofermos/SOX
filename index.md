@@ -5,15 +5,15 @@ subtitle: |
   | IES MARIA ENRÍQUEZ
 author: "tofermos2024"
 output:
-  pdf_document: 
-    toc: true
-    keep_tex: true
   html_document:
     toc: true
     toc_float: true
     toc_depth: 1
     df_print: paged
     number_sections: false
+  pdf_document: 
+    toc: true
+    keep_tex: true
   word_document:
     toc: true
     toc_depth: '3'
@@ -59,4 +59,5 @@ linestretch: 1.5
 |||||
 |:------|:--|:--|
 |Permisos Share i unitats|[![](recursos/iconohtml.png)](U4_WS_SHARE_i_UNITATS/U4_WS_SHARE_i_UNITATS.html)|[![](recursos/iconopdf.png)](U4_WS_SHARE_i_UNITATS/U4_WS_SHARE_i_UNITATS.pdf)|
+|Quotes de disc en Windows Server 2019|[![](recursos/iconohtml.png)](U4_WS_QUOTES/U4_WS_QUOTES.html)|[![](recursos/iconopdf.png)](U4_WS_QUOTES/U4_WS_QUOTES.pdf)|
 
