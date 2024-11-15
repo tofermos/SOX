@@ -77,6 +77,13 @@ Per passar de WORKGROUP -> DOMAIN caldrà que:
 1.  Instal·leu el Active Directory ( AD-DS )
 2.  Promocioneu el servidor a Controlador del Domini (DC)
 
+# 3 Canvis en la configuració de la xarxa
+
+Tal i com s'ha explicat als punts 5 i 6 de la Unitat 2. Per al domini cal configurar les màquines de la següent manera:
+
+![*Figura 1: Redes Privadas*](png/OpcionesDeteccionRedesDominio.png)
+![*Figura 2: Firewall permet compartir y detectar xarxes en AD*](png/FirewallAplicacionesAD.png)
+
 ## 2.1 Instal·lació de l'Active Directory
 
 ![](png/instalAD1.png)

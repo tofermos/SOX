@@ -79,6 +79,16 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -169,6 +179,9 @@ En aquesta unitat prèvia a la creació d'un domini:
 \item
   Veurem algunes configuracions generals simples ( nom del PC i WG,
   Actualizacions automàtiques, Zona horària\ldots)
+\item
+  Avançarem alguns canvis que hem de fer a nivell d'Aplicacions i
+  Firewall quan passem de WorkGroup a Domini.
 \end{enumerate}
 
 \section{2 Canviar el nom del servidor i
@@ -176,62 +189,13 @@ Workgroup}\label{canviar-el-nom-del-servidor-i-workgroup}
 
 \begin{figure}
 \centering
-\includegraphics{png/ADDS/WorkgroupNomEquip.png}
+\includegraphics{png/WorkgroupNomEquip.png}
 \caption{\emph{Figura1: Nom equip i del Grup de Treball}}
 \end{figure}
 
 Configurar la xarxa Servidor
 
-\section{3 Configuració de la xarxa en Virtualbox. ``Xarxa
-Interna''}\label{configuraciuxf3-de-la-xarxa-en-virtualbox.-xarxa-interna}
-
-Estem ``conectant cables al switch''.
-
-De moment només ens fa falta la tarja que es connectarà a un switch on
-es conecten la resta de PC de la xarxa () ``xarxa interna'').
-
-Podem instal·lar un segon adaptador per disposar de la connexió
-d'Internet de l'amfitrió (adaptador NAT). De moment és opcional.
-
-\begin{figure}
-\centering
-\includegraphics{png/ADDS/xarxainterna.png}
-\caption{\emph{Figura 2: Xarxa interna}}
-\end{figure}
-
-\begin{quote}
-NOTA:
-
-En el WINDOWS 1x hem de tindre NOMÉS la tarja interna. No perdeu de
-vista la ``realitat'' que estem emulant !
-\end{quote}
-
-\section{4 Configuració de la xarxa en
-Windows.}\label{configuraciuxf3-de-la-xarxa-en-windows.}
-
-\subsection{4.1 Firewall de Windows. Aplicaciones
-permitidas}\label{firewall-de-windows.-aplicaciones-permitidas}
-
-Des del mateix Administrador de Servidor accedir al \textbf{Firewall:
-Aplicaciones permitidas} i assegurar que ens permeta Compartir i
-Detectar recursos a través de la xarxa. Dos capacitat que activarem en
-l'apartat següent:
-
-\begin{figure}
-\centering
-\includegraphics{png/ADDS/PermitirUnaAplicacionATravesdeFirewall.png}
-\caption{\emph{Figura 3: Permitir una aplicación a través de Firewall}}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics{png/ADDS/FirewallCompartiryDetectar.png}
-\caption{\emph{Figura 4: Firewall permet compartir y detectar xarxes}}
-\end{figure}
-
-`
-
-\subsection{4.2 IPs privades en la mateixa
+\section{5 IPs privades en la mateixa
 xarxa}\label{ips-privades-en-la-mateixa-xarxa}
 
 Com ja sabeu del mòdul de XAL de 1r de SMX haureu de configurar les IPs.
@@ -245,19 +209,127 @@ Recursos Compartidos, Ethernet}
 
 \begin{figure}
 \centering
-\includegraphics{png/ADDS/tarja2.png}
+\includegraphics{png/tarja2.png}
 \caption{\emph{Figura 5: Adaptador de xarxa}}
 \end{figure}
 
-\subsection{4.3 Detecció de xarxes i
-recursos}\label{detecciuxf3-de-xarxes-i-recursos}
+\section{4 Configuració de la xarxa en Virtualbox. ``Xarxa
+Interna''}\label{configuraciuxf3-de-la-xarxa-en-virtualbox.-xarxa-interna}
+
+Estem ``conectant cables al switch''.
+
+De moment només ens fa falta la tarja que es connectarà a un switch on
+es conecten la resta de PC de la xarxa () ``xarxa interna'').
+
+Podem instal·lar un segon adaptador per disposar de la connexió
+d'Internet de l'amfitrió (adaptador NAT). De moment és opcional.
+
+\begin{figure}
+\centering
+\includegraphics{png/xarxainterna.png}
+\caption{\emph{Figura 2: Xarxa interna}}
+\end{figure}
+
+\begin{quote}
+NOTA:
+
+En el WINDOWS 1x hem de tindre NOMÉS la tarja interna. No perdeu de
+vista la ``realitat'' que estem emulant!
+\end{quote}
+
+\subsection{4.1 Prova del connectivitat}\label{prova-del-connectivitat}
+
+Una vegada fet la instal·lació física, comprovem la conectivitat.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ipconfig}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{png/ping.png}
+\caption{\emph{Ping des de totes les màquines de la xarxa}}
+\end{figure}
+
+Convé assegurar-nos que el protocol no està bloquejat pel Firewall:
+
+\begin{figure}
+\centering
+\includegraphics{png/FirewallICMP4Entrada.png}
+\caption{\emph{Firewall ICMP4 (echo entrada)}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{png/FirewallICMP4Salida.png}
+\caption{\emph{Firewall ICMP4 (echo salida)}}
+\end{figure}
+
+\section{5 Firewall de Windows. Aplicaciones
+permitidas}\label{firewall-de-windows.-aplicaciones-permitidas}
+
+Des del mateix Administrador de Servidor accedir al \textbf{Firewall:
+Aplicaciones permitidas} i assegurar que ens permeta Compartir i
+Detectar recursos a través de la xarxa. Dos capacitat que activarem en
+l'apartat següent:
+
+\begin{figure}
+\centering
+\includegraphics{png/PermitirUnaAplicacionATravesdeFirewall.png}
+\caption{\emph{Figura 3: Permitir una aplicación a través de Firewall}}
+\end{figure}
+
+Podem trobar-nos en dos situacions: \textbf{WorkGroup o Domini}.
+
+\begin{quote}
+Nota: Quan canviem de Workgroup a Domini, hem de recordar fer el canvi.
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1641}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2969}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3359}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2031}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Tipus de xarxa}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Detecció de xarxes}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Ús compartit de fitxers i impressores}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Perfil del Firewall}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Workgroup} & Habilitada per al perfil \textbf{Privada} &
+Habilitada per al perfil \textbf{Privada} & \textbf{Privada} \\
+\textbf{Domini} & Habilitada per al perfil \textbf{Domini} & Habilitada
+per al perfil \textbf{Domini} & \textbf{Domini} \\
+\end{longtable}
+
+\begin{figure}
+\centering
+\includegraphics{png/FirewallAplicacionesWG.png}
+\caption{\emph{Figura 4: Firewall permet compartir y detectar xarxes en
+WG}}
+\end{figure}
+
+\textbf{La configuració següent és la que aplicarem quan canviem de
+Workgroup a Domini:} \includegraphics{png/FirewallAplicacionesAD.png}
+
+\section{6 Detecció de xarxes i compartició d'arxius i
+impressores.}\label{detecciuxf3-de-xarxes-i-comparticiuxf3-darxius-i-impressores.}
 
 \emph{Windows+R: Configuración, Red e internet, Centro de Redes y
 Recursos Compartidos}
 
 Com ja vam estudiar a la Unitat anterior amb el Wordgroup fet amb PC
-Windows 1x, hem d'activar per a las *\textbf{xarxa privada} en totes les
-màquines
+Windows 1x, hem d'activar per a totes les màquines les característiques:
 
 \begin{itemize}
 \item
@@ -266,17 +338,34 @@ màquines
   Activar l'ús compartit de carpetes i impressores.
 \end{itemize}
 
-Configuración, Red e internet ( o \emph{Win + I}) Centro de Redes y
+Configuración, Red e internet (o \emph{Win + I}) Centro de Redes y
 Recursos Compartidos, Cambiar configuración del Uso compartido
 avanzado:*
 
-\includegraphics{png/ADDS/ActivaDetecciónyUsoCompartidoPrivada.png}
+Però esta activació serà distinta si estem en un Workgroup o en un
+Domini
 
-\includegraphics{png/ADDS/ActivaDetecciónyUsoCompartidoPublico.png}
+\subsection{6.1 Cas de WorkGroup}\label{cas-de-workgroup}
 
-\includegraphics{png/ADDS/ActivaUsoCompartidoCarpetasPúblicasyContrasenya.png}
+\begin{figure}
+\centering
+\includegraphics{png/ActivaDetecciónyUsoCompartidoPrivada.png}
+\caption{\emph{Figura 6}}
+\end{figure}
 
-\subsection{4.4 Problema en Windows Server i la Xarxa
+\begin{figure}
+\centering
+\includegraphics{png/ActivaDetecciónyUsoCompartidoPublico.png}
+\caption{\emph{Figura 7}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{png/ActivaUsoCompartidoCarpetasPúblicasyContrasenya.png}
+\caption{\emph{Figura 8}}
+\end{figure}
+
+\subsubsection{Problema en Windows Server i la Xarxa
 Privada}\label{problema-en-windows-server-i-la-xarxa-privada}
 
 \textbf{Problema:}
@@ -313,13 +402,13 @@ Els serveis que cal que estiguen executant-se (dependències) són:
 \begin{itemize}
 \tightlist
 \item
-  Client DNS
+  Client DNS.
 \item
-  Publicación de resursos de deteccción de
+  Publicación de recurso de deteccción de función.
 \item
-  Detección host de SSDP
+  Detección host de SSDP.
 \item
-  Dispositivo host de UPnP
+  Dispositivo host de UPnP.
 \end{itemize}
 
 Per a iniciar els servicis primer cal que estiguen habilitats. Per això
@@ -332,16 +421,16 @@ servidor.
 
 \begin{figure}
 \centering
-\includegraphics{png/ADDS/ServicioDetecciónSSDP.png}
-\caption{\emph{Figura 8: Canviem en tipus d'inici a Automático}}
+\includegraphics{png/ServicioDetecciónSSDP.png}
+\caption{\emph{Figura 9: Canviem en tipus d'inici a Automático}}
 \end{figure}
 
 2.- Podem iniciar manualment per no reiniciar ara.
 
 \begin{figure}
 \centering
-\includegraphics{png/ADDS/ServiciInici.png}
-\caption{\emph{Figura 9: Iniciem manuelament un servici}}
+\includegraphics{png/ServiciInici.png}
+\caption{\emph{Figura 10: Iniciem manuelament un servici}}
 \end{figure}
 
 \begin{quote}
@@ -350,31 +439,99 @@ Nota:
 Encara que supose continuar fent spoiler sobre el tema de servicis,
 observa que amb un \textbf{Inici automàtic}, el servei està en marxa en
 engegar-se el servidor \textbf{sense necessitat d'iniciar sessió al
-Servidor} \#\# 4.5 Provar la connectivitat amb el protocol ICMP (ping)
+Servidor}
 \end{quote}
+
+\subsection{6.2 Cas de Domini.}\label{cas-de-domini.}
+
+\textbf{La configuració que expliquem en este punt 6.1 és la que
+aplicarem quan canviem de Workgroup a Domini:}
+
+\begin{figure}
+\centering
+\includegraphics{png/CambiarOpcionesDeUsoCompartido.png}
+\caption{\emph{Figura 10: Opcions en Domini }}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{png/OpcionesDeteccionRedesPrivada.png}
+\caption{\emph{Figura 11: Redes Privadas}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{png/OpcionesDeteccionRedesPublica.png}
+\caption{\emph{Figura 12: Redes Privadas}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{png/OpcionesDeteccionRedesDominio.png}
+\caption{\emph{Figura 13: Redes Privadas}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{png/OpcionesDeteccionRedesTodas.png}
+\caption{\emph{Figura 14: Redes Privadas}}
+\end{figure}
 
 Una prova molt clàssica és la del ping (protocol ICMP4). La fem des de
 totes les màquines.
 
-\begin{figure}
-\centering
-\includegraphics{png/ADDS/ping.png}
-\caption{\emph{Ping des de totes les màquines de la xarxa}}
-\end{figure}
+\subsection{6.3 Resum sobre les característiques de detecció de xarxes i
+compartició de
+recursos}\label{resum-sobre-les-caracteruxedstiques-de-detecciuxf3-de-xarxes-i-comparticiuxf3-de-recursos}
 
-Si tenim problemes podem revisar, la configuració del Firewall:
+Podem trobar-nos en dos escenaris. El Servidor foram part d'un Workgroup
+(provisional o poc habitual), o quan el servidor forma part d'un domini.
+Segon el cas activarem les dos característiques en una opció o altra:
 
-!\emph{Firewall ICMP4 (echo
-entrada)}{]}(png/ADDS/FirewallICMP4Entrada.png)
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2321}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2768}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4911}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Tipus de Xarxa}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Opció}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Motiu}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Workgroup} & Privada & Permet compartició de recursos dins d'una
+xarxa de confiança. \\
+\textbf{Domini} & Domini & Configura la xarxa per integrar-se amb Active
+Directory; no cal activar Privada. \\
+\end{longtable}
 
-\begin{figure}
-\centering
-\includegraphics{png/ADDS/FirewallICMP4Salida.png}
-\caption{\emph{Firewall ICMP4 (echo salida)}}
-\end{figure}
+\textbf{1 Privada} Indica que la xarxa és de confiança (com una xarxa
+local domèstica o d'oficina petita). Permet la compartició de recursos
+(carpetes, impressores) i serveis com el descobriment de dispositius.
+Menys restriccions en el tallafoc.
 
-\section{\texorpdfstring{5 Aspectes bàsics de la configuració des del
-\emph{msconfig}}{5 Aspectes bàsics de la configuració des del msconfig}}\label{aspectes-buxe0sics-de-la-configuraciuxf3-des-del-msconfig}
+\textbf{2 Pública} Considera la xarxa com a no segura (xarxes públiques
+com Wi-Fi a cafeteries o aeroports). Detecció i compartició de recursos
+deshabilitades. Tallafoc més estricte per protegir el servidor.
+
+\textbf{3 Domini} S'aplica automàticament quan el servidor és membre
+d'un Active Directory Domain. Es configura per confiar en la xarxa del
+domini i permet la gestió centralitzada per polítiques de grup (Group
+Policy).
+
+\textbf{4 Totes les xarxes} Agregat per a configurar opcions avançades o
+genèriques que s'apliquen independentment del tipus de xarxa.
+
+L'opció de \emph{3 Domini} apareixerà sols si ja tenim la màquina
+integrada en un Domini AC.
+
+\section{\texorpdfstring{7 Aspectes bàsics de la configuració des del
+\emph{msconfig}}{7 Aspectes bàsics de la configuració des del msconfig}}\label{aspectes-buxe0sics-de-la-configuraciuxf3-des-del-msconfig}
 
 Un exemple podria ser desactivar/activar el \textbf{Servei
 d'actualitzacions}
@@ -394,19 +551,19 @@ Altre exemple podria ser assegurar la \textbf{Zona horària}.
 Cal connexió a Internet. Caldrà una segona tarja connectada a un router
 (NAT en l'emulació nostra de Virtualbox)
 
-\section{6 Recursos compartits en
+\section{8 Recursos compartits en
 xarxa}\label{recursos-compartits-en-xarxa}
 
-\subsection{6.1 Compartició de
+\subsection{8.1 Compartició de
 carpetes}\label{comparticiuxf3-de-carpetes}
 
-La compartició de carpetes la farem sense especificar permisos per a
-usuaris donat que encra no tenim ususari del domini. No anem a
-``replicar-los'' com hem fet en un Workgroup.
+La compartició de carpetes la farem per a tots els usuaris del Domini
+donat que encara no tenim usuaris del domini. No anem a ``replicar-los''
+com es feia en el Workgroup.
 
 \begin{figure}
 \centering
-\includegraphics{png/ADDS/Compartir.png}
+\includegraphics{png/Compartir.png}
 \caption{\emph{Compartició de carpeta}}
 \end{figure}
 
@@ -414,7 +571,7 @@ Pondem limitar el nombre d'usuaris que hi poden accedir
 
 \begin{figure}
 \centering
-\includegraphics{png/ADDS/Compartir2.png}
+\includegraphics{png/Compartir2.png}
 \caption{\emph{Compartició de carpeta}}
 \end{figure}
 
@@ -427,7 +584,7 @@ sessions sense tancar . Des de la consola del sistema de fitxers es
 podrien expulsar. D'igual manera passaria amb els fitxers oberts.
 \end{quote}
 
-\subsection{6.2 Assignació o captura d'Unitat de
+\subsection{8.2 Assignació o captura d'Unitat de
 Xarxa}\label{assignaciuxf3-o-captura-dunitat-de-xarxa}
 
 Ja ho hem vist anteriorment amb el Net use, però una vegaga funciona
@@ -440,7 +597,7 @@ que continua (el mateix efecte que el /persistent:yes).
 La forma en que es podrà automatitzar esta captura per a tots els
 clients d'una xarxa la vorem més avant.
 
-\subsection{6.3 Net use}\label{net-use}
+\subsection{8.3 Net use}\label{net-use}
 
 Amb els comandaments \emph{net} podem, entre d'altres coses, assignar
 també unitat de xarxa. Fins i tot quan no funcione la detecció de xarxes
@@ -457,7 +614,7 @@ protocol SMB (Samba) i no usa els altres protocls al·ludits al punt 2.5.
 \end{Highlighting}
 \end{Shaded}
 
-Per veure totes les Unitat de xarxa ( ``lletres'') assignades
+Per veure totes les Unitat de xarxa (``lletres'') assignades
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -473,8 +630,8 @@ Per eliminar-ne alguna
 \end{Highlighting}
 \end{Shaded}
 
-\section{\texorpdfstring{7 Consola del sistema de fitxers
-\emph{fsmgmt.msc}}{7 Consola del sistema de fitxers fsmgmt.msc}}\label{consola-del-sistema-de-fitxers-fsmgmt.msc}
+\section{\texorpdfstring{9 Consola del sistema de fitxers
+\emph{fsmgmt.msc}}{9 Consola del sistema de fitxers fsmgmt.msc}}\label{consola-del-sistema-de-fitxers-fsmgmt.msc}
 
 La consola \emph{fsmgmt.msc} ens permet
 
@@ -491,11 +648,11 @@ La consola \emph{fsmgmt.msc} ens permet
 
 \begin{figure}
 \centering
-\includegraphics{png/ADDS/fsmgmt.png}
+\includegraphics{png/fsmgmt.png}
 \caption{\emph{Consola de sistema de fitxers}}
 \end{figure}
 
-\section{8 Nota final sobre els prototocols en Windows
+\section{10 Nota final sobre els prototocols en Windows
 Server}\label{nota-final-sobre-els-prototocols-en-windows-server}
 
 \textbf{Protocols}
@@ -503,7 +660,7 @@ Server}\label{nota-final-sobre-els-prototocols-en-windows-server}
 La detecció de xarxes en Windows es basa en una combinació de protocols
 (LLMNR, NetBIOS, SSDP) i serveis com. Tenim, per tant, unes
 ``dependències''. L'Explorador de equipos En canvi, el comandament
-\textbf{net use} usa el protocolo \textbf{SMB Samba} per establiis una
+\textbf{net use} usa el protocolo \textbf{SMB Samba} per establir una
 \textbf{conexió directa} con el recurs compartit. També hem vist que
 podem usar el \textbf{ICMP4} fent un ping.
 
@@ -513,14 +670,15 @@ Per una banda veiem que podem habilitar-los com a serveis i, una vegada
 habilitats, iniciar-los o apagar-los ( també inici automàtic).
 \emph{Wind +R : services.msc}
 
-\textbf{Firewall} El Firewall no sols pot bloquejar ``apliacions'' com
+\textbf{Firewall} El Firewall no sols pot bloquejar ``aplicacions'' com
 la \emph{detecció de xarxa} o \emph{compartició de fitxers i
-impressores} que hem vist. També ens permet establir regles d'entrada o
-eixida per a cadascun del protocols.
+impressores} que hem vist (depenent de quin tipus de xarxa tenim). També
+ens permet establir regles d'entrada o eixida per a cadascun del
+protocols.
 
 \begin{figure}
 \centering
-\includegraphics{png/ADDS/ExemplesEnFirewall.png}
+\includegraphics{png/ExemplesEnFirewall.png}
 \caption{\emph{Vista del Firewall}}
 \end{figure}
 
