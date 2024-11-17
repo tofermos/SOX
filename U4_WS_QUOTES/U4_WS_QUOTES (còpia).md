@@ -22,11 +22,11 @@ output:
 
 # 1 INTRODUCCIÓ
 
-En xarxes amb dades compartides entre usuaris ens interessa establir límits d'emmagatzematge per controlar un mal ús o abús dels recursos evitant que algun usuari ocupe més espai del que, com a administradors del domini, entenem que, necessita. Aquestes limitacions son el que en els SO entenem per *quotes*.
+En xarxes amb dades compartides entre usuaris ens interessa establir límits d'emmagatzematge o controlar un mal ús o abús dels recursos evitant que algun usuari ocupe mes espai del que, com a administradors del domini, entenem que, en prinicipi necessita. Aquestes limitacions son el que en els SO entenem per *quotes*.
 
 En aquesta unitat les estudiarem al Domini basat en Windows Server i més avant en Linux Server. 
 
-# 2 QUOTES EN WINDOWS SERVER
+# 2 QUOTES EN WINDOWS
 
 Les quotes de disc realitzen un seguiment i controlen l'ús de l'espai de disc en els volums NTFS. Quan habilites quotes de disc, pots configurar dos valors:
 
@@ -35,20 +35,20 @@ Les quotes de disc realitzen un seguiment i controlen l'ús de l'espai de disc e
 * El nivell d'advertència de la quota de disc.
 
 Per exemple, pots configurar un límit de quota de disc de 100 megabytes (MB) i un nivell d'advertència de
-quota de disc de 80 MB. 
+quota de disc de 80 MB. En aquest cas, l'usuari no pot emmagatzemar més de 100 MB d'arxius en el volum (volum).
+Si l'usuari emmagatzema més de 100 MB d'arxius en el volum, es pot configurar el sistema de quotes de disc
+per que registre un succés del sistema.
 
 Evidentment l'administració de quotes en un volum requereix drets d'administrador en el Servidor (algun software de configuració tocarem) però també estem condicionant o limitant els drets del usuaris del domini, per tant, haurem de ser un usuari Administrador del domini (el grup Admins.del dominio, per exemple).
+
+A partir del moment en el qual s’habiliten quotes de disc per a un volum, es realitzarà automàticament un
+seguiment de l'ús quantitatiu del volum que facen tots els usuaris.
+Pot ser útil habilitar quotes i no limitar l'ús de l'espai de disc sinó sols realitzar un seguiment de l'ús de l'espai de disc per part de cada usuari. També podeu especificar si ha de registrar o no un succés quan els usuaris superen el seu nivell d'advertència de quota o el seu límit de quota.
 
 
 ## Límit per carpetes
 
-Windows Server ens permet mitjançant el ROL "Administrador de recursos del servidor de archivos" aplicar les quotes a carpetes individuals. Açò combinat amb les tècniques de:
-
-* Carpetes Particular
-* readreçament de Documents
-* carpetes compartides 
-
-Ens permet fer una gestió de l'espai secundari de la xarxa molt bona.
+Windows Server ens permet mitjançant el ROL "Administrador de recursos del servidor de archivos" aplicar les quotes a carpetes individuals. Açò combinat amb les Carpetes Particular, readreçament de Documents o les carpetes compartides ens permet fer una gestió de l'espai secundari de la xarxa molt bona.
 
 ## Compressió de dades
 
@@ -80,20 +80,47 @@ volum, independentment de si resideix en un disc físic o abasta tres.
 
 # 3 OPERATIVA
 
+Anem a aplicar les quotes sobre els Carpetes Particulars vistes en la  Unitat 3
+
+Comprovem tindre suficient espai al disc.
+
+## 3.1 Activar les quotes al disc
+
+Cal activar les quotes al disc.
+
+Ací podem configurar les quotes per grups o usuaris individuals.
+
+![](png/QuotaDisc1.png)
+
+![](png/QuotaDisc2.png)
+
+### Quota per usuari
+
+Una vegada tenim activada el sistema de quotes podem assignar quotes per a cada usuari.
+
+![](png/CuotaNuevaUsuari1.png)
+
+![](png/CuotaNuevaUsuari2.png)
+
+![](png/CuotaNuevaUsuari3.png)
+
+No obstant aquesta opció no és la que més ens pot interessar en un entorn de xarxa sinó que ens instressarà mé poder assignar quatoes a carpetes concretes. Ho veiam al següent punt.
+
 ## 3.1 Instal·lar el Rol de Administrador de recursos del servidor d'arxius (File Server Resource Manager-FSRM)
 
 Recordem de la Unitat 1 quan parlavem de les funcions d'un SOX. La de servir fitxer vorem que no és estrictament guardar inforamció compartida en disc.
   
 El **Administrador de recursos del servidor d'arxius (FSRM)** és essencial per gestionar quotes de disc avançades. 
 
-   1. Des del **Administrador del servidor**  (servermanager.exe)
-   2. Afegeix rols i característiques
-   3. Selecciona **Servicios de archivos y almacenamiento**>**Servicios de iSCSI y archivo** > **Administrador de recursos del sistema de archivos**.
-   4. Completa l’assistent i, si es demana, reinicia el servidor.
+   1. Des del **Server Manager** al servidor. *servermanager.exe*
+   2. Afegeix rols i característiques).
+   3. Selecciona **File and Storage Services** > **File and iSCSI Services** > **File Server Resource Manager**.
+   5. Completa l’assistent i, si es demana, reinicia el servidor.
    
-![](png/instalaROL.png)
+![](png/Cuotas1.png)
 
 Opcionalment podeu fer-ho des de PowerShell (executant-lo com a Administrador!)
+
 
 
 ```Powershell
@@ -149,16 +176,3 @@ Per a fer proves també podem usar la mateix ordre:
 ```cmd
 fsutil file createnew fitxer50MB 500000000
 ```
-
-# 4 Diferències amb Window 1x
-
-# Resum 
-
-| **Nivell**             | **Windows 11**               | **Windows Server**          |
-|------------------------|------------------------------|-----------------------------|
-| **Usuari**             | Sí, pots establir quotes per a cada usuari (un a un) | Sí, pots establir quotes per a usuaris individuals. |
-| **Carpeta**            | No, no es poden establir quotes per carpetes. | Sí, es poden establir quotes per a carpetes específiques. |
-| **Tots els usuaris**   | No, no es poden establir quotes globals per a tots els usuaris. | Sí, pots establir quotes generals per a tots els usuaris. |
-| **Volum**              | No, no es poden establir quotes per volums. | Sí, pots establir quotes per a volums complets. |
-| **Unitat**             | No, no es poden establir quotes per unitats. | Sí, pots establir quotes per unitats completes. |
-

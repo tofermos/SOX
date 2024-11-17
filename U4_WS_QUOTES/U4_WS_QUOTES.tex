@@ -79,6 +79,16 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -132,15 +142,15 @@
 \section{1 INTRODUCCIÓ}\label{introducciuxf3}
 
 En xarxes amb dades compartides entre usuaris ens interessa establir
-límits d'emmagatzematge o controlar un mal ús o abús dels recursos
-evitant que algun usuari ocupe mes espai del que, com a administradors
-del domini, entenem que, en prinicipi necessita. Aquestes limitacions
-son el que en els SO entenem per \emph{quotes}.
+límits d'emmagatzematge per controlar un mal ús o abús dels recursos
+evitant que algun usuari ocupe més espai del que, com a administradors
+del domini, entenem que, necessita. Aquestes limitacions son el que en
+els SO entenem per \emph{quotes}.
 
 En aquesta unitat les estudiarem al Domini basat en Windows Server i més
 avant en Linux Server.
 
-\section{2 QUOTES EN WINDOWS}\label{quotes-en-windows}
+\section{2 QUOTES EN WINDOWS SERVER}\label{quotes-en-windows-server}
 
 Les quotes de disc realitzen un seguiment i controlen l'ús de l'espai de
 disc en els volums NTFS. Quan habilites quotes de disc, pots configurar
@@ -154,11 +164,7 @@ dos valors:
 \end{itemize}
 
 Per exemple, pots configurar un límit de quota de disc de 100 megabytes
-(MB) i un nivell d'advertència de quota de disc de 80 MB. En aquest cas,
-l'usuari no pot emmagatzemar més de 100 MB d'arxius en el volum (volum).
-Si l'usuari emmagatzema més de 100 MB d'arxius en el volum, es pot
-configurar el sistema de quotes de disc per que registre un succés del
-sistema.
+(MB) i un nivell d'advertència de quota de disc de 80 MB.
 
 Evidentment l'administració de quotes en un volum requereix drets
 d'administrador en el Servidor (algun software de configuració tocarem)
@@ -166,21 +172,23 @@ però també estem condicionant o limitant els drets del usuaris del
 domini, per tant, haurem de ser un usuari Administrador del domini (el
 grup Admins.del dominio, per exemple).
 
-A partir del moment en el qual s'habiliten quotes de disc per a un
-volum, es realitzarà automàticament un seguiment de l'ús quantitatiu del
-volum que facen tots els usuaris. Pot ser útil habilitar quotes i no
-limitar l'ús de l'espai de disc sinó sols realitzar un seguiment de l'ús
-de l'espai de disc per part de cada usuari. També podeu especificar si
-ha de registrar o no un succés quan els usuaris superen el seu nivell
-d'advertència de quota o el seu límit de quota.
-
 \subsection{Límit per carpetes}\label{luxedmit-per-carpetes}
 
 Windows Server ens permet mitjançant el ROL ``Administrador de recursos
 del servidor de archivos'' aplicar les quotes a carpetes individuals.
-Açò combinat amb les Carpetes Particular, readreçament de Documents o
-les carpetes compartides ens permet fer una gestió de l'espai secundari
-de la xarxa molt bona.
+Açò combinat amb les tècniques de:
+
+\begin{itemize}
+\tightlist
+\item
+  Carpetes Particular
+\item
+  readreçament de Documents
+\item
+  carpetes compartides
+\end{itemize}
+
+Ens permet fer una gestió de l'espai secundari de la xarxa molt bona.
 
 \subsection{Compressió de dades}\label{compressiuxf3-de-dades}
 
@@ -224,37 +232,6 @@ resideix en un disc físic o abasta tres.
 
 \section{3 OPERATIVA}\label{operativa}
 
-Anem a aplicar les quotes sobre els Carpetes Particulars vistes en la
-Unitat 3
-
-Comprovem tindre suficient espai al disc.
-
-\subsection{3.1 Activar les quotes al
-disc}\label{activar-les-quotes-al-disc}
-
-Cal activar les quotes al disc.
-
-Ací podem configurar les quotes per grups o usuaris individuals.
-
-\includegraphics{png/QuotaDisc1.png}
-
-\includegraphics{png/QuotaDisc2.png}
-
-\subsubsection{Quota per usuari}\label{quota-per-usuari}
-
-Una vegada tenim activada el sistema de quotes podem assignar quotes per
-a cada usuari.
-
-\includegraphics{png/CuotaNuevaUsuari1.png}
-
-\includegraphics{png/CuotaNuevaUsuari2.png}
-
-\includegraphics{png/CuotaNuevaUsuari3.png}
-
-No obstant aquesta opció no és la que més ens pot interessar en un
-entorn de xarxa sinó que ens instressarà mé poder assignar quatoes a
-carpetes concretes. Ho veiam al següent punt.
-
 \subsection{3.1 Instal·lar el Rol de Administrador de recursos del
 servidor d'arxius (File Server Resource
 Manager-FSRM)}\label{installar-el-rol-de-administrador-de-recursos-del-servidor-darxius-file-server-resource-manager-fsrm}
@@ -270,18 +247,19 @@ essencial per gestionar quotes de disc avançades.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Des del \textbf{Server Manager} al servidor. \emph{servermanager.exe}
+  Des del \textbf{Administrador del servidor} (servermanager.exe)
 \item
-  Afegeix rols i característiques).
+  Afegeix rols i característiques
 \item
-  Selecciona \textbf{File and Storage Services} \textgreater{}
-  \textbf{File and iSCSI Services} \textgreater{} \textbf{File Server
-  Resource Manager}.
+  Selecciona \textbf{Servicios de archivos y
+  almacenamiento}\textgreater{}\textbf{Servicios de iSCSI y archivo}
+  \textgreater{} \textbf{Administrador de recursos del sistema de
+  archivos}.
 \item
   Completa l'assistent i, si es demana, reinicia el servidor.
 \end{enumerate}
 
-\includegraphics{png/Cuotas1.png}
+\includegraphics{png/instalaROL.png}
 
 Opcionalment podeu fer-ho des de PowerShell (executant-lo com a
 Administrador!)
@@ -363,5 +341,38 @@ Per a fer proves també podem usar la mateix ordre:
 \end{Highlighting}
 \end{Shaded}
 
+\section{4 Diferències amb Window
+1x}\label{diferuxe8ncies-amb-window-1x}
+
+\section{Resum}\label{resum}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2892}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3614}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3494}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Nivell}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Windows 11}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Windows Server}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Usuari} & Sí, pots establir quotes per a cada usuari (un a un) &
+Sí, pots establir quotes per a usuaris individuals. \\
+\textbf{Carpeta} & No, no es poden establir quotes per carpetes. & Sí,
+es poden establir quotes per a carpetes específiques. \\
+\textbf{Tots els usuaris} & No, no es poden establir quotes globals per
+a tots els usuaris. & Sí, pots establir quotes generals per a tots els
+usuaris. \\
+\textbf{Volum} & No, no es poden establir quotes per volums. & Sí, pots
+establir quotes per a volums complets. \\
+\textbf{Unitat} & No, no es poden establir quotes per unitats. & Sí,
+pots establir quotes per unitats completes. \\
+\end{longtable}
 
 \end{document}
