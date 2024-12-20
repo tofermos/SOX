@@ -61,3 +61,7 @@ linestretch: 1.5
 |Permisos Share i unitats|[![](recursos/iconohtml.png)](U4_WS_SHARE_i_UNITATS/U4_WS_SHARE_i_UNITATS.html)|[![](recursos/iconopdf.png)](U4_WS_SHARE_i_UNITATS/U4_WS_SHARE_i_UNITATS.pdf)|
 |Quotes de disc en Windows Server 2019|[![](recursos/iconohtml.png)](U4_WS_QUOTES/U4_WS_QUOTES.html)|[![](recursos/iconopdf.png)](U4_WS_QUOTES/U4_WS_QUOTES.pdf)|
 
+### [5 WINDOWS SERVER. POWERSHELL](#U5)
+|||||
+|:------|:--|:--|
+|PowerShell|[![](recursos/iconomd.png)](U5-POWERSHELL/script.md)|[![](recursos/iconopdf.png)](U5-POWERSHELL/script.html)|
