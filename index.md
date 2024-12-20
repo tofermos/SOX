@@ -64,4 +64,4 @@ linestretch: 1.5
 ### [5 WINDOWS SERVER. POWERSHELL](#U5)
 |||||
 |:------|:--|:--|
-|PowerShell|[![](recursos/iconomd.png)](U5-POWERSHELL/script.md)|[![](recursos/iconopdf.png)](U5-POWERSHELL/script.html)|
+|PowerShell|[![](recursos/iconomd.png)](U5-POWERSHELL/script.md)|[![](recursos/iconohtml.png)](U5-POWERSHELL/script.html)|
