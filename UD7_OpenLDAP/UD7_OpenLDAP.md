@@ -6,7 +6,7 @@ subtitle: |
 author: "Tomàs Ferrandis Moscardó"
 output:
   pdf_document: 
-    toc: false
+    toc: true
     keep_tex: true
   html_document:
     toc: true
@@ -26,7 +26,7 @@ linestretch: 1.5
 
 # 1.  SERVICI DE DIRECTORI
 
-Un servici de directori és una base de dades jeràrquica i centralitzada que s’utilitza per emmagatzemar i gestionar informació clau d’una organització. Aquesta informació pot incloure:
+Recrodem que un servici de directori és una base de dades jeràrquica i centralitzada que s’utilitza per emmagatzemar i gestionar informació clau d’una organització. Aquesta informació pot incloure:
 
 - Gestió d'usuaris i grups.
 - Autenticació d'usuaris.
@@ -284,7 +284,7 @@ sudo slapcat
 sudo systemctl restart slapd
 ```
 
-Amb *status* podem comprovar si està "running".
+Amb *status* podem comprovar si está "running".
 
 # 4. INSTAL·LACIÓ en el CLIENT UBUNTU
 
@@ -347,7 +347,7 @@ Important: El client executarà jxplorer, però haurà de connectar amb el servi
 * indicar el password que també hem introduït en la configuració 
 
 
-# 6 Els objectes principals
+# 6 ELS OBJECTES PRINCIPALS
 
 Anem a crear i modificar Unitats Organitzatives, grups d'usuaris i usuaris del domini. I amb la creació des del *jXplorer* podrem introduir uns conceptes bàsics de teoria sobre el LDAP perquè ens cladrà conéixer les **propietats mínimes** fan falta en cada objecte.
 
@@ -442,3 +442,75 @@ Veiem què passa si falten propietats requerides:
 ---
 
 
+## 6.3 Conceptes clau sobre objectes i classes a LDAP
+
+1. Les classes d'objecte defineixen els atributs i el comportament dels objectes:actua com una plantilla que especifica:
+     - Quins atributs són obligatoris.
+     - Quins atributs són opcionals.
+
+2. Herència entre classes d'objecte
+    - Exemple:
+     - La classe `inetOrgPerson` hereta d'altres classes com `organizationalPerson`, `person` i `top`.
+
+3. **Exemple d'herència en classes:**
+   Si tens un usuari definit amb la classe `inetOrgPerson`, automàticament aquest objecte també hereta els atributs de les classes de les quals depèn. Veieu-ho gràficament:
+
+*Diagrama d'herència*:
+   
+```
+top
+  person
+       organizationalPerson
+                          inetOrgPerson
+```
+
+
+
+## 6.3 Fitxers ldif
+
+Els vorem més avant però teniu ací un exemples amb les propietats mínimes requerides.
+
+#### Exemple d'una entrada d'OU:
+
+```ldif
+dn: ou=usuaris,dc=exemple,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: usuaris
+```
+
+#### Exemple d'una entrada d'usuari:
+```ldif
+dn: uid=jordi,ou=usuaris,dc=exemple,dc=com
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+cn: Jordi Gómez
+sn: Gómez
+uid: jordi
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/jordi
+loginShell: /bin/bash
+```
+
+### Exemple pràctic: Usuari amb múltiples classes
+Un usuari que és compatible amb Linux i també conté informació personal pot definir-se així:
+
+```ldif
+dn: uid=jordi,ou=usuaris,dc=exemple,dc=com
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: posixAccount
+cn: Jordi Gómez
+sn: Gómez
+uid: jordi
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/jordi
+loginShell: /bin/bash
+mail: jordi@example.com
+telephoneNumber: +34 600 123 456
+```

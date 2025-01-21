@@ -147,12 +147,16 @@
 \begin{document}
 \maketitle
 
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
 \setstretch{1.5}
 \section{1. SERVICI DE DIRECTORI}\label{servici-de-directori}
 
-Un servici de directori és una base de dades jeràrquica i centralitzada
-que s'utilitza per emmagatzemar i gestionar informació clau d'una
-organització. Aquesta informació pot incloure:
+Recrodem que un servici de directori és una base de dades jeràrquica i
+centralitzada que s'utilitza per emmagatzemar i gestionar informació
+clau d'una organització. Aquesta informació pot incloure:
 
 \begin{itemize}
 \tightlist
@@ -623,7 +627,7 @@ avant per connectar-nos.
 \end{Highlighting}
 \end{Shaded}
 
-Amb \emph{status} podem comprovar si està ``running''.
+Amb \emph{status} podem comprovar si está ``running''.
 
 \section{4. INSTAL·LACIÓ en el CLIENT
 UBUNTU}\label{installaciuxf3-en-el-client-ubuntu}
@@ -704,7 +708,7 @@ servidor ldap.
   indicar el password que també hem introduït en la configuració
 \end{itemize}
 
-\section{6 Els objectes principals}\label{els-objectes-principals}
+\section{6 ELS OBJECTES PRINCIPALS}\label{els-objectes-principals}
 
 Anem a crear i modificar Unitats Organitzatives, grups d'usuaris i
 usuaris del domini. I amb la creació des del \emph{jXplorer} podrem
@@ -908,5 +912,111 @@ Veiem què passa si falten propietats requerides:
 \end{longtable}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.3 Conceptes clau sobre objectes i classes a
+LDAP}\label{conceptes-clau-sobre-objectes-i-classes-a-ldap}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Les classes d'objecte defineixen els atributs i el comportament dels
+  objectes:actua com una plantilla que especifica:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Quins atributs són obligatoris.
+  \item
+    Quins atributs són opcionals.
+  \end{itemize}
+\item
+  Herència entre classes d'objecte
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Exemple:
+  \item
+    La classe \texttt{inetOrgPerson} hereta d'altres classes com
+    \texttt{organizationalPerson}, \texttt{person} i \texttt{top}.
+  \end{itemize}
+\item
+  \textbf{Exemple d'herència en classes:} Si tens un usuari definit amb
+  la classe \texttt{inetOrgPerson}, automàticament aquest objecte també
+  hereta els atributs de les classes de les quals depèn. Veieu-ho
+  gràficament:
+\end{enumerate}
+
+\emph{Diagrama d'herència}:
+
+\begin{verbatim}
+top
+  person
+       organizationalPerson
+                          inetOrgPerson
+\end{verbatim}
+
+\subsection{6.3 Fitxers ldif}\label{fitxers-ldif}
+
+Els vorem més avant però teniu ací un exemples amb les propietats
+mínimes requerides.
+
+\paragraph{Exemple d'una entrada d'OU:}\label{exemple-duna-entrada-dou}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dn: ou=usuaris,dc=exemple,dc=com}
+\NormalTok{objectClass: top}
+\NormalTok{objectClass: organizationalUnit}
+\NormalTok{ou: usuaris}
+\end{Highlighting}
+\end{Shaded}
+
+\paragraph{Exemple d'una entrada
+d'usuari:}\label{exemple-duna-entrada-dusuari}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dn: uid=jordi,ou=usuaris,dc=exemple,dc=com}
+\NormalTok{objectClass: top}
+\NormalTok{objectClass: posixAccount}
+\NormalTok{objectClass: inetOrgPerson}
+\NormalTok{cn: Jordi Gómez}
+\NormalTok{sn: Gómez}
+\NormalTok{uid: jordi}
+\NormalTok{uidNumber: 1001}
+\NormalTok{gidNumber: 1001}
+\NormalTok{homeDirectory: /home/jordi}
+\NormalTok{loginShell: /bin/bash}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Exemple pràctic: Usuari amb múltiples
+classes}\label{exemple-pruxe0ctic-usuari-amb-muxfaltiples-classes}
+
+Un usuari que és compatible amb Linux i també conté informació personal
+pot definir-se així:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dn: uid=jordi,ou=usuaris,dc=exemple,dc=com}
+\NormalTok{objectClass: top}
+\NormalTok{objectClass: person}
+\NormalTok{objectClass: organizationalPerson}
+\NormalTok{objectClass: inetOrgPerson}
+\NormalTok{objectClass: posixAccount}
+\NormalTok{cn: Jordi Gómez}
+\NormalTok{sn: Gómez}
+\NormalTok{uid: jordi}
+\NormalTok{uidNumber: 1001}
+\NormalTok{gidNumber: 1001}
+\NormalTok{homeDirectory: /home/jordi}
+\NormalTok{loginShell: /bin/bash}
+\NormalTok{mail: jordi@example.com}
+\NormalTok{telephoneNumber: +34 600 123 456}
+\end{Highlighting}
+\end{Shaded}
+
 
 \end{document}
