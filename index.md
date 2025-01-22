@@ -69,4 +69,4 @@ linestretch: 1.5
 ### [ 7 UBUNTU SERVER. ADMINISTRACIÓ I CONFIGURACIÓ ](#U7)
 |||||
 |:------|:--|:--|
-|UD7_OpenLDAP en Ubuntu|[![](recursos/iconohtml.png)](UD7_OpenLDAP/UD7_OpenLDAP.html)|[![](recursos/iconopdf.png)](UD7_OpenLDAP/UD7_OpenLDAP.pdf)|)
+|OpenLDAP en Ubuntu|[![](recursos/iconohtml.png)](UD7_OpenLDAP/UD7_OpenLDAP.html)|[![](recursos/iconopdf.png)](UD7_OpenLDAP/UD7_OpenLDAP.pdf)|)
