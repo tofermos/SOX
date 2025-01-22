@@ -23,6 +23,7 @@ mainfont: Times New Roman
 papersize: A4
 linestretch: 1.5
 ---
+\newpage
 
 # 1 Autenticació basada en LDAP
 
@@ -32,6 +33,8 @@ Ara estudiarem autenticar en Linux els usuaris en en servidor LDAP enlloc utilit
 Per fer-ho hem d’instal·lar i configurar els paquets **libpam-ldap** i **libnss-ldap**.
 
 ![](png/nss.png)
+
+---
 
 ## 1.2 Llibreries d'autenticació pam-ldap i nss-ldap
 La llibreria **pam-ldap** permet que les aplicacions que utilitzen PAM (Pluggable Authentication Modules) per
@@ -51,6 +54,8 @@ Posteriorment haurem de configurar el arxius que són **/etc/nsswitch.conf** per
 base de dades del sistema en lloc dels arxius passwd, group i shadow.
 
 ![](png/pam.png)
+
+---
 
 ## 1.3 Instal·lació i configuració de libpam-ldap i libnss-ldap
 
@@ -172,7 +177,7 @@ Quedará així:
 ![](png/libpam7.png)
 
 
-### 4.3.3 Creació automàtica directoris d’usuari (home)
+### 1.3.3 Creació automàtica directoris d’usuari (home)
 
 **Client**
 
@@ -226,6 +231,8 @@ Si volem mostrar tots els usuaris dels llocs indicats a nsswitch.conf: "compat/f
 getent passwd
 ```
 
+\newpage
+
 # 2 Perfils mòbils
 
 Ja coneixeu de Windows Server el concepte de Perfil Mòbil, no cal repetir-lo. Ara que tenim configurat el directori LDAP podem implementar-lo en el Ubuntu Server. 
@@ -258,6 +265,8 @@ El punt 2 consisteix en modificar el fitxer /etc/exports i afegir la següent l�
 Explicarem més avant el NFS.
 
 Ara cal reiniciar el servidor.
+
+---
 
 ## 2.2 Client
 
