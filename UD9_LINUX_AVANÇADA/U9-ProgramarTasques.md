@@ -5,15 +5,15 @@ subtitle: |
   |  Programar tasques. **at i cron**
 Author: "Tomàs Ferrandis Moscardó"
 output:
+  pdf_document: 
+    toc: false
+    keep_tex: true
   html_document:
     toc: true
     toc_float: true
     toc_depth: 2
     df_print: paged
     number_sections: false
-  pdf_document: 
-    toc: false
-    keep_tex: true
   word_document:
     toc: true
     toc_depth: '3'
@@ -47,7 +47,7 @@ at 14:00 -f backup.sh
 ```
 
 ```bash
-sudo apt update && sudo apt upgrade -y
+echo "sudo apt update && sudo apt upgrade -y | at 23:00"
 ```
 
 

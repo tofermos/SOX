@@ -2771,7 +2771,7 @@ sudo systemctl enable atd</code></pre>
 </ol>
 <pre class="bash"><code>echo &quot;echo &#39;Hola, món!&#39; &gt;&gt; ~/hola.txt&quot; | at 14:00</code></pre>
 <pre class="bash"><code>at 14:00 -f backup.sh</code></pre>
-<pre class="bash"><code>sudo apt update &amp;&amp; sudo apt upgrade -y</code></pre>
+<pre class="bash"><code>echo &quot;sudo apt update &amp;&amp; sudo apt upgrade -y | at 23:00&quot;</code></pre>
 <p>Això escriurà “Hola, món!” al fitxer <code>hola.txt</code> a les
 <strong>14:00</strong>.</p>
 <ol start="2" style="list-style-type: decimal">
