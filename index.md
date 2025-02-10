@@ -75,4 +75,4 @@ linestretch: 1.5
 ### [9 UBUNTU SERVER. ADMINISTRACIÓ I CONFIGURACIÓ AVANÇADA](#U9)
 |||||
 |:------|:--|:--|
-|Programació de tasques|[![](recursos/iconohtml.png)](UD9_LINUX_AVANÇADA/U9-ProgramarTasques.html)|[![](recursos/iconopdf.png)](UD9_LINUX_AVANÇADA/U9-ProgramarTasques.pdf)|
+|Linux. Programació de tasques|[![](recursos/iconohtml.png)](UD9_LINUX_AVANÇADA/U9-ProgramarTasques.html)|[![](recursos/iconopdf.png)](UD9_LINUX_AVANÇADA/U9-ProgramarTasques.pdf)|
