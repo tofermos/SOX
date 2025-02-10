@@ -72,7 +72,7 @@ linestretch: 1.5
 |OpenLDAP en Ubuntu|[![](recursos/iconohtml.png)](UD7_OpenLDAP/UD7_OpenLDAP.html)|[![](recursos/iconopdf.png)](UD7_OpenLDAP/UD7_OpenLDAP.pdf)|
 |Autenticació i perfils mòbils|[![](recursos/iconohtml.png)](UD7_OpenLDAP/UD7_OpenLDAPAutenticarIPerfils.html)|[![](recursos/iconopdf.png)](UD7_OpenLDAP/UD7_OpenLDAPAutenticarIPerfils.pdf)|
 
-### [ 9 UBUNTU SERVER. ADMINISTRACIÓ I CONFIGURACIÓ AVANÇADA](#U9)
+### [9 UBUNTU SERVER. ADMINISTRACIÓ I CONFIGURACIÓ AVANÇADA](#U9)
 |||||
 |:------|:--|:--|
 |Programació de tasques|[![](recursos/iconohtml.png)](UD9_LINUX_AVANÇADA/U9-ProgramarTasques.html)|[![](recursos/iconopdf.png)](UD9_LINUX_AVANÇADA/U9-ProgramarTasques.pdf)|
