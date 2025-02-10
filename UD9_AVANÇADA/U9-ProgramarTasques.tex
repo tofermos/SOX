@@ -1,0 +1,366 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12 pt,
+  a4paper,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{setspace}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{Times New Roman}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{spanish}
+\ifPDFTeX
+\else
+\babelfont{rm}[]{Times New Roman}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdflang={es-ES},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{U9-ADMINISTRACIÓ i CONFIGURACIÓ AVANÇADA D'UBUNTU (at i cron)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{~Programar tasques. \textbf{at i cron}}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\setstretch{1.5}
+\section{\texorpdfstring{1. ÚS
+D'\texttt{at}}{1. ÚS D'at}}\label{uxfas-dat}
+
+L'ordre \texttt{at} permet programar tasques que s'executaran
+\textbf{una sola vegada} en el futur.
+
+\subsection{\texorpdfstring{1.1 Activació del servei
+\texttt{atd}}{1.1 Activació del servei atd}}\label{activaciuxf3-del-servei-atd}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ systemctl start atd}
+\FunctionTok{sudo}\NormalTok{ systemctl enable atd}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{\texorpdfstring{Exemple 1: Crear una tasca amb
+\texttt{at}}{Exemple 1: Crear una tasca amb at}}\label{exemple-1-crear-una-tasca-amb-at}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Escriu una ordre que vols executar a una hora específica:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{echo} \StringTok{"echo \textquotesingle{}Hola, món!\textquotesingle{} \textgreater{}\textgreater{} \textasciitilde{}/hola.txt"} \KeywordTok{|} \ExtensionTok{at}\NormalTok{ 14:00}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{at}\NormalTok{ 14:00 }\AttributeTok{{-}f}\NormalTok{ backup.sh}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sudo}\NormalTok{ apt update }\KeywordTok{\&\&} \FunctionTok{sudo}\NormalTok{ apt upgrade }\AttributeTok{{-}y}
+\end{Highlighting}
+\end{Shaded}
+
+Això escriurà ``Hola, món!'' al fitxer \texttt{hola.txt} a les
+\textbf{14:00}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  També pots utilitzar formats de temps relatius:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{echo} \StringTok{"sudo apt update"} \KeywordTok{|} \ExtensionTok{at}\NormalTok{ now + 2 minutes}
+\end{Highlighting}
+\end{Shaded}
+
+Això executarà l'ordre \textbf{\texttt{sudo\ apt\ update}} d'ací a 2
+minuts.
+
+\subsection{1.2 Llistar tasques
+programades}\label{llistar-tasques-programades}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{atq}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{1.3 Eliminar una tasca
+programada}\label{eliminar-una-tasca-programada}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Troba l'ID de la tasca amb \texttt{atq}.
+\item
+  Elimina-la amb:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{atrm} \OperatorTok{\textless{}}\NormalTok{id}\OperatorTok{\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{2. ÚS DE CRON
+\texttt{cron}}{2. ÚS DE CRON cron}}\label{uxfas-de-cron-cron}
+
+\texttt{cron} és ideal per programar \textbf{tasques recurrents}.
+
+\subsection{2.1 Configuració del cron}\label{configuraciuxf3-del-cron}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Obriu l'editor del cron:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{crontab} \AttributeTok{{-}e}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Afegiu una línia per programar una tasca. Per exemple:
+\end{enumerate}
+
+\begin{verbatim}
+0 6 * * * echo "Bon dia!" >> ~/bon_dia.txt
+\end{verbatim}
+
+Això escriurà ``Bon dia!'' al fitxer \texttt{bon\_dia.txt} cada dia a
+les \textbf{6:00 AM}.
+
+\subsection{2.2 Sintaxi de cron}\label{sintaxi-de-cron}
+
+\begin{itemize}
+\item
+  \textbf{Minut (0-59)}
+\item
+  \textbf{Hora (0-23)}
+\item
+  \textbf{Dia del mes (1-31)}
+\item
+  \textbf{Mes (1-12)}
+\item
+  \textbf{Dia de la setmana (0-7)} (on 0 i 7 són diumenge)
+\end{itemize}
+
+Exemples:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Executar una tasca cada 5 minuts:
+\end{enumerate}
+
+\begin{verbatim}
+*/5 * * * * /path/to/script.sh
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Programar una tasca el primer dia de cada mes a les 12 del migdia:
+\end{enumerate}
+
+\begin{verbatim}
+0 12 1 * * /path/to/script.sh
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Reiniciar el sistema cada diumenge a mitjanit:
+\end{enumerate}
+
+\begin{verbatim}
+0 0 * * 0 sudo reboot
+\end{verbatim}
+
+\subsection{2.3 Llistar tasques}\label{llistar-tasques}
+
+Per veure les tasques configurades:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{crontab} \AttributeTok{{-}l}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{2.4 Eliminar tasca}\label{eliminar-tasca}
+
+Per eliminar totes les tasques del cron:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{crontab} \AttributeTok{{-}r}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{3. DIFERÈNCIES ENTRE \texttt{at} i
+\texttt{cron}}{3. DIFERÈNCIES ENTRE at i cron}}\label{diferuxe8ncies-entre-at-i-cron}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+\textbf{\texttt{at}} & \textbf{\texttt{cron}} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Execució \textbf{una sola vegada} & Execució \textbf{recurrent} \\
+Ordres simples i puntuals & Ideal per programacions periòdiques \\
+Requereix el servei \texttt{atd} & Requereix el dimoni \texttt{cron} \\
+\end{longtable}
+
+\end{document}

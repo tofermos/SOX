@@ -5,15 +5,15 @@ subtitle: |
   | IES MARIA ENRÍQUEZ
 author: "tofermos2024"
 output:
+  pdf_document: 
+    toc: true
+    keep_tex: true
   html_document:
     toc: true
     toc_float: true
     toc_depth: 1
     df_print: paged
     number_sections: false
-  pdf_document: 
-    toc: true
-    keep_tex: true
   word_document:
     toc: true
     toc_depth: '3'
@@ -71,3 +71,8 @@ linestretch: 1.5
 |:------|:--|:--|
 |OpenLDAP en Ubuntu|[![](recursos/iconohtml.png)](UD7_OpenLDAP/UD7_OpenLDAP.html)|[![](recursos/iconopdf.png)](UD7_OpenLDAP/UD7_OpenLDAP.pdf)|
 |Autenticació i perfils mòbils|[![](recursos/iconohtml.png)](UD7_OpenLDAP/UD7_OpenLDAPAutenticarIPerfils.html)|[![](recursos/iconopdf.png)](UD7_OpenLDAP/UD7_OpenLDAPAutenticarIPerfils.pdf)|
+
+### [ 9 UBUNTU SERVER. ADMINISTRACIÓ I CONFIGURACIÓ AVANÇADA](#U9)
+|||||
+|:------|:--|:--|
+|Programació de tasques|[![](recursos/iconohtml.png)](UD9_AVANÇADA/U9-ProgramarTasques.html)|[![](recursos/iconopdf.png)](UD9_AVANÇADA/U9-ProgramarTasques.pdf)|
