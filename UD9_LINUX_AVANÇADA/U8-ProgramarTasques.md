@@ -1,6 +1,6 @@
 ---
 title: |
-  | U8-ADMINISTRACIÓ D'UBUNTU (at i cron)
+  | U9-PROGRAMACIÓ DE TASQUES (at i cron)
 subtitle: |
   |  Programar tasques. **at i cron**
 Author: "Tomàs Ferrandis Moscardó"
