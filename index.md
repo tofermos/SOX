@@ -76,3 +76,4 @@ linestretch: 1.5
 |||||
 |:------|:--|:--|
 |Linux. Programació de tasques|[![](recursos/iconohtml.png)](UD9_LINUX_AVANÇADA/U9-ProgramarTasques.html)|[![](recursos/iconopdf.png)](UD9_LINUX_AVANÇADA/U9-ProgramarTasques.pdf)|
+|Linux. Monitorizació|[![](recursos/iconohtml.png)](UD9_LINUX_AVANÇADA/U9-Monitorització.html)|[![](recursos/iconopdf.png)](UD9_LINUX_AVANÇADA/U9-Monitorització.pdf)|
